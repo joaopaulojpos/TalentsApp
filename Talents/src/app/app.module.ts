@@ -12,25 +12,37 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { VagasPageModule } from '../pages/vagas/vagas.module';
 import { FavoritasPageModule } from '../pages/favoritas/favoritas.module';
 import { PerfilPageModule } from '../pages/perfil/perfil.module';
+import { VagasPage } from '../pages/vagas/vagas';
+import { PerfilPage } from '../pages/perfil/perfil';
+import { FavoritasPage } from '../pages/favoritas/favoritas';
+import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
+import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
 
 @NgModule({
   declarations: [
     MyApp,
     TabsPage,
     LoginPage
+
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     VagasPageModule,
     FavoritasPageModule,
-    PerfilPageModule
+    PerfilPageModule,
+    ConfiguracoesPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     TabsPage,
-    LoginPage
+    LoginPage,
+    VagasPage,
+    PerfilPage,
+    FavoritasPage,
+    ConfiguracoesPage
+
   ],
   providers: [
     StatusBar,
