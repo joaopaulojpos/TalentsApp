@@ -1,0 +1,30 @@
+page-perfil {
+
+.avatar_perfil img {
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: auto;
+  margin-left: auto;
+  width: 140px;
+  height: 140px;
+}
+
+.botao_editar{
+	font-weight: bold;
+	padding: 10px;
+	float: right;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	color: #FFFFFF;
+    background-color: dodgerblue;
+    margin-left: 10px;
+    border-radius: 10%;
+}
+
+.botao_editar:hover{
+	color: dimgrey;
+	background-color:dodgerblue;
+	border-radius: 10px 0px 10px 0px;
+}
+
+}
