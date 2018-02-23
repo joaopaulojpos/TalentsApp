@@ -17,12 +17,14 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { FavoritasPage } from '../pages/favoritas/favoritas';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
+import { CadastroProfissionalPage } from '../pages/cadastro-profissional/cadastro-profissional';
 
 @NgModule({
   declarations: [
     MyApp,
     TabsPage,
-    LoginPage
+    LoginPage,
+    CadastroProfissionalPage
 
   ],
   imports: [
@@ -31,7 +33,7 @@ import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.mo
     VagasPageModule,
     FavoritasPageModule,
     PerfilPageModule,
-    ConfiguracoesPageModule
+    ConfiguracoesPageModule 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +43,8 @@ import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.mo
     VagasPage,
     PerfilPage,
     FavoritasPage,
-    ConfiguracoesPage
+    ConfiguracoesPage,
+    CadastroProfissionalPage
 
   ],
   providers: [
