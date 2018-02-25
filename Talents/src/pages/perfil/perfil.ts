@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { VagasPage } from '../vagas/vagas';
+import { CadastroProfissionalPage } from '../cadastro-profissional/cadastro-profissional';
 
 @IonicPage()
 @Component({
@@ -17,7 +18,7 @@ export class PerfilPage {
   }
 
   chamaEditarPerfil(){
-    this.navCtrl.push(VagasPage);
+    this.navCtrl.push(CadastroProfissionalPage);
   }
 
 }

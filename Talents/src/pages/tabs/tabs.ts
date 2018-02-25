@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { VagasPage } from '../vagas/vagas';
 import { FavoritasPage } from '../favoritas/favoritas';
 import { PerfilPage } from '../perfil/perfil';
 import { ConfiguracoesPage } from '../configuracoes/configuracoes';

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
+import { CadastroProfissionalPage } from '../cadastro-profissional/cadastro-profissional';
 
 @IonicPage()
 @Component({
@@ -20,6 +21,9 @@ export class LoginPage {
       console.log(this.senha);
       this.navCtrl.setRoot(TabsPage);
   
+    }
+    cadastrarProfissional(){
+      this.navCtrl.push(CadastroProfissionalPage);
     }
 
 }
