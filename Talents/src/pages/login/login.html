@@ -6,13 +6,13 @@
           <form (submit)="login()">
           <ion-list no-line>
               <ion-item>
-                  <ion-input [(ngModel)] ="email" name = "email" type="text" placeholder="Usuario"></ion-input>
+                  <ion-input [(ngModel)] ="model.ds_email" name = "email" type="text" placeholder="Usuario"></ion-input>
               </ion-item>
               <ion-item>
-                  <ion-input [(ngModel)] ="senha" name = "senha"  type="password" placeholder="Senha"></ion-input>
+                  <ion-input [(ngModel)] ="model.ds_senha" name = "senha"  type="password" placeholder="Senha"></ion-input>
               </ion-item>
               <a>Esqueceu seu senha ?</a>
-              <button ion-button block type="submit" ion-button block outline color="light">Log in</button>
+              <button ion-button block (click)="login()" ion-button block outline color="light">Log in</button>
               <p>OR</p>
               <button  ion-button block type="submit" ion-button block color="facebook">
                   <ion-icon name="logo-facebook"></ion-icon> Login with facebook

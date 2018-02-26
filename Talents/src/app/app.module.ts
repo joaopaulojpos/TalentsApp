@@ -18,6 +18,9 @@ import { FavoritasPage } from '../pages/favoritas/favoritas';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
 import { CadastroProfissionalPage } from '../pages/cadastro-profissional/cadastro-profissional';
+import { HttpModule } from '@angular/http';
+import { CadastroProfissionalProvider } from '../providers/cadastro-profissional/cadastro-profissional';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { CadastroProfissionalPage } from '../pages/cadastro-profissional/cadastr
     VagasPageModule,
     FavoritasPageModule,
     PerfilPageModule,
-    ConfiguracoesPageModule 
+    ConfiguracoesPageModule,
+    HttpModule,
+     
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,7 +55,8 @@ import { CadastroProfissionalPage } from '../pages/cadastro-profissional/cadastr
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CadastroProfissionalProvider
   ]
 })
 export class AppModule {}
