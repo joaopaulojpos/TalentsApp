@@ -19,7 +19,8 @@ import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
 import { CadastroProfissionalPage } from '../pages/cadastro-profissional/cadastro-profissional';
 import { HttpModule } from '@angular/http';
-import { CadastroProfissionalProvider } from '../providers/cadastro-profissional/cadastro-profissional';
+import { ServicosProvider } from '../providers/servicos/servicos';
+import { EditarProfissionalPage } from '../pages/editar-profissional/editar-profissional';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CadastroProfissionalProvider } from '../providers/cadastro-profissional
     MyApp,
     TabsPage,
     LoginPage,
-    CadastroProfissionalPage
+    CadastroProfissionalPage,
+    EditarProfissionalPage
 
   ],
   imports: [
@@ -49,14 +51,15 @@ import { CadastroProfissionalProvider } from '../providers/cadastro-profissional
     PerfilPage,
     FavoritasPage,
     ConfiguracoesPage,
-    CadastroProfissionalPage
+    CadastroProfissionalPage,
+    EditarProfissionalPage
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CadastroProfissionalProvider
+    ServicosProvider
   ]
 })
 export class AppModule {}

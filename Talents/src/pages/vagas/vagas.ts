@@ -12,7 +12,6 @@ export class VagasPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad VagasPage');
   }
 
 }

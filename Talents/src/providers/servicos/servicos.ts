@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-
+import { Injectable } from '@angular/core';
 
 @Injectable()
-export class CadastroProfissionalProvider {
+export class ServicosProvider {
   private API_URL ='http://localhost/talentsweb/api/public/api/profissional'
 
   constructor(public http: Http) {
   }
-  criarProfissional(b_foto: string, ds_senha: string,dt_nascimento: Date,ds_email: string,nr_latitude:string,nr_longitude: string,tp_conta:string,tp_sexo:string,ds_nome:string) {
+
+/*
+ * 
+ */
+  cadastrar(b_foto: string, ds_senha: string,dt_nascimento: Date,ds_email: string,nr_latitude:string,nr_longitude: string,tp_conta:string,tp_sexo:string,ds_nome:string) {
     return new Promise((resolve, reject) => {
       var data = {
         b_foto: b_foto,
@@ -33,6 +35,10 @@ export class CadastroProfissionalProvider {
         });
     });
   }
+
+/*
+ * 
+ */
   login(ds_email: string, ds_senha: string) {
     return new Promise((resolve, reject) => {
       var data = {
@@ -49,6 +55,10 @@ export class CadastroProfissionalProvider {
         });
     });
   }
+
+/*
+ * 
+ */
   getAll(page: number) {
     return new Promise((resolve, reject) => {
  
@@ -63,6 +73,10 @@ export class CadastroProfissionalProvider {
         });
     });
   }
+
+/*
+ * 
+ */
   get(id: number) {
     return new Promise((resolve, reject) => {
       let url = this.API_URL + 'profissional/' + id;
@@ -76,7 +90,11 @@ export class CadastroProfissionalProvider {
         });
     });
   }
-  insert(profissional: any) {
+
+/*
+ * 
+ */
+  inserir(profissional: any) {
     return new Promise((resolve, reject) => {
       let url = this.API_URL + 'profissional/';
  
@@ -88,10 +106,14 @@ export class CadastroProfissionalProvider {
           reject(error.json());
         });
     });
-  }  
-  update(profissional: any) {
+  }
+  
+/*
+ * 
+ */  
+  alterar(profissional: any) {
     return new Promise((resolve, reject) => {
-      let url = this.API_URL + 'profissional/' + profissional.id;
+      let url = this.API_URL + 'profissional/' + profissional.cd_profissional;
       let data = {
         "ds_nome": profissional.ds_nome,
         "ds_email": profissional.ds_email
@@ -106,7 +128,11 @@ export class CadastroProfissionalProvider {
         });
     });
   }
-  remove(id: number) {
+
+/*
+ * 
+ */
+  deletar(id: number) {
     return new Promise((resolve, reject) => {
       let url = this.API_URL + 'profissional/' + id;
  
@@ -119,4 +145,5 @@ export class CadastroProfissionalProvider {
         });
     });
   }
+
 }
