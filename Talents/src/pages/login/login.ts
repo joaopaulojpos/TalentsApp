@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angul
 import { TabsPage } from '../tabs/tabs';
 import { CadastroProfissionalPage } from '../cadastro-profissional/cadastro-profissional';
 import { ServicosProvider } from './../../providers/servicos/servicos';
+import {Profissional} from './../../domain/profissional/profissional';
 
 @IonicPage()
 @Component({
@@ -10,36 +11,35 @@ import { ServicosProvider } from './../../providers/servicos/servicos';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  model: Profissional;
-  public email:string ;
-  public senha:string ;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private servicosProvider: ServicosProvider) {
-    this.model = new Profissional();
+  public profissional : Profissional;
+  model: Profissional;
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private toast: ToastController,
+              private servicosProvider: ServicosProvider){
+
+    this.profissional = new Profissional();
   }
+   /**
+    * CHAMADA TELA DE CADASTRO NOVO PROFISSIONAL
+    */   
     cadastrarProfissional(){
       this.navCtrl.push(CadastroProfissionalPage);
     }
-    login() {
-      this.servicosProvider.login(this.model.ds_email, this.model.ds_senha)
-        .then((result: any) => {
-          if(result == 'erro: {Dados inválidos}'){
-            this.toast.create({ message: 'Erro ao efetuar login '+ result, position: 'center', duration: 6000 }).present();
 
-          }else{
-             this.navCtrl.setRoot(TabsPage);
-             console.log(result);
-           }     
-        })
-        .catch((error: any) => {
-          this.toast.create({ message: 'Erro ao efetuar login. Erro: ' + error.error, position: 'botton', duration: 6000 }).present();
-        });
+    /**
+    * CHAMADA DO LOGIN PROFISSIONAL
+    */   
+    login() {
+      this.servicosProvider.login
+      (this.profissional.ds_email, this.profissional.ds_senha).then(profissional =>{
+        console.log(profissional);
+        this.navCtrl.setRoot(TabsPage);
+      })
+      .catch(()=>{
+        this.toast.create({ message: 'Erro ao efetuar login Usuario ou Senha Inválidos', duration: 3000 }).present();
+      });
     }
   }
-export class Profissional {
-  ds_email: string;
-  ds_senha: string;
-}
-
-
-

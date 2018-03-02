@@ -1,16 +1,40 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import {Profissional} from '../../domain/profissional/profissional'
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ServicosProvider {
-  private API_URL ='http://localhost/talentsweb/api/public/api/profissional'
-
+  private profissionalLogado: Profissional;
   constructor(public http: Http) {
   }
 
 /*
- * 
+ * LOGIN DO PROFISSIONAL COMUNICAÇÃO COM API 
  */
+login(ds_email: string, ds_senha: string) {
+
+  let API = `http://localhost/talentsweb/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`;
+  return this.http.get(API).map(res => res.json().profissional)
+    .toPromise()
+   .then(dado =>{
+    let profissional = new Profissional(dado.cd_profissional,dado.b_foto,
+                 dado.ds_senha,dado.dt_nascimento,dado.ds_email,dado.nr_latitude,
+                 dado.nr_longitude,dado.tp_conta,dado.tp_sexo,dado.ds_nome);
+                this.profissionalLogado = profissional;  
+                return profissional;
+   });
+    }
+ /*
+  * RETORNA PROFISSIONAL LOGADO 
+ */
+isLogado(){
+      return this.profissionalLogado;
+    }
+  }
+
+/*
+ * 
   cadastrar(b_foto: string, ds_senha: string,dt_nascimento: Date,ds_email: string,nr_latitude:string,nr_longitude: string,tp_conta:string,tp_sexo:string,ds_nome:string) {
     return new Promise((resolve, reject) => {
       var data = {
@@ -36,29 +60,7 @@ export class ServicosProvider {
     });
   }
 
-/*
- * 
- */
-  login(ds_email: string, ds_senha: string) {
-    return new Promise((resolve, reject) => {
-      var data = {
-        login: ds_email,
-        senha: ds_senha
-      };
- 
-      this.http.post(this.API_URL + '/login', data)
-        .subscribe((result: any) => {
-          resolve(result.json());
-        },
-        (error) => {
-          reject(error.json());
-        });
-    });
-  }
 
-/*
- * 
- */
   getAll(page: number) {
     return new Promise((resolve, reject) => {
  
@@ -73,10 +75,6 @@ export class ServicosProvider {
         });
     });
   }
-
-/*
- * 
- */
   get(id: number) {
     return new Promise((resolve, reject) => {
       let url = this.API_URL + 'profissional/' + id;
@@ -91,9 +89,6 @@ export class ServicosProvider {
     });
   }
 
-/*
- * 
- */
   inserir(profissional: any) {
     return new Promise((resolve, reject) => {
       let url = this.API_URL + 'profissional/';
@@ -108,9 +103,6 @@ export class ServicosProvider {
     });
   }
   
-/*
- * 
- */  
   alterar(profissional: any) {
     return new Promise((resolve, reject) => {
       let url = this.API_URL + 'profissional/' + profissional.cd_profissional;
@@ -129,9 +121,6 @@ export class ServicosProvider {
     });
   }
 
-/*
- * 
- */
   deletar(id: number) {
     return new Promise((resolve, reject) => {
       let url = this.API_URL + 'profissional/' + id;
@@ -145,5 +134,5 @@ export class ServicosProvider {
         });
     });
   }
+*/
 
-}
