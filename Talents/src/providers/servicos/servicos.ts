@@ -14,8 +14,10 @@ export class ServicosProvider {
  */
 login(ds_email: string, ds_senha: string) {
 
-  let API = `http://localhost/talentsweb/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`;
-  return this.http.get(API).map(res => res.json().profissional)
+  let API = 'https://jpo1994.000webhostapp.com/api/public/api/profissional/login?';
+  let body = 'login=${ds_email}&senha=${ds_senha}'
+  /*console.log('chegou 1')
+  return this.http.post(API, body).map(res => res.json().profissional)
     .toPromise()
    .then(dado =>{
     let profissional = new Profissional(dado.cd_profissional,dado.b_foto,
@@ -23,6 +25,16 @@ login(ds_email: string, ds_senha: string) {
                  dado.nr_longitude,dado.tp_conta,dado.tp_sexo,dado.ds_nome);
                 this.profissionalLogado = profissional;  
                 return profissional;
+   });*/
+
+   return new Promise((resolve,reject)=>{
+      this.http.post(API, body).map(res => res.json().profissional)
+      .subscribe(data=>{
+        //console.log('data return: ');
+        resolve(data)
+      },error=>{
+        reject(error)
+      })
    });
     }
  /*

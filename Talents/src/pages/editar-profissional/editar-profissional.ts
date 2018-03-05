@@ -20,22 +20,22 @@ export class EditarProfissionalPage {
     }
   }
   save() {
-    this.saveUser()
+   /* this.saveUser()
       .then(() => {
         this.toast.create({ message: 'Usuário salvo com sucesso.', position: 'botton', duration: 3000 }).present();
         this.navCtrl.pop();
       })
       .catch((error) => {
         this.toast.create({ message: 'Erro ao salvar o usuário. Erro: ' + error.error, position: 'botton', duration: 3000 }).present();
-      })
+      })*/
   }
  
   private saveUser() {
-    if (this.model.cd_profissional) {
+    /*if (this.model.cd_profissional) {
       return this.servicosProvider.alterar(this.model);
     } else {
       return this.servicosProvider.inserir(this.model);
-    }
+    }*/
   } 
 }
   export class Profissional {

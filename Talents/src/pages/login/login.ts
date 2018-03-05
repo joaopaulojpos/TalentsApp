@@ -32,14 +32,15 @@ export class LoginPage {
     /**
     * CHAMADA DO LOGIN PROFISSIONAL
     */   
-    login() {
-      this.servicosProvider.login
+    async login() {
+      await this.servicosProvider.login
       (this.profissional.ds_email, this.profissional.ds_senha).then(profissional =>{
-        console.log(profissional);
+        //console.log(this.profissional);
         this.navCtrl.setRoot(TabsPage);
       })
-      .catch(()=>{
-        this.toast.create({ message: 'Erro ao efetuar login Usuario ou Senha Inválidos', duration: 3000 }).present();
+      .catch((error)=>{
+        console.log(error)
+        this.toast.create({ message: 'Erro ao efetuar login Usuario ou Senha Inválidos', duration: 2000 }).present();
       });
     }
   }
