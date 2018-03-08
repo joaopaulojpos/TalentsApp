@@ -17,8 +17,7 @@ import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.mo
 import { CadastroProfissionalPage } from '../pages/cadastro-profissional/cadastro-profissional';
 import { HttpModule } from '@angular/http';
 import { ServicosProvider } from '../providers/servicos/servicos';
-import { EditarProfissionalPage } from '../pages/editar-profissional/editar-profissional';
-
+import { ProfissionalService } from '../domain/profissional/profissional-service';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { EditarProfissionalPage } from '../pages/editar-profissional/editar-prof
     TabsPage,
     LoginPage,
     CadastroProfissionalPage,
-    EditarProfissionalPage,
 
   ],
   imports: [
@@ -48,14 +46,13 @@ import { EditarProfissionalPage } from '../pages/editar-profissional/editar-prof
     PerfilPage,
     FavoritasPage,
     ConfiguracoesPage,
-    CadastroProfissionalPage,
-    EditarProfissionalPage
-
+    CadastroProfissionalPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ProfissionalService,
     ServicosProvider
   ]
 })
