@@ -4,12 +4,35 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <ion-card>
+      <ion-card>
         <ion-card-content>
+          <ion-card-title>
+           <strong>Titulo da vaga que será exibido em destaque<!--{{vaga.ds_titulo}} --></strong>
+           <ion-icon class="abrirVaga" name="md-add-circle" (click)="detalharvaga(detalheVaga)" ></ion-icon>
+           <br>
+            <div id="detalhe" class="detalheVaga">
+              Detalhamento da vaga  jjvdvkmsmvsçvmpvdkmfvknofj fjdsofvdo sk vodvdfovjdfnvjkkdlknckx .df dfkv ljsvdflvfjks
+            </div>
+            </ion-card-title>
+            
+          <p>
+           <strong>Descrição:</strong>
+           wuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoi
+           wuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoi
+           <!--{{vaga.ds_descricao}} -->
+          </p>
+          <br>
+          <br>
+          <p>
+           <strong>Empresa: </strong>
+           <!--{{vaga.ds_empresa}} -->
+          </p>
+          <br>
+          <p>
+            <strong>Requisitos: </strong>
+            <br>
+            <!--{{vaga.ds_habilidade}} -->ahbusbuybcisuabeicubai ahbusbuybcisuabeicubai ahbusbuybcisuabeicubaiahbusbuybcisuabeicubaiahbusbuybcisuabeicubai
+          </p>
         </ion-card-content>
-        <ion-item>
-            <ion-icon name="heart"></ion-icon>
-            <ion-icon name="close"></ion-icon>
-        </ion-item>
       </ion-card>
 </ion-content>

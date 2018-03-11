@@ -7,11 +7,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'vagas.html',
 })
 export class VagasPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
+  }
+
+  detalharvaga(detalhe) {
+    var display = document.getElementById(detalhe).style.display;
+    if(display == "none")
+      document.getElementById(detalhe).style.display = 'block';
+    else
+      document.getElementById(detalhe).style.display = 'none';  
   }
 
 }
