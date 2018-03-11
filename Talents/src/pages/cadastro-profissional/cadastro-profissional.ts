@@ -17,11 +17,9 @@ export class CadastroProfissionalPage {
               private camera: Camera) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastroProfissionalPage');
-  }
-
-  /** Metodo para Tirar Foto */
+  /**
+   * METODO DE TIRAR FOTO 
+  */
   tirarFoto(){
     const options: CameraOptions = {
   quality: 100,

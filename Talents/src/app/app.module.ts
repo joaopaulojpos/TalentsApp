@@ -18,6 +18,7 @@ import { CadastroProfissionalPage } from '../pages/cadastro-profissional/cadastr
 import { HttpModule } from '@angular/http';
 import { ServicosProvider } from '../providers/servicos/servicos';
 import { ProfissionalService } from '../domain/profissional/profissional-service';
+import { ProfissionalPage } from '../pages/profissional/profissional';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProfissionalService } from '../domain/profissional/profissional-service
     TabsPage,
     LoginPage,
     CadastroProfissionalPage,
+    ProfissionalPage,
 
   ],
   imports: [
@@ -46,7 +48,8 @@ import { ProfissionalService } from '../domain/profissional/profissional-service
     PerfilPage,
     FavoritasPage,
     ConfiguracoesPage,
-    CadastroProfissionalPage
+    CadastroProfissionalPage,
+    ProfissionalPage
   ],
   providers: [
     StatusBar,
