@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServicosProvider {
   private profissionalLogado: Profissional;
+  public vagas : Array <{}>; 
   constructor(public http: Http) {
   }
 
@@ -43,8 +44,16 @@ login(ds_email: string, ds_senha: string) {
 isLogado(){
       return this.profissionalLogado;
     }
-  }
+  public getVagas() {
 
+    this.http.get('http://localhost/talentsweb/api/public/api/vagas')
+      .map(res => res.json())
+      .subscribe(data =>{
+        this.vagas = data;
+        console.log(this.vagas);
+      });
+    }
+  }
 /*
  * 
   cadastrar(b_foto: string, ds_senha: string,dt_nascimento: Date,ds_email: string,nr_latitude:string,nr_longitude: string,tp_conta:string,tp_sexo:string,ds_nome:string) {

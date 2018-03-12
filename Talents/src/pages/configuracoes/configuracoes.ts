@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { VagasPage } from '../vagas/vagas';
 import { PerfilPage } from '../perfil/perfil';
 import { FavoritasPage } from '../favoritas/favoritas';
-import { CadastroProfissionalPage } from '../cadastro-profissional/cadastro-profissional';
 
 
 @IonicPage()
@@ -16,10 +15,7 @@ export class ConfiguracoesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-  }
-
+  
   abrirPerfil(){
     this.navCtrl.push(PerfilPage);
   }
@@ -30,7 +26,7 @@ export class ConfiguracoesPage {
   abrirFavoritas(){
     this.navCtrl.push(FavoritasPage);
   }
-  abrir(){
-    this.navCtrl.push(CadastroProfissionalPage);
+  sair(){
+    
   }
 }

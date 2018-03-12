@@ -8,6 +8,7 @@ import { ProfissionalPage } from '../profissional/profissional';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
+  providers:[ProfissionalService]
 })
 export class LoginPage {
   public ds_email : string;
@@ -16,10 +17,11 @@ export class LoginPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private toast: ToastController,
-              private service: ProfissionalService
+              private profissionalservice: ProfissionalService
               ){
-  }                
-                
+  }  
+  ionViewDidLoad(){
+  }                           
    /**   
     * CHAMADA TELA DE CADASTRO NOVO PROFISSIONAL
     */   
@@ -31,8 +33,7 @@ export class LoginPage {
     * CHAMADA DO LOGIN PROFISSIONAL
     */   
    login(){
-
-    this.service.login(this.ds_email , this.ds_senha)
+    this.profissionalservice.login(this.ds_email , this.ds_senha)
         .then(profissionalservice=>{
          this.navCtrl.setRoot(TabsPage);
          console.log(profissionalservice);

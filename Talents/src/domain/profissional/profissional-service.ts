@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Profissional } from './profissional';
 @Injectable()
 export class ProfissionalService {
+  private profissionalservice : Profissional;
 
   constructor(private http: Http) {
   }
@@ -20,7 +21,10 @@ export class ProfissionalService {
      let profissionalservice = new Profissional(dado.cd_profissional,dado.b_foto,
       dado.ds_senha,dado.dt_nascimento,dado.ds_email,dado.nr_latitude,
       dado.nr_longitude,dado.tp_conta,dado.tp_sexo,dado.ds_nome);
-      console.log(dado);
-   })   
+      this.profissionalservice = dado;
+     })   
+  }
+  isLogado(){
+    return this.profissionalservice;
   }
 }

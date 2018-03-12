@@ -4,35 +4,46 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-      <ion-card>
+      <ion-card *ngFor="let vagas of listaVagas">
         <ion-card-content>
           <ion-card-title>
-           <strong>Titulo da vaga que será exibido em destaque<!--{{vaga.ds_titulo}} --></strong>
-           <ion-icon class="abrirVaga" name="md-add-circle" (click)="detalharvaga(detalheVaga)" ></ion-icon>
+           <strong>{{vagas.ds_titulo}}</strong>
+           <ion-icon class="abrirVaga" name="md-add-circle" (click)="detalharvaga(detalheVaga)"></ion-icon>
            <br>
             <div id="detalhe" class="detalheVaga">
               Detalhamento da vaga  jjvdvkmsmvsçvmpvdkmfvknofj fjdsofvdo sk vodvdfovjdfnvjkkdlknckx .df dfkv ljsvdflvfjks
             </div>
             </ion-card-title>
-            
           <p>
-           <strong>Descrição:</strong>
-           wuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoi
-           wuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoiwuvbpuwnsdpiancaepoi
-           <!--{{vaga.ds_descricao}} -->
+           <strong>Benefícios:</strong>
+           {{vagas.ds_beneficios}}
           </p>
           <br>
           <br>
           <p>
            <strong>Empresa: </strong>
-           <!--{{vaga.ds_empresa}} -->
+           <!--{{vagas.ds_empresa}} -->
           </p>
           <br>
           <p>
             <strong>Requisitos: </strong>
             <br>
-            <!--{{vaga.ds_habilidade}} -->ahbusbuybcisuabeicubai ahbusbuybcisuabeicubai ahbusbuybcisuabeicubaiahbusbuybcisuabeicubaiahbusbuybcisuabeicubai
+            <!--{{vagas.ds_habilidade}} -->ahbusbuybcisuabeicubai ahbusbuybcisuabeicubai ahbusbuybcisuabeicubaiahbusbuybcisuabeicubaiahbusbuybcisuabeicubai
           </p>
+          <ion-row no-padding>
+          <ion-col>
+              <button ion-button clear small color="secondary" icon-start>
+                <ion-icon name='ios-heart'></ion-icon>
+                Gostei
+              </button>
+            </ion-col>
+            <ion-col text-center>
+              <button ion-button clear small color="danger" icon-start>
+                <ion-icon name='ios-close-circle'></ion-icon>
+                Não Gostei
+              </button>
+            </ion-col>
+          </ion-row>
         </ion-card-content>
       </ion-card>
 </ion-content>

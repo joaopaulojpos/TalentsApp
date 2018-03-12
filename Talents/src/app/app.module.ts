@@ -19,6 +19,7 @@ import { HttpModule } from '@angular/http';
 import { ServicosProvider } from '../providers/servicos/servicos';
 import { ProfissionalService } from '../domain/profissional/profissional-service';
 import { ProfissionalPage } from '../pages/profissional/profissional';
+import { VagasService } from '../domain/vagas/vagas-service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ProfissionalPage } from '../pages/profissional/profissional';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProfissionalService,
-    ServicosProvider
+    ServicosProvider,
+    VagasService
   ]
 })
 export class AppModule {}
