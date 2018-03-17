@@ -3,26 +3,34 @@
     <ion-title text-center>Vagas de Emprego</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content padding class="background" >
       <ion-card *ngFor="let vagas of listaVagas">
         <ion-card-content>
-          <ion-card-title>
-           <strong>{{vagas.ds_titulo}}</strong>
-           <ion-icon class="abrirVaga" name="md-add-circle" (click)="detalharvaga(detalheVaga)"></ion-icon>
-           <br>
-            <div id="detalhe" class="detalheVaga">
-              Detalhamento da vaga  jjvdvkmsmvsçvmpvdkmfvknofj fjdsofvdo sk vodvdfovjdfnvjkkdlknckx .df dfkv ljsvdflvfjks
-            </div>
+          <ion-card-title class="ion-card-title">
+           <strong>{{ vagas.ds_titulo }}</strong>
+           <p class="ion-card-title" >Data da Publicação: {{vagas.dt_criacao | date: 'dd-MM-yyyy'}} </p>
             </ion-card-title>
+            <ion-icon *ngIf="mostrarDetalhe" class="abrirVaga" name="md-arrow-dropup-circle" (click)="detalharvaga()" ></ion-icon>
+           <ion-icon *ngIf="!mostrarDetalhe" class="abrirVaga" name="md-arrow-dropdown-circle" (click)="detalharvaga()" ></ion-icon>
+           <br>
+           <br>
+           <p *ngIf="mostrarDetalhe" class="detalheVaga">
+            <strong>Detalhamento da vaga:</strong>
+            <br>
+            ------------------------------------------------------------------------------------
+            {{vagas.ds_observacao}}
+            <br>
+            ------------------------------------------------------------------------------------
+          </p>
           <p>
            <strong>Benefícios:</strong>
+           <br>
            {{vagas.ds_beneficios}}
           </p>
-          <br>
-          <br>
+          <br><br>
           <p>
            <strong>Empresa: </strong>
-           <!--{{vagas.ds_empresa}} -->
+           {{vagas.ds_nome_fantasia}}
           </p>
           <br>
           <p>
@@ -30,20 +38,16 @@
             <br>
             <!--{{vagas.ds_habilidade}} -->ahbusbuybcisuabeicubai ahbusbuybcisuabeicubai ahbusbuybcisuabeicubaiahbusbuybcisuabeicubaiahbusbuybcisuabeicubai
           </p>
-          <ion-row no-padding>
-          <ion-col>
-              <button ion-button clear small color="secondary" icon-start>
-                <ion-icon name='ios-heart'></ion-icon>
-                Gostei
-              </button>
-            </ion-col>
-            <ion-col text-center>
-              <button ion-button clear small color="danger" icon-start>
-                <ion-icon name='ios-close-circle'></ion-icon>
-                Não Gostei
-              </button>
-            </ion-col>
-          </ion-row>
         </ion-card-content>
       </ion-card>
+
+      <ion-fab right bottom  class="btCurtir">
+        <button ion-fab color="secondary"><ion-icon name="ios-heart"></ion-icon></button>
+    </ion-fab>
+
+    <ion-fab left bottom  class="btNaoCurtir">
+        <button ion-fab color="danger"><ion-icon name="md-close-circle"></ion-icon></button>
+    </ion-fab>
+
+
 </ion-content>

@@ -10,7 +10,7 @@ import { ConfiguracoesPage } from '../configuracoes/configuracoes';
 export class TabsPage {
 
   tab1Root =  ConfiguracoesPage;
-  tab2Root = FavoritasPage;
+  //tab2Root = FavoritasPage;
   tab3Root = PerfilPage;
 
   constructor() {

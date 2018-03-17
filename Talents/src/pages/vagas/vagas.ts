@@ -9,6 +9,8 @@ import { VagasService } from '../../domain/vagas/vagas-service';
 })
 export class VagasPage {
    public listaVagas = new Array<any>();
+   public mostrarDetalhe: boolean = false;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams ,
@@ -28,12 +30,11 @@ export class VagasPage {
      )
     }
    
-    detalharvaga(detalhe) {
-    var display = document.getElementById(detalhe).style.display;
-    if(display == "none")
-      document.getElementById(detalhe).style.display = 'block';
-    else
-      document.getElementById(detalhe).style.display = 'none';  
-  }
+    detalharvaga(){
+      if (this.mostrarDetalhe) 
+        this.mostrarDetalhe =false;
+      else
+      this.mostrarDetalhe = true;
+    }
 
 }

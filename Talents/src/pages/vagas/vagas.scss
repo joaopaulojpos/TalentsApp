@@ -1,11 +1,31 @@
 page-vagas {
 
+    .background {
+		background-image: url('../assets/imgs/Talents.png');
+    }
+    
+    .ion-card-title {
+        background-color: darkslategray !important;
+        color: honeydew;
+    }
+
     .abrirVaga{
         font-size:  30px;
         float: right;
     }
+
     .detalheVaga{
-        display:none;
+        background-color: gainsboro !important;
+    
     }
 
+    ion-fab.btCurtir {
+        bottom:  50px;
+        right:  70px;
+    }
+
+    ion-fab.btNaoCurtir {
+        bottom:  50px;
+        left:  70px;
+    }
 }
