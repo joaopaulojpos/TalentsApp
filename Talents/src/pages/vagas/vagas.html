@@ -7,7 +7,7 @@
       <ion-card *ngFor="let vagas of listaVagas">
         <ion-card-content>
           <ion-card-title class="ion-card-title">
-           <strong>{{ vagas.ds_titulo }}</strong>
+           <strong>{{ vagas.ds_titulo}}</strong>
            <p class="ion-card-title" >Data da Publicação: {{vagas.dt_criacao | date: 'dd-MM-yyyy'}} </p>
             </ion-card-title>
             <ion-icon *ngIf="mostrarDetalhe" class="abrirVaga" name="md-arrow-dropup-circle" (click)="detalharvaga()" ></ion-icon>
@@ -36,18 +36,18 @@
           <p>
             <strong>Requisitos: </strong>
             <br>
-            <!--{{vagas.ds_habilidade}} -->ahbusbuybcisuabeicubai ahbusbuybcisuabeicubai ahbusbuybcisuabeicubaiahbusbuybcisuabeicubaiahbusbuybcisuabeicubai
-          </p>
+            {{vagas.ds_habilidade}}
+           </p>
+           <P>
+             {{vagas.ds_idioma}}
+             {{vagas.ds_nivel}}
+           </P>
         </ion-card-content>
       </ion-card>
-
       <ion-fab right bottom  class="btCurtir">
-        <button ion-fab color="secondary"><ion-icon name="ios-heart"></ion-icon></button>
+        <button ion-fab color="danger" (click)="vagaNaoCurtida()"><ion-icon name="md-close-circle"></ion-icon></button>
     </ion-fab>
-
     <ion-fab left bottom  class="btNaoCurtir">
-        <button ion-fab color="danger"><ion-icon name="md-close-circle"></ion-icon></button>
+        <button ion-fab color="secondary" (click)="vagaCurtida()"><ion-icon name="ios-heart"></ion-icon></button>
     </ion-fab>
-
-
 </ion-content>
