@@ -29,9 +29,9 @@ export class ProfissionalPage {
   
   private createMyForm(){
     return this.formBuilder.group({
-      lastName: ['', Validators.required],
+      nome: ['', Validators.required],
       email: ['', Validators.required],
-      dateBirth: ['', Validators.required],
+      dataNascimento: ['', Validators.required],
       passwordRetry: this.formBuilder.group({
         password: ['', Validators.required],
         passwordConfirmation: ['', Validators.required]

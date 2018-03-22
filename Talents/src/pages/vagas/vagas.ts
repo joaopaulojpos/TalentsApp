@@ -28,7 +28,7 @@ export class VagasPage {
     this.vagaService.getVagas().subscribe(data =>{
       const response = (data as any);
       const objeto = JSON.parse(response._body);
-      this.listaVagas = objeto.vagas;
+      this.listaVagas = objeto.sucess;
      console.log(this.listaVagas);
     },error =>{
       console.log(error);
@@ -45,16 +45,15 @@ export class VagasPage {
 
     vagaCurtida(){
       this.vagaService.vagaSelecionada("Like",1,1);
+      this.navCtrl.setRoot(VagasPage);
       console.log("Curtida");
-      console.log(this.listaVagas);
     }
 
     vagaNaoCurtida(){
       this.vagaService.vagaSelecionada("Dislike",1,1);
       console.log("Não Curtida");
-      console.log(this.listaVagas);
-      console.log(this.profissional._cd_profissional);
     }
+
      get profissional(): Profissional{
       return this.profissionalservice.isLogado();
      }

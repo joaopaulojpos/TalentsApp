@@ -1,4 +1,4 @@
-import { Http } from '@angular/http';
+import { Http, RequestOptions,Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Profissional } from './profissional';
 @Injectable()
@@ -27,5 +27,26 @@ export class ProfissionalService {
   }
   isLogado(): Profissional{
     return this.profissionalservice;
+  }
+  /**
+   * CADASTRAR PROFISSIONAL INFOMRMAÇÕES BASICAS COMUNICIACAO API
+   * @param profissional 
+   */
+  cadastrar(profissional){
+    
+    let headers = new Headers({
+			'Content-Type': 'application/json'
+		});
+		let options = new RequestOptions({
+			headers: headers
+		});
+		let body = JSON.stringify({
+			profissional : profissional
+    });
+    console.log(profissional);
+    this.http.post('http://localhost/talentsweb/api/public/api/profissional/profissional',body,options)
+    .map(res =>{
+      res.json()
+    }).subscribe(data => console.log(data));
   }
 }
