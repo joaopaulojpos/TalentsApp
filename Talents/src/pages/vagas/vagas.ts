@@ -14,6 +14,7 @@ import { ProfissionalService } from '../../domain/profissional/profissional-serv
 export class VagasPage {
    public listaVagas = new Array<any>();
    public mostrarDetalhe: boolean = false;
+   proxVaga: boolean = true;
    public vaga:  Vagas;
 
   constructor(
@@ -46,6 +47,7 @@ export class VagasPage {
     vagaCurtida(){
       this.vagaService.vagaSelecionada("Like",1,1);
       this.navCtrl.setRoot(VagasPage);
+      this.proxVaga =false;
       console.log("Curtida");
     }
 

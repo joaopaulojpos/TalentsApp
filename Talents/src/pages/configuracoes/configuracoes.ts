@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { VagasPage } from '../vagas/vagas';
 import { PerfilPage } from '../perfil/perfil';
-import { FavoritasPage } from '../favoritas/favoritas';
 
 
 @IonicPage()
@@ -22,9 +21,6 @@ export class ConfiguracoesPage {
 
   abrirVagas(){
     this.navCtrl.push(VagasPage);
-  }
-  abrirFavoritas(){
-    this.navCtrl.push(FavoritasPage);
   }
   sair(){
     

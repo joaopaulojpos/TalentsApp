@@ -7,11 +7,15 @@ page-vagas {
     .ion-card-title {
         background-color: darkslategray !important;
         color: honeydew;
+        text-align: center;
     }
 
     .abrirVaga{
-        font-size:  30px;
+        color: darkslategray;
+        font-size:  40px;
         float: right;
+        opacity: .80;
+
     }
 
     .detalheVaga{
@@ -20,12 +24,14 @@ page-vagas {
     }
 
     ion-fab.btCurtir {
-        bottom:  15px;
-        right:   70px;
+        bottom:  30px;
+        right:   100px;
+        opacity: .50;
     }
 
     ion-fab.btNaoCurtir {
-        bottom:  15px;
-        left:    70px;
+        bottom:  30px;
+        left:    100px;
+        opacity: .50;
     }
 }

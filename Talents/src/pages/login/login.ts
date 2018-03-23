@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angul
 import { TabsPage } from '../tabs/tabs';
 import { ProfissionalService } from '../../domain/profissional/profissional-service';
 import { ProfissionalPage } from '../profissional/profissional';
+import { VagasPage } from '../vagas/vagas';
+import { ConfiguracoesPage } from '../configuracoes/configuracoes';
 
 @IonicPage()
 @Component({
@@ -35,7 +37,7 @@ export class LoginPage {
    login(){
     this.profissionalservice.login(this.ds_email , this.ds_senha)
         .then(profissionalservice=>{
-         this.navCtrl.setRoot(TabsPage);
+         this.navCtrl.setRoot(ConfiguracoesPage);
          console.log(profissionalservice);
     }).catch(()=>{
       this.toast.create({ message: 'Erro ao Efetuar Login Usuario ou Senha Inválidos', duration: 2000 }).present();

@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title text-center>Vagas de Emprego</ion-title>
   </ion-navbar>
 </ion-header>
@@ -13,41 +16,42 @@
             <ion-icon *ngIf="mostrarDetalhe" class="abrirVaga" name="md-arrow-dropup-circle" (click)="detalharvaga()" ></ion-icon>
            <ion-icon *ngIf="!mostrarDetalhe" class="abrirVaga" name="md-arrow-dropdown-circle" (click)="detalharvaga()" ></ion-icon>
            <br>
-           <br>
            <p *ngIf="mostrarDetalhe" class="detalheVaga">
             <strong>Detalhamento da vaga:</strong>
             <br>
-            ------------------------------------------------------------------------------------
             {{vagas.ds_observacao}}
-            <br>
-            ------------------------------------------------------------------------------------
+            <br><br>
           </p>
           <p>
            <strong>Benefícios:</strong>
            <br>
            {{vagas.ds_beneficios}}
           </p>
-          <br><br>
-          <p>
-           <strong>Empresa: </strong>
-           {{vagas.ds_nome_fantasia}}
-          </p>
           <br>
           <p>
+           <strong>Empresa: </strong>
+           {{vagas.empresa.ds_nome_fantasia}}
+          </p>
+          <br>
+          <div>
             <strong>Requisitos: </strong>
             <br>
-            {{vagas.ds_habilidade}}
-           </p>
-           <P>
-             {{vagas.ds_idioma}}
-             {{vagas.ds_nivel}}
-           </P>
-        </ion-card-content>
+            <p *ngFor='let habilidade of vagas.habilidades'>
+                {{habilidade.ds_habilidade}}
+             </p>
+           </div>
+           <div>
+              <strong>Idiomas: </strong>
+              <br>
+              <p *ngFor='let idioma of vagas.idiomas'>
+                  {{idioma.ds_idioma}}
+               </p>
+             </div>        </ion-card-content>
       </ion-card>
       <ion-fab right bottom  class="btCurtir">
-        <button ion-fab color="danger" (click)="vagaNaoCurtida()"><ion-icon name="md-close-circle"></ion-icon></button>
+          <button ion-fab color="secondary" (click)="vagaCurtida()"><ion-icon name="ios-heart"></ion-icon></button>
     </ion-fab>
     <ion-fab left bottom  class="btNaoCurtir">
-        <button ion-fab color="secondary" (click)="vagaCurtida()"><ion-icon name="ios-heart"></ion-icon></button>
+        <button ion-fab color="danger" (click)="vagaNaoCurtida()"><ion-icon name="md-close-circle"></ion-icon></button>
     </ion-fab>
 </ion-content>
