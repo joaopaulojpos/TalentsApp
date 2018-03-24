@@ -20,6 +20,9 @@ import { ServicosProvider } from '../providers/servicos/servicos';
 import { ProfissionalService } from '../domain/profissional/profissional-service';
 import { ProfissionalPage } from '../pages/profissional/profissional';
 import { VagasService } from '../domain/vagas/vagas-service';
+import { Geolocation } from '@ionic-native/geolocation';
+import { MapsPage } from '../pages/maps/maps';
+import { MapsPageModule } from '../pages/maps/maps.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,6 @@ import { VagasService } from '../domain/vagas/vagas-service';
     LoginPage,
     CadastroProfissionalPage,
     ProfissionalPage,
-
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,8 @@ import { VagasService } from '../domain/vagas/vagas-service';
     PerfilPageModule,
     ConfiguracoesPageModule,
     HttpModule,
+    MapsPageModule,
+    
      
   ],
   bootstrap: [IonicApp],
@@ -50,7 +54,8 @@ import { VagasService } from '../domain/vagas/vagas-service';
     FavoritasPage,
     ConfiguracoesPage,
     CadastroProfissionalPage,
-    ProfissionalPage
+    ProfissionalPage,
+    MapsPage,
   ],
   providers: [
     StatusBar,
@@ -58,7 +63,8 @@ import { VagasService } from '../domain/vagas/vagas-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProfissionalService,
     ServicosProvider,
-    VagasService
+    VagasService,
+    Geolocation
   ]
 })
 export class AppModule {}

@@ -17,9 +17,15 @@
         <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
       </ion-item>
       <ion-item>
+        <ion-icon name="pin" item-start (click)="openMaps()"></ion-icon>
+        <ion-label stacked>Localizacação:</ion-label>        
+        <ion-input formControlName="longitudeMaps" type="text" placeholder="Longitude"></ion-input>
+        <ion-input formControlName="latitudeMaps" type="text" placeholder="Latitude"></ion-input>
+      </ion-item>    
+      <ion-item>
         <ion-icon name="calendar" item-start></ion-icon>
         <ion-label stacked>Data de Nascimento:</ion-label>
-        <ion-datetime formControlName="dateBirth" displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime formControlName="dataNascimento" displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"></ion-datetime>
       </ion-item>
       <div formGroupName="passwordRetry">
         <ion-item>
@@ -33,7 +39,7 @@
           <ion-input formControlName="passwordConfirmation" type="password" placeholder="Confirmar Senha"></ion-input>
         </ion-item>
       </div>
-      <ion-row radio-group formControlName="gender">
+      <ion-row radio-group formControlName="tpSexo">
         <ion-col>
           <ion-item>
             <ion-icon name="woman" item-start></ion-icon>
