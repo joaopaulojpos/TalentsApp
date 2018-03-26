@@ -20,8 +20,9 @@
             <strong>Detalhamento da vaga:</strong>
             <br>
             {{vagas.ds_observacao}}
-            <br><br>
+            <br>
           </p>
+          <br>
           <p>
            <strong>Benefícios:</strong>
            <br>
@@ -34,10 +35,15 @@
           </p>
           <br>
           <div>
-            <strong>Requisitos: </strong>
+            <strong>Requisitos:</strong>
             <br>
-            <p *ngFor='let habilidade of vagas.habilidades'>
-                {{habilidade.ds_habilidade}}
+            <strong>Técnicos:</strong>
+            <p *ngFor='let competencia_tc of vagas.competencias_tecnicas'>
+                {{competencia_tc.ds_competencia_tecnica}}
+             </p>
+             <strong>Comportamentais:</strong>
+            <p *ngFor='let competencia_comp of vagas.competencias_comp'>
+                {{competencia_comp.ds_competencia_comport}}
              </p>
            </div>
            <div>

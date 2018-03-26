@@ -53,6 +53,8 @@ export class VagasPage {
 
     vagaNaoCurtida(){
       this.vagaService.vagaSelecionada("Dislike",1,1);
+      this.navCtrl.setRoot(VagasPage);
+      this.proxVaga =false;
       console.log("Não Curtida");
     }
 
