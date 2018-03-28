@@ -3,6 +3,7 @@ import { IonicPage , NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { MapsPage } from '../maps/maps';
+import { ProfissionalService } from '../../domain/profissional/profissional-service';
 
 @IonicPage()
 @Component({
@@ -14,32 +15,31 @@ import { MapsPage } from '../maps/maps';
 })
 export class ProfissionalPage {
 
-  profissionalForm: FormGroup;
+  profissionalFormulario: FormGroup;
   imagem ="";  
   constructor(
     public navCtrl: NavController,
     public formBuilder: FormBuilder,
-    private camera: Camera
+    private camera: Camera,
+    private profissionalservice: ProfissionalService    
   ) {
-    this.profissionalForm = this.createMyForm();
+    this.profissionalFormulario = this.createMyForm();
   }
   
-  saveData(){
-    console.log(this.profissionalForm.value);
+  salvarProfissional(){
+    console.log(this.profissionalFormulario.value);
+    this.profissionalservice.cadastrar(this.profissionalFormulario.value);
   }
   
   private createMyForm(){
     return this.formBuilder.group({
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      dataNascimento: ['', Validators.required],
-      longitudeMaps : ['',Validators.required],
-      latitudeMaps : ['',Validators.required],
-      passwordRetry: this.formBuilder.group({
-        password: ['', Validators.required],
-        passwordConfirmation: ['', Validators.required]
-      },),
-      tpSexo: ['', Validators.required],
+      ds_nome: ['', Validators.required],
+      ds_email: ['', Validators.required],
+      ds_senha: ['', Validators.required],
+      dt_nascimento: ['', Validators.required],
+      tp_sexo: ['', Validators.required],
+      nr_latitude : ['',Validators.required],
+      nr_longitude: ['',Validators.required],
     });
   }
    /**

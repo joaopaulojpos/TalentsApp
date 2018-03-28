@@ -40,7 +40,7 @@ export class LoginPage {
          this.navCtrl.setRoot(ConfiguracoesPage);
          console.log(profissionalservice);
     }).catch(()=>{
-      this.toast.create({ message: 'Erro ao Efetuar Login Usuario ou Senha Inválidos', duration: 2000 }).present();
+      this.toast.create({ message: 'Erro ao Efetuar Login. Usuário ou Senha inválidos', duration: 2000 }).present();
     }); 
    }
   }
