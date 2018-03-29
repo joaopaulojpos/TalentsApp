@@ -52,12 +52,15 @@
               <p *ngFor='let idioma of vagas.idiomas'>
                   {{idioma.ds_idioma}}
                </p>
-             </div>        </ion-card-content>
+             </div>        
+            </ion-card-content>
       </ion-card>
-      <ion-fab right bottom  class="btCurtir">
-          <button ion-fab color="secondary" (click)="vagaCurtida()"><ion-icon name="ios-heart"></ion-icon></button>
+      
+      <ion-fab *ngFor="let vagas of listaVagas" right bottom  class="btCurtir">
+          <button ion-fab color="secondary" (click)="vagaCurtida(vagas.cd_vaga)"><ion-icon name="ios-heart"></ion-icon></button>
     </ion-fab>
     <ion-fab left bottom  class="btNaoCurtir">
-        <button ion-fab color="danger" (click)="vagaNaoCurtida()"><ion-icon name="md-close-circle"></ion-icon></button>
+        <button ion-fab color="danger" (click)="confirmarNaoCurtida()"><ion-icon name="md-close-circle"></ion-icon></button>
     </ion-fab>
+  
 </ion-content>

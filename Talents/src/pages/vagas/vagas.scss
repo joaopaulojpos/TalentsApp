@@ -1,7 +1,10 @@
 page-vagas {
 
     .background {
-		background-image: url('../assets/imgs/Talents.png');
+        background-image: url('../assets/imgs/Talents.png');
+        align-content: center;
+		background-repeat: no-repeat;
+		background-size: cover;
     }
     
     .ion-card-title {

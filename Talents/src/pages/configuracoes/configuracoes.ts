@@ -12,15 +12,14 @@ import { PerfilPage } from '../perfil/perfil';
 export class ConfiguracoesPage {
   rootPage = VagasPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
   }
   
   abrirPerfil(){
     this.navCtrl.push(PerfilPage);
-  }
-
-  abrirVagas(){
-    this.navCtrl.push(VagasPage);
   }
   sair(){
     

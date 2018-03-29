@@ -23,6 +23,7 @@ import { VagasService } from '../domain/vagas/vagas-service';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MapsPage } from '../pages/maps/maps';
 import { MapsPageModule } from '../pages/maps/maps.module';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { MapsPageModule } from '../pages/maps/maps.module';
     ProfissionalService,
     ServicosProvider,
     VagasService,
-    Geolocation
+    Geolocation,
+    ScreenOrientation
   ]
 })
 export class AppModule {}

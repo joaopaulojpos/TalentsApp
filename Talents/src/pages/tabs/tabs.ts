@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { FavoritasPage } from '../favoritas/favoritas';
 import { PerfilPage } from '../perfil/perfil';
 import { ConfiguracoesPage } from '../configuracoes/configuracoes';
 
@@ -10,8 +9,7 @@ import { ConfiguracoesPage } from '../configuracoes/configuracoes';
 export class TabsPage {
 
   tab1Root =  ConfiguracoesPage;
-  //tab2Root = FavoritasPage;
-  tab3Root = PerfilPage;
+  tab2Root = PerfilPage;
 
   constructor() {
 
