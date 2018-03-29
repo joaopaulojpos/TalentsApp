@@ -76,7 +76,7 @@ export class VagasPage {
 
   ionViewDidEnter(){
     this.abreCarregando();
-    this.vagaService.getVagas().subscribe(data =>{
+    this.vagaService.getVagas(1).subscribe(data =>{
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       if (objeto != null){

@@ -18,8 +18,9 @@ export class VagasService {
    * RETORNA VAGAS DA API 
   */
 
-  getVagas() {
-  return this.http.get('http://localhost/talentsweb/api/public/api/vagas');
+  getVagas(cd_profissional : number) {
+    return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/vagas?cd_profissional=${cd_profissional}`);
+  //return this.http.get('http://localhost/talentsweb/api/public/api/vagas');
   /*(.map(res => res.json())
     .subscribe(data =>{
       this.vagas = data;
