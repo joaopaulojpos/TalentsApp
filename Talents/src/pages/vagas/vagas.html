@@ -23,17 +23,18 @@
             <br>
           </p>
           <br>
-          <p>
+          <div>
            <strong>Benefícios:</strong>
            <br>
            {{vagas.ds_beneficios}}
-          </p>
+        </div>
+        <div>
           <br>
-          <p>
            <strong>Empresa: </strong>
            {{vagas.empresa.ds_nome_fantasia}}
-          </p>
           <br>
+        </div>
+        <br>
           <div>
             <strong>Requisitos:</strong>
             <br>
@@ -59,8 +60,8 @@
       <ion-fab *ngFor="let vagas of listaVagas" right bottom  class="btCurtir">
           <button ion-fab color="secondary" (click)="vagaCurtida(vagas.cd_vaga)"><ion-icon name="ios-heart"></ion-icon></button>
     </ion-fab>
-    <ion-fab left bottom  class="btNaoCurtir">
-        <button ion-fab color="danger" (click)="confirmarNaoCurtida()"><ion-icon name="md-close-circle"></ion-icon></button>
-    </ion-fab>
+      <ion-fab *ngFor="let vagas of listaVagas" left bottom  class="btNaoCurtir">
+          <button ion-fab color="danger" (click)="confirmarNaoCurtida(vagas.cd_vaga)"><ion-icon name="md-close-circle"></ion-icon></button>
+      </ion-fab>
   
 </ion-content>

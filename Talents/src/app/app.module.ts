@@ -12,8 +12,6 @@ import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { VagasPage } from '../pages/vagas/vagas';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { FavoritasPage } from '../pages/favoritas/favoritas';
-import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
-import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
 import { CadastroProfissionalPage } from '../pages/cadastro-profissional/cadastro-profissional';
 import { HttpModule } from '@angular/http';
 import { ServicosProvider } from '../providers/servicos/servicos';
@@ -24,6 +22,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { MapsPage } from '../pages/maps/maps';
 import { MapsPageModule } from '../pages/maps/maps.module';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { MenuPageModule } from '../pages/menu/menu.module';
+import { MenuPage } from '../pages/menu/menu';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     VagasPageModule,
     FavoritasPageModule,
     PerfilPageModule,
-    ConfiguracoesPageModule,
+    MenuPageModule,
     HttpModule,
     MapsPageModule,
     
@@ -53,7 +53,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     VagasPage,
     PerfilPage,
     FavoritasPage,
-    ConfiguracoesPage,
+    MenuPage,
     CadastroProfissionalPage,
     ProfissionalPage,
     MapsPage,

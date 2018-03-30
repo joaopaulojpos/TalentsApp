@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
 import { PerfilPage } from '../perfil/perfil';
-import { ConfiguracoesPage } from '../configuracoes/configuracoes';
+import { MenuPage } from '../menu/menu';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root =  ConfiguracoesPage;
+  tab1Root =  MenuPage;
   tab2Root = PerfilPage;
 
   constructor() {

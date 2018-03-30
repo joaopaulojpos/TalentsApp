@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
 import { ProfissionalService } from '../../domain/profissional/profissional-service';
 import { ProfissionalPage } from '../profissional/profissional';
-import { VagasPage } from '../vagas/vagas';
-import { ConfiguracoesPage } from '../configuracoes/configuracoes';
+import { MenuPage } from '../menu/menu';
 
 @IonicPage()
 @Component({
@@ -37,7 +35,7 @@ export class LoginPage {
    login(){
     this.profissionalservice.login(this.ds_email , this.ds_senha)
         .then(profissionalservice=>{
-         this.navCtrl.setRoot(ConfiguracoesPage);
+         this.navCtrl.setRoot(MenuPage);
          console.log(profissionalservice);
     }).catch(()=>{
       this.toast.create({ message: 'Erro ao Efetuar Login. Usuário ou Senha inválidos', duration: 2000 }).present();
