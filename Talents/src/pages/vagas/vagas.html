@@ -7,11 +7,11 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding class="background" >
-      <ion-card *ngFor="let vagas of listaVagas">
-        <ion-card-content>
+      <ion-card *ngFor="let vaga of listaVagas">
+        <ion-card-content >
           <ion-card-title class="ion-card-title">
-           <strong>{{ vagas.ds_titulo}}</strong>
-           <p class="ion-card-title" >Data da Publicação: {{vagas.dt_criacao | date: 'dd-MM-yyyy'}} </p>
+           <strong>{{ vaga.ds_titulo}}</strong>
+           <p class="ion-card-title" >Data da Publicação: {{vaga.dt_criacao | date: 'dd-MM-yyyy'}} </p>
             </ion-card-title>
             <ion-icon *ngIf="mostrarDetalhe" class="abrirVaga" name="md-arrow-dropup-circle" (click)="detalharvaga()" ></ion-icon>
            <ion-icon *ngIf="!mostrarDetalhe" class="abrirVaga" name="md-arrow-dropdown-circle" (click)="detalharvaga()" ></ion-icon>
@@ -19,19 +19,19 @@
            <p *ngIf="mostrarDetalhe" class="detalheVaga">
             <strong>Detalhamento da vaga:</strong>
             <br>
-            {{vagas.ds_observacao}}
+            {{vaga.ds_observacao}}
             <br>
           </p>
           <br>
           <div>
            <strong>Benefícios:</strong>
            <br>
-           {{vagas.ds_beneficios}}
+           {{vaga.ds_beneficios}}
         </div>
         <div>
           <br>
            <strong>Empresa: </strong>
-           {{vagas.empresa.ds_nome_fantasia}}
+           {{vaga.empresa.ds_nome_fantasia}}
           <br>
         </div>
         <br>
@@ -39,29 +39,29 @@
             <strong>Requisitos:</strong>
             <br>
             <strong>Técnicos:</strong>
-            <p *ngFor='let competencia_tc of vagas.competencias_tecnicas'>
+            <p *ngFor='let competencia_tc of vaga.competencias_tecnicas'>
                 {{competencia_tc.ds_competencia_tecnica}}
              </p>
              <strong>Comportamentais:</strong>
-            <p *ngFor='let competencia_comp of vagas.competencias_comp'>
+            <p *ngFor='let competencia_comp of vaga.competencias_comp'>
                 {{competencia_comp.ds_competencia_comport}}
              </p>
            </div>
            <div>
               <strong>Idiomas: </strong>
               <br>
-              <p *ngFor='let idioma of vagas.idiomas'>
+              <p *ngFor='let idioma of vaga.idiomas'>
                   {{idioma.ds_idioma}}
                </p>
              </div>        
             </ion-card-content>
       </ion-card>
       
-      <ion-fab *ngFor="let vagas of listaVagas" right bottom  class="btCurtir">
-          <button ion-fab color="secondary" (click)="vagaCurtida(vagas.cd_vaga)"><ion-icon name="ios-heart"></ion-icon></button>
+      <ion-fab *ngFor="let vaga of listaVagas" right bottom  class="btCurtir">
+          <button ion-fab color="secondary" (click)="vagaCurtida(vaga.cd_vaga, vaga.ds_titulo)" on-destroy="cardDestroyed($index)" ><ion-icon name="ios-heart"></ion-icon></button>
     </ion-fab>
-      <ion-fab *ngFor="let vagas of listaVagas" left bottom  class="btNaoCurtir">
-          <button ion-fab color="danger" (click)="confirmarNaoCurtida(vagas.cd_vaga)"><ion-icon name="md-close-circle"></ion-icon></button>
+      <ion-fab *ngFor="let vaga of listaVagas" left bottom  class="btNaoCurtir">
+          <button ion-fab color="danger" (click)="alertaNaoCurtida(vaga.cd_vaga, vaga.ds_titulo)"><ion-icon name="md-close-circle"></ion-icon></button>
       </ion-fab>
   
 </ion-content>

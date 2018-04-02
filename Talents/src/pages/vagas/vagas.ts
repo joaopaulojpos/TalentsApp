@@ -13,9 +13,8 @@ import { MenuPage } from '../menu/menu';
   providers:[VagasService,ProfissionalService]
 })
 export class VagasPage {
-   public listaVagas = new Array<any>();
+   public listaVagas =[];
    public mostrarDetalhe: boolean = false;
-   //proxVaga: boolean = false;
    public vaga:  Vagas;
    public loader;
    public naoCurtir;
@@ -42,11 +41,32 @@ export class VagasPage {
         )
   {}
 
-  //Animação de carregamento na tela;
+  //Carrega a View TODA vez que ela é chamada.
+  ionViewDidEnter(){
+    this.carregaVaga();
+  }
+
+  //Carrega uma vaga no listaVagas
+  carregaVaga(){
+    this.vagaService.getVagas(1).subscribe(data =>{
+      this.abreCarregando();
+      const response = (data as any);
+      const objeto = JSON.parse(response._body);
+      this.listaVagas = objeto.sucess;
+      this.fechaCarregando();
+
+        console.log(this.listaVagas);
+    },error =>{
+      console.log(error);
+      this.fechaCarregando();
+      }
+     )
+    }
+
+  //Animação de carregamento da vaga na tela;
   abreCarregando() {
     this.loader = this.loadingCtrl.create({
-      content: "Carregando Vaga...",
-      duration: 7000,
+      content: "Carregando Vaga..."
     });
     this.loader.present();
   }
@@ -54,8 +74,22 @@ export class VagasPage {
     this.loader.dismiss();
   }
 
+  //Alert de aviso para o Usuário.
+  alertaCurtida(ds_titulo) {
+    let alert = this.alertCtrl.create({
+      title: 'Parabéns!',
+      subTitle: 'Você está concorrendo a vaga de: '+ds_titulo,
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          this.navCtrl.setRoot(MenuPage);
+       } }]
+    });
+    alert.present();
+  }
+
   //Alert para Dislike
-  confirmarNaoCurtida(cd_vaga) {
+  alertaNaoCurtida(cd_vaga, ds_titulo) {
     this.naoCurtir = this.alertCtrl.create({
       title: 'Você deseja mesmo Ignorar esta vaga?',
       message: 'Esta pode ser sua grande Chance!',
@@ -69,7 +103,8 @@ export class VagasPage {
         {
           text: 'Confirmar',
           handler: () => {
-            this.vagaNaoCurtida(cd_vaga);
+            this.vagaNaoCurtida(cd_vaga, ds_titulo);
+            this.confirmarNaoCurtida();
             console.log('Confirmar clicado');
           }
         }
@@ -78,26 +113,21 @@ export class VagasPage {
     this.naoCurtir.present();
   }
 
-  ionViewDidEnter(){
-    this.abreCarregando();
-    this.vagaService.getVagas(1).subscribe(data =>{
-      const response = (data as any);
-      const objeto = JSON.parse(response._body);
-      // if (objeto.length = 0){
-      //   this.listaVagas = this.vaga_vazia;
-      //   this.fechaCarregando();
-      // }else{
-        this.listaVagas = objeto.sucess;
-        this.fechaCarregando();
-      //}
-     console.log(this.listaVagas);
-    },error =>{
-      console.log(error);
-      this.fechaCarregando();
-      }
-     )
+  //Alert de aviso para o Usuário.
+  confirmarNaoCurtida() {
+    let alert = this.alertCtrl.create({
+      title: 'OK',
+      subTitle: 'Esta vaga não será mostrada novamente',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          this.navCtrl.setRoot(MenuPage);
+       } }]
+    });
+    alert.present();
     }
-   
+  
+   //Altera a vizualização do Detalhamento da Vaga Exibindo/Ocultando as informações.
     detalharvaga(){
       if (this.mostrarDetalhe) 
         this.mostrarDetalhe =false;
@@ -105,20 +135,26 @@ export class VagasPage {
       this.mostrarDetalhe = true;
     }
 
-    vagaCurtida(cd_vaga){
+    /*
+    //Envia a requisição para a API com os parâmetros.
+    //chama o alert informando o usuário que está concorrendo a vaga.
+    */
+    vagaCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
       this.vagaService.vagaSelecionada("Like",cd_vaga,1);
-      this.navCtrl.setRoot(VagasPage);
+      this.alertaCurtida(ds_titulo);
       console.log("Curtida");
-      //console.log(this.profissionalservice.isLogado()._cd_profissional);
     }
 
-    vagaNaoCurtida(cd_vaga){
+    /*
+    //Método chamado pelo alertaNaoCurtida(...) disparado quando o 
+      botão de 'Confirmar' é selecionado.
+    //Envia a requisição para a API com os parâmetros.
+    */
+    vagaNaoCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
       this.vagaService.vagaSelecionada("Dislike",cd_vaga,1);
-      this.navCtrl.setRoot(VagasPage);
       console.log("Não Curtida");
-      //console.log(this.profissionalservice.isLogado()._cd_profissional);
     }
 
      getprofissional(): Profissional{

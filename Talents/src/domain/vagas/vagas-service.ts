@@ -45,7 +45,6 @@ export class VagasService {
       cd_profissional: cd_profissional
     });
     
-    console.log(tp_acao);
     this.http.post('http://localhost/talentsweb/api/public/api/vaga/curtirVaga',body,options)
     .map(res =>{
       res.json()
