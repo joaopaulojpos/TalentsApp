@@ -3,8 +3,17 @@
     <ion-title>Cadastro Profissional</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content class="background">
+<ion-content class="background">    
   <form [formGroup]="profissionalFormulario" (ngSubmit)="salvarProfissional()">
+  <!-- PRECISAR AJUSTAR LAYOUT PARA FICAR NO CENTRO E MAIOR   
+      <ion-item>
+          <ion-avatar class="avatar_perfil">
+            <img *ngIf="imagem" [src]="imagem" alt="">
+          </ion-avatar>
+          <div class="tirar_foto">
+                <ion-icon name="camera" (click)="tirarFoto()"></ion-icon>
+              </div>
+            </ion-item> -->
     <ion-list>
       <ion-item>
         <ion-icon name="person" item-start></ion-icon>
@@ -28,7 +37,7 @@
         <ion-datetime formControlName="dt_nascimento" displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"></ion-datetime>
       </ion-item>
         <ion-item>
-          <ion-icon name="eye" item-start></ion-icon>
+          <ion-icon name="lock" item-start></ion-icon>
           <ion-label stacked>Senha:</ion-label>
           <ion-input formControlName="ds_senha" type="password" placeholder="Senha"></ion-input>
         </ion-item>
@@ -37,14 +46,14 @@
           <ion-item>
             <ion-icon name="woman" item-start></ion-icon>
             <ion-label>Mulher</ion-label>
-            <ion-radio value="2"></ion-radio>
+            <ion-radio value="F"></ion-radio>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
             <ion-icon name="man" item-start></ion-icon>
             <ion-label>Homem</ion-label>
-            <ion-radio value="1"></ion-radio>
+            <ion-radio value="M"></ion-radio>
           </ion-item>
         </ion-col>
       </ion-row>

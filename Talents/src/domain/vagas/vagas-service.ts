@@ -15,17 +15,11 @@ export class VagasService {
 
   
   /** 
-   * RETORNA VAGAS DA API 
+   * RETORNA VAGAS POR PROFISSIONAL DA API 
   */
 
   getVagas(cd_profissional : number) {
-    return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/vagas?cd_profissional=${cd_profissional}`);
-  //return this.http.get('http://localhost/talentsweb/api/public/api/vagas');
-  /*(.map(res => res.json())
-    .subscribe(data =>{
-      this.vagas = data;
-      console.log(this.vagas);
-    }); */
+    return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/vagas?cd_profissional=${cd_profissional}`)
   }
 
    /** 

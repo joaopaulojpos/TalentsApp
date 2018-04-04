@@ -33,7 +33,7 @@ export class ProfissionalService {
    * @param profissional 
    */
   cadastrar(profissional){
-    
+    console.log(profissional.ds_nome);
     let headers = new Headers({
 			'Content-Type': 'application/json'
 		});
@@ -41,10 +41,17 @@ export class ProfissionalService {
 			headers: headers
 		});
 		let body = JSON.stringify({
-			profissional : profissional
+      b_foto:"perfil.jpg",
+      ds_senha:profissional.ds_senha,
+      dt_nascimento:profissional.dt_nascimento,
+      ds_email:profissional.ds_email,
+      nr_latitude:profissional.nr_latitude,
+      nr_longitude:profissional.nr_longitude,
+      tp_conta:"A",
+      tp_sexo:profissional.tp_sexo,
+      ds_nome:profissional.ds_nome
     });
-    console.log(profissional);
-    this.http.post('http://localhost/talentsweb/api/public/api/profissional/profissional',body,options)
+    this.http.post('http://localhost/TalentsWeb/api/public/api/profissional/salvar',body,options)
     .map(res =>{
       res.json()
     }).subscribe(data => console.log(data));

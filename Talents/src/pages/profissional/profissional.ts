@@ -27,7 +27,6 @@ export class ProfissionalPage {
   }
   
   salvarProfissional(){
-    console.log(this.profissionalFormulario.value);
     this.profissionalservice.cadastrar(this.profissionalFormulario.value);
   }
   

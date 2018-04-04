@@ -30,6 +30,7 @@ export class CadastroProfissionalPage {
 
 this.camera.getPicture(options).then((imageData) => {
  this.imagem = 'data:image/jpeg;base64,' + imageData;
+ console.log(this.imagem);
 }, (err) => {
 });
   }
