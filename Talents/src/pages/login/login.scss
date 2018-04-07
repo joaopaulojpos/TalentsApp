@@ -1,6 +1,6 @@
 page-login {
 	.background {
-		background-image: url('../assets/imgs/Talents.png');
+		background-image: url('../assets/imgs/talents.jpg');
 		align-content: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -8,11 +8,11 @@ page-login {
 	}
 
 	.scroll-content {
-		align-content: center;
-		display: flex;
+		display: inline-block;
 		flex-direction: column;
 		justify-content: center;
 		text-align: center;
+		
 	}
 
 	ion-card.card {
