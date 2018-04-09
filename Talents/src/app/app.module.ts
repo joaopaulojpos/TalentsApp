@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -24,6 +24,8 @@ import { MapsPageModule } from '../pages/maps/maps.module';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { MenuPageModule } from '../pages/menu/menu.module';
 import { MenuPage } from '../pages/menu/menu';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -42,8 +44,10 @@ import { MenuPage } from '../pages/menu/menu';
     MenuPageModule,
     HttpModule,
     MapsPageModule,
-    
-     
+    AgmCoreModule.forRoot({
+        apiKey: "AIzaSyB8rlkYvUU6FrObUQbsttNDF94uOeuGBCI",
+        libraries: ["places"]
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

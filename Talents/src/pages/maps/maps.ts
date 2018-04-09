@@ -1,39 +1,88 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation';
+import { Component, NgZone, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import {FormControl} from "@angular/forms";
+import { } from 'googlemaps';
+import { MapsAPILoader } from '@agm/core';
+import { ProfissionalPage } from '../profissional/profissional';
 
-declare var google;
-
-@IonicPage()
 @Component({
   selector: 'page-maps',
   templateUrl: 'maps.html',
+
 })
 export class MapsPage {
-  map: any;
+  public latitude: number;
+  public longitude: number;
+  public searchControl: FormControl;
+  public zoom: number;
 
-  constructor(private geolocation: Geolocation) { }
+  @ViewChild("search")
+  public searchElementRef;
 
-  ionViewDidLoad() {
-    this.geolocation.getCurrentPosition()
-      .then((resp) => {
-        const position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-        console.log(resp.coords.latitude);
-        console.log(resp.coords.longitude);
-        const mapOptions = {
-          zoom: 18,
-          center: position
-        }
+constructor(public navCtrl: NavController, private mapsAPILoader: MapsAPILoader,
+            private ngZone: NgZone)  {
+    this.zoom = 4;
+    this.latitude = 39.8282;
+    this.longitude = -98.5795;
 
-        this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    //criar o formulario search
+    this.searchControl = new FormControl();
 
-        const marker = new google.maps.Marker({
-          position: position,
-          map: this.map
-        });
+    //define posição atual
+    this.setCurrentPosition();
 
-      }).catch((error) => {
-        console.log('Erro ao recuperar sua posição', error);
-      });
-  }
 }
+
+ionViewDidLoad() {
+    //definir informações padrões do google maps na inicialização da tela
+    this.zoom = 4;
+    this.latitude = 39.8282;
+    this.longitude = -98.5795;
+
+    //criar o formulario search
+    this.searchControl = new FormControl();
+
+    //definir posição atual
+    this.setCurrentPosition();
+
+    //carregar o preenchimento automático de locais
+    this.mapsAPILoader.load().then(() => {
+        let nativeHomeInputBox = document.getElementById('localizacao').getElementsByTagName('input')[0];
+        let autocomplete = new google.maps.places.Autocomplete(nativeHomeInputBox, {
+            types: ["address"]
+        });
+        autocomplete.addListener("place_changed", () => {
+            this.ngZone.run(() => {
+                //obtém o resultado da localização
+                let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+                //verifica o resultado
+                if (place.geometry === undefined || place.geometry === null) {
+                    return;
+                }
+
+                //seta latitude, longitude e zoom
+                this.latitude = place.geometry.location.lat();
+                this.longitude = place.geometry.location.lng();
+                this.zoom = 12;
+           });
+        });
+    });
+}
+  // metodo que retorna posição atual  
+  private setCurrentPosition() {
+      if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition((position) => {
+              this.latitude = position.coords.latitude;
+              this.longitude = position.coords.longitude;
+              this.zoom = 12;
+          });
+      }
+  }
+  //metodo que retorna posição atual do maps 
+  private getLocalizcao(){
+    this.navCtrl.push(ProfissionalPage,{latitude: this.latitude , longitude: this.longitude});
+  }
+
+}
+

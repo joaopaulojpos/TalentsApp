@@ -1,8 +1,15 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title> Localização no maps</ion-title>
-  </ion-navbar>
-</ion-header>
-<ion-content padding>
-  <div #map id="map"></div>
-</ion-content>
+ <ion-navbar>
+  <ion-title>Sua Localização no Maps</ion-title>
+ </ion-navbar>
+  </ion-header>
+  <ion-content padding class="background">
+  <ion-toolbar no-border-top *ngIf="demo != 'Title'" id="localizacao" type="text"> 
+      <ion-searchbar></ion-searchbar>
+    </ion-toolbar>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+    <button ion-button full (click)="getLocalizcao()">Confirmar local</button>
+  </ion-content>
+  

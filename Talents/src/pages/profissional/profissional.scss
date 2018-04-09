@@ -1,23 +1,26 @@
 page-profissional {
-  
-  .background {
-		background-color: rgba(0, 0, 0, 0.1);
-  }
+    .background {
+        background-image: url('../assets/imgs/talents.jpg');
+        align-content: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+    }
+    .avatar_perfil img {
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: auto;
+        margin-left: auto;
+        width: 110px;
+        height: 110px;
+      }
+    
   .ion-nav-bar{
     background-color:rgba(19, 226, 154, 0.679);
 }
-    .avatar_perfil img {
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: auto;
-      margin-left: auto;
-      width: 140px;
-      height: 140px;
-    }
     
     .tirar_foto {
         font-size: 35px;
         text-align: center;
-    }        
+    }    
 }
     

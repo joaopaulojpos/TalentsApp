@@ -14,6 +14,9 @@ export class ProfissionalService {
  * 
  */
  login(ds_email: string, ds_senha: string) {
+
+  return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`);
+  /*ALTERADO
   let API = `http://localhost/talentsweb/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`;
    return this.http.get(API)
    .map(res => res.json().sucess)
@@ -22,8 +25,9 @@ export class ProfissionalService {
      let profissionalservice = new Profissional(dado.cd_profissional,dado.b_foto,
       dado.ds_senha,dado.dt_nascimento,dado.ds_email,dado.nr_latitude,
       dado.nr_longitude,dado.tp_conta,dado.tp_sexo,dado.ds_nome);
+      console.log(this.profissionalservice);
       this.profissionalservice = profissionalservice;
-     })   
+     })--> **/
   }
   isLogado(): Profissional{
     return this.profissionalservice;

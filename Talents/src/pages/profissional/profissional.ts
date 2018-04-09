@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage , NavController } from 'ionic-angular';
+import { IonicPage , NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { MapsPage } from '../maps/maps';
@@ -17,12 +17,19 @@ export class ProfissionalPage {
 
   profissionalFormulario: FormGroup;
   imagem ="";  
+  private latitude = [];
+  private longitude= [];
   constructor(
     public navCtrl: NavController,
     public formBuilder: FormBuilder,
     private camera: Camera,
-    private profissionalservice: ProfissionalService    
+    private profissionalservice: ProfissionalService,
+    public navParams: NavParams    
   ) {
+    this.latitude = this.navParams.get('latitude');
+    this.longitude = this.navParams.get('longitude');
+    console.log(this.latitude);
+    console.log(this.longitude);
     this.profissionalFormulario = this.createMyForm();
   }
   
@@ -32,17 +39,17 @@ export class ProfissionalPage {
   
   private createMyForm(){
     return this.formBuilder.group({
-      ds_nome: ['', Validators.required],
+      ds_nome:  ['', Validators.required],
       ds_email: ['', Validators.required],
       ds_senha: ['', Validators.required],
       dt_nascimento: ['', Validators.required],
       tp_sexo: ['', Validators.required],
-      nr_latitude : ['',Validators.required],
-      nr_longitude: ['',Validators.required],
+      nr_latitude : this.latitude,
+      nr_longitude: this.longitude,
     });
   }
-   /**
-   * METODO DE TIRAR FOTO 
+/**
+  * Metodo para tirar foto .
   */
  tirarFoto(){
   const options: CameraOptions = {
@@ -57,7 +64,10 @@ this.imagem = 'data:image/jpeg;base64,' + imageData;
 }, (err) => {
 });
 }
+/**
+ * Metodo para abrir Maps .
+ */
 openMaps(){
-  this.navCtrl.push(MapsPage);
+  this.navCtrl.push(MapsPage,{profissional: this.profissionalFormulario});
  }
 }

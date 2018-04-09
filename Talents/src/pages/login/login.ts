@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angul
 import { ProfissionalService } from '../../domain/profissional/profissional-service';
 import { ProfissionalPage } from '../profissional/profissional';
 import { MenuPage } from '../menu/menu';
+import { Profissional } from '../../domain/profissional/profissional';
 
 @IonicPage()
 @Component({
@@ -13,6 +14,8 @@ import { MenuPage } from '../menu/menu';
 export class LoginPage {
   public ds_email : string;
   public ds_senha : string;
+  public profissional :Profissional;
+
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -33,12 +36,28 @@ export class LoginPage {
     * CHAMADA DO LOGIN PROFISSIONAL
     */   
    login(){
-    this.profissionalservice.login(this.ds_email , this.ds_senha)
+     this.profissionalservice.login(this.ds_email , this.ds_senha).subscribe(data =>{
+      const response = (data as any);
+      const objeto =JSON.parse(response._body);
+      this.profissional = objeto.sucess;
+      console.log(this.profissional);
+      if(this.profissional != null){
+        this.navCtrl.setRoot(MenuPage,{profissional: this.profissional});
+      }else{
+        this.toast.create({ message: 'Erro ao Efetuar Login. Usuário ou Senha inválidos', duration: 2000 }).present(); 
+      }
+     },error =>{
+      console.log(error);
+      this.toast.create({ message: 'Erro ao conectar-se ao servidor', duration: 2000 }).present(); 
+     } 
+    )
+    /**ALTERADO
+     * this.profissionalservice.login(this.ds_email , this.ds_senha)
         .then(profissionalservice=>{
          this.navCtrl.setRoot(MenuPage);
-         console.log(profissionalservice);
+         console.log(this.profissionalservice);
     }).catch(()=>{
       this.toast.create({ message: 'Erro ao Efetuar Login. Usuário ou Senha inválidos', duration: 2000 }).present();
-    }); 
+    }); **/
    }
   }

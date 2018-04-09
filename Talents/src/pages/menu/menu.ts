@@ -4,6 +4,7 @@ import { VagasPage } from '../vagas/vagas';
 import { PerfilPage } from '../perfil/perfil';
 import { LoginPage } from '../login/login';
 import { ConfigProvider } from '../../providers/config/config';
+import { Profissional } from '../../domain/profissional/profissional';
 
 @IonicPage()
 @Component({
@@ -16,17 +17,19 @@ import { ConfigProvider } from '../../providers/config/config';
 export class MenuPage {
   rootPage = VagasPage;
   do = true;
-
+  public profissional: Profissional;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
     config: ConfigProvider
   ) {
+    this.profissional = this.navParams.get('profissional');
+    console.log(this.profissional);
   }
   
   abrirPerfil(){
-    this.navCtrl.push(PerfilPage);
+    this.navCtrl.push(PerfilPage,{profissional: this.profissional});
   }
   sair(){
     this.menuCtrl.close();

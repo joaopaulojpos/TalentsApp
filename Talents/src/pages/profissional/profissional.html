@@ -3,7 +3,7 @@
     <ion-title>Cadastro Profissional</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content class="background">    
+<ion-content class="background">
   <form [formGroup]="profissionalFormulario" (ngSubmit)="salvarProfissional()">
   <!-- PRECISAR AJUSTAR LAYOUT PARA FICAR NO CENTRO E MAIOR   
       <ion-item>
@@ -28,8 +28,8 @@
       <ion-item>
         <ion-icon name="pin" item-start (click)="openMaps()"></ion-icon>
         <ion-label stacked>Localizacação:</ion-label>        
-        <ion-input formControlName="nr_longitude" type="text" placeholder="Longitude"></ion-input>
-        <ion-input formControlName="nr_latitude" type="text" placeholder="Latitude"></ion-input>
+        <ion-input formControlName="nr_longitude" disabled="true" type="text" placeholder="Longitude"></ion-input>
+        <ion-input formControlName="nr_latitude"  disabled="true" type="text" placeholder="Latitude"></ion-input>
       </ion-item>    
       <ion-item>
         <ion-icon name="calendar" item-start></ion-icon>

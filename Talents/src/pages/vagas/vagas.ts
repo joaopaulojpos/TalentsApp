@@ -18,6 +18,7 @@ export class VagasPage {
    public vaga:  Vagas;
    public loader;
    public naoCurtir;
+   public profissional : Profissional;
 
    public vaga_vazia = [{
     ds_titulo: "TJ Borges",
@@ -39,7 +40,10 @@ export class VagasPage {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController
         )
-  {}
+  {
+    this.profissional = this.navParams.get('profissional');
+    console.log(this.profissional);
+  }
 
   //Carrega a View TODA vez que ela é chamada.
   ionViewDidEnter(){
