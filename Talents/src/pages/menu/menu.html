@@ -1,17 +1,44 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
-      <ion-title>Talents</ion-title>
+    <ion-toolbar class="user-profile">
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+              <div class="user-avatar">
+                <img src="assets/imgs/avatar.png">
+              </div>
+          </ion-col>
+          <ion-col padding-top col-8 *ngFor="let profissional of profissional">
+            <h2 ion-text class="no-margin bold text-white">
+              {{profissional.ds_nome}}
+            </h2>
+          </ion-col>
+        </ion-row>
+        <ion-row no-padding class="other-data">
+          <ion-col no-padding class="column">
+            <button ion-button icon-left small full color="light" (click)="chamaEditarPerfil()">
+              <ion-icon name="contact"></ion-icon>
+              Editar Perfil
+            </button>
+          </ion-col>
+          <ion-col no-padding class="column">
+            <button ion-button icon-left small full color="light"(click)="sair()">
+              <ion-icon name="ios-log-out"></ion-icon>
+              Sair
+            </button>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
     </ion-toolbar>
   </ion-header>
-  <ion-content>
-    <ion-list>
-      <button ion-item (click)="abrirPerfil()">
-        Perfil
-      </button>
-      <button ion-item (click)="sair()">
-        Sair
-      </button>
+  <ion-content color="secondary"> 
+    <ion-list class="user-list">
+        <button ion-item (click)="chamaHome()"><ion-icon name="home"> </ion-icon> Home </button>
+        <button ion-item (click)="sair()"> <ion-icon name="star"> </ion-icon> Favoritas </button>
+        <button ion-item (click)="sair()"><ion-icon name="notifications"> </ion-icon> Notificações </button>
     </ion-list>
   </ion-content>
 </ion-menu>

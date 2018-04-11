@@ -45,7 +45,7 @@ export class ProfissionalService {
 			headers: headers
 		});
 		let body = JSON.stringify({
-      b_foto:"perfil.jpg",
+      b_foto: profissional.imagem,
       ds_senha:profissional.ds_senha,
       dt_nascimento:profissional.dt_nascimento,
       ds_email:profissional.ds_email,

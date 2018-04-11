@@ -5,6 +5,7 @@ import { PerfilPage } from '../perfil/perfil';
 import { LoginPage } from '../login/login';
 import { ConfigProvider } from '../../providers/config/config';
 import { Profissional } from '../../domain/profissional/profissional';
+import { ProfissionalPage } from '../profissional/profissional';
 
 @IonicPage()
 @Component({
@@ -24,9 +25,13 @@ export class MenuPage {
     public menuCtrl: MenuController,
     config: ConfigProvider
   ) {
+  
+  }
+  ionViewDidEnter(){
     this.profissional = this.navParams.get('profissional');
     console.log(this.profissional);
   }
+
   
   abrirPerfil(){
     this.navCtrl.push(PerfilPage,{profissional: this.profissional});
@@ -36,5 +41,11 @@ export class MenuPage {
     localStorage.clear();
     this.navCtrl.setRoot(LoginPage);
     
+  }
+  chamaEditarPerfil(){
+    this.navCtrl.push(ProfissionalPage,{profissional: this.profissional});
+  }
+  chamaHome(){
+    this.navCtrl.push(VagasPage);
   }
 }
