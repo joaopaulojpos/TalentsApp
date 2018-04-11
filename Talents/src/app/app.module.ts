@@ -25,7 +25,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { MenuPageModule } from '../pages/menu/menu.module';
 import { MenuPage } from '../pages/menu/menu';
 import { AgmCoreModule } from '@agm/core';
-
+import { TesteComportamentalPageModule } from '../pages/teste-comportamental/teste-comportamental.module';
 
 @NgModule({
   declarations: [
@@ -44,10 +44,12 @@ import { AgmCoreModule } from '@agm/core';
     MenuPageModule,
     HttpModule,
     MapsPageModule,
+    TesteComportamentalPageModule,
     AgmCoreModule.forRoot({
-        apiKey: "AIzaSyB8rlkYvUU6FrObUQbsttNDF94uOeuGBCI",
-        libraries: ["places"]
-    })
+      apiKey: "AIzaSyB8rlkYvUU6FrObUQbsttNDF94uOeuGBCI",
+      libraries: ["places"]
+  })
+     
   ],
   bootstrap: [IonicApp],
   entryComponents: [
