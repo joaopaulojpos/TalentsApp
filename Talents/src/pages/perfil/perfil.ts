@@ -4,6 +4,7 @@ import { CadastroProfissionalPage } from '../cadastro-profissional/cadastro-prof
 import { ProfissionalService } from '../../domain/profissional/profissional-service';
 import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
 import { Profissional } from '../../domain/profissional/profissional';
+import { VagasPage } from '../vagas/vagas';
 @IonicPage()
 @Component({
   selector: 'page-perfil',
@@ -16,15 +17,19 @@ export class PerfilPage {
               public navParams: NavParams,
               private profissionalservice: ProfissionalService  
             ) {
-              this.profissional = this.navParams.get('profissional');       
-              console.log(this.profissional);               
   }
-
-  ionViewDidLoad() {
+  
+  ionViewDidLoad() { 
+  this.profissional = this.navParams.get('profissional');       
+  console.log(this.profissional);     
   }
 
   chamaEditarPerfil(){
     this.navCtrl.push(CadastroProfissionalPage);
+  }
+  
+  chamaHome(){
+    this.navCtrl.push(VagasPage);
   }
 
   abrirTesteComportamental(){

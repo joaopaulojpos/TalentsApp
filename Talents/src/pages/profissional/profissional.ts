@@ -16,7 +16,7 @@ import { ProfissionalService } from '../../domain/profissional/profissional-serv
 export class ProfissionalPage {
 
   profissionalFormulario: FormGroup;
-  imagem ="";  
+  private imagem;  
   private latitude = [];
   private longitude= [];
   constructor(
@@ -38,6 +38,7 @@ export class ProfissionalPage {
   }
   
   private createMyForm(){
+    console.log(this.imagem);
     return this.formBuilder.group({
       ds_nome:  ['', Validators.required],
       ds_email: ['', Validators.required],
@@ -46,6 +47,7 @@ export class ProfissionalPage {
       tp_sexo: ['', Validators.required],
       nr_latitude : this.latitude,
       nr_longitude: this.longitude,
+      b_foto : this.imagem,
     });
   }
 /**
@@ -53,17 +55,21 @@ export class ProfissionalPage {
   */
  tirarFoto(){
   const options: CameraOptions = {
-quality: 100,
-destinationType: this.camera.DestinationType.DATA_URL,
-encodingType: this.camera.EncodingType.JPEG,
-mediaType: this.camera.MediaType.PICTURE
+    quality: 100,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+
+  this.camera.getPicture(options).then((imageData) => {
+   let base64Image = 'data:image/jpeg;base64,' + imageData;
+   this.imagem = base64Image;
+
+  }, (err) => {
+    console.log(err);
+  });
 }
 
-this.camera.getPicture(options).then((imageData) => {
-this.imagem = 'data:image/jpeg;base64,' + imageData;
-}, (err) => {
-});
-}
 /**
  * Metodo para abrir Maps .
  */
