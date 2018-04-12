@@ -42,7 +42,7 @@ export class VagasPage {
         )
   {
     this.profissional = this.navParams.get('profissional');
-    console.log(this.profissional._cd_profissional);
+    //console.log(this.profissional._cd_profissional);
   }
 
   //Carrega a View TODA vez que ela é chamada.

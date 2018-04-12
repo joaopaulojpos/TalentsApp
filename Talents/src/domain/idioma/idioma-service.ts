@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Idioma } from './idioma';
 
 @Injectable()
-export class VagasService {
-  public idioma : Array <{}>; 
+export class IdiomaService {
+  public idiomas : Array <{}>; 
   public idioma : Idioma;
 
   

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
 import { ConfigProvider } from '../providers/config/config';
 import { MenuPage } from '../pages/menu/menu';
+import { Push, PushOptions, PushObject } from '@ionic-native/push';
 
 @Component({
   templateUrl: 'app.html',
@@ -20,6 +21,8 @@ export class MyApp {
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
+    public push: Push,
+    public alertCtrl: AlertController,
     configProvaider: ConfigProvider
   ) {
       
@@ -34,6 +37,23 @@ export class MyApp {
        
       statusBar.styleDefault();
       splashScreen.hide();
+      this.pushSetup();
     });
+  }
+
+  pushSetup(){
+    const options: PushOptions ={};
+    const pushObject: PushObject = this.push.init(options);
+
+    pushObject.on("registration").subscribe((registration: any)=> {});
+    pushObject.on("notification").subscribe((notification: any)=> {
+      if (notification.additionalData.foreground){
+        let yuoralert=  this.alertCtrl.create({
+          title: notification.label,
+          message: notification.message
+        });
+        yuoralert.present();
+      }
+    })
   }
 }
