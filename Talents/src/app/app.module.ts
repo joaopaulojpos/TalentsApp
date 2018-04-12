@@ -26,6 +26,7 @@ import { MenuPageModule } from '../pages/menu/menu.module';
 import { MenuPage } from '../pages/menu/menu';
 import { AgmCoreModule } from '@agm/core';
 import { TesteComportamentalPageModule } from '../pages/teste-comportamental/teste-comportamental.module';
+import { ProfissionalIdiomaPage} from '../pages/profissional-idioma/profissional-idioma';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,8 @@ import { TesteComportamentalPageModule } from '../pages/teste-comportamental/tes
     LoginPage,
     CadastroProfissionalPage,
     ProfissionalPage,
+    ProfissionalIdiomaPage,
+   
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { TesteComportamentalPageModule } from '../pages/teste-comportamental/tes
     CadastroProfissionalPage,
     ProfissionalPage,
     MapsPage,
+    ProfissionalIdiomaPage,
   ],
   providers: [
     StatusBar,
@@ -72,7 +76,7 @@ import { TesteComportamentalPageModule } from '../pages/teste-comportamental/tes
     ServicosProvider,
     VagasService,
     Geolocation,
-    ScreenOrientation
+    ScreenOrientation,
   ]
 })
 export class AppModule {}

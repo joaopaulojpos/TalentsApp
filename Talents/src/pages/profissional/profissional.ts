@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { MapsPage } from '../maps/maps';
 import { ProfissionalService } from '../../domain/profissional/profissional-service';
+import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
 
 @IonicPage()
 @Component({
@@ -35,6 +36,7 @@ export class ProfissionalPage {
   
   salvarProfissional(){
     this.profissionalservice.cadastrar(this.profissionalFormulario.value);
+    this.testeComportamental();
   }
   
   private createMyForm(){
@@ -75,5 +77,11 @@ export class ProfissionalPage {
  */
 openMaps(){
   this.navCtrl.push(MapsPage,{profissional: this.profissionalFormulario});
+ }
+/**
+ * Metodo para abrir Pagina do Teste Comportamental  .
+ */
+ testeComportamental(){
+   this.navCtrl.push(TesteComportamentalPage);
  }
 }
