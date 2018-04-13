@@ -17,16 +17,8 @@
         </ion-row>
         <ion-row no-padding class="other-data">
           <ion-col no-padding class="column">
-            <button ion-button icon-left small full color="light" (click)="chamaEditarPerfil()">
-              <ion-icon name="contact"></ion-icon>
-              Editar Perfil
-            </button>
           </ion-col>
           <ion-col no-padding class="column">
-            <button ion-button icon-left small full color="light"(click)="sair()">
-              <ion-icon name="ios-log-out"></ion-icon>
-              Sair
-            </button>
           </ion-col>
         </ion-row>
 
@@ -36,8 +28,8 @@
   </ion-header>
   <ion-content color="secondary"> 
     <ion-list class="user-list">
-        <button ion-item (click)="chamaHome()"><ion-icon name="home"> </ion-icon> Home </button>
-        <button ion-item ><ion-icon name="notifications"> </ion-icon> Notificações </button>
+        <button ion-item (click)="abrirPerfil()"><ion-icon name="md-contact"> </ion-icon> Perfil </button>
+        <button ion-item (click)="sair()" ><ion-icon name="exit"> </ion-icon> Sair </button>
     </ion-list>
   </ion-content>
 </ion-menu>

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CadastroProfissionalPage } from '../cadastro-profissional/cadastro-profissional';
 import { ProfissionalService } from '../../domain/profissional/profissional-service';
 import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
 import { Profissional } from '../../domain/profissional/profissional';
 import { VagasPage } from '../vagas/vagas';
+import { ProfissionalPage } from '../profissional/profissional';
 @IonicPage()
 @Component({
   selector: 'page-perfil',
@@ -14,8 +14,7 @@ import { VagasPage } from '../vagas/vagas';
 export class PerfilPage {
   public profissional : Profissional;
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              private profissionalservice: ProfissionalService  
+              public navParams: NavParams
             ) {
   }
   
@@ -25,7 +24,7 @@ export class PerfilPage {
   }
 
   chamaEditarPerfil(){
-    this.navCtrl.push(CadastroProfissionalPage);
+    this.navCtrl.push(ProfissionalPage);
   }
   
   chamaHome(){

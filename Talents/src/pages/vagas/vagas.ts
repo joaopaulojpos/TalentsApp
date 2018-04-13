@@ -5,6 +5,7 @@ import { Vagas } from '../../domain/vagas/vagas';
 import { Profissional } from '../../domain/profissional/profissional';
 import { ProfissionalService } from '../../domain/profissional/profissional-service';
 import { MenuPage } from '../menu/menu';
+import { NotificacoesPage } from '../notificacoes/notificacoes';
 
 @IonicPage()
 @Component({
@@ -18,7 +19,7 @@ export class VagasPage {
    public vaga:  Vagas;
    public loader;
    public naoCurtir;
-   public profissional : Profissional;
+   public profissional: Profissional;
 
    public vaga_vazia = [{
     ds_titulo: "TJ Borges",
@@ -36,17 +37,15 @@ export class VagasPage {
     public navCtrl: NavController,
     public navParams: NavParams ,
     public vagaService: VagasService,
-    private profissionalservice: ProfissionalService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController
         )
-  {
-    this.profissional = this.navParams.get('profissional');
-    //console.log(this.profissional._cd_profissional);
-  }
+  { }
 
   //Carrega a View TODA vez que ela é chamada.
   ionViewDidEnter(){
+    this.profissional = this.navParams.get('profissional');
+    console.log(this.profissional);
     this.carregaVaga();
   }
 
@@ -161,8 +160,7 @@ export class VagasPage {
       console.log("Não Curtida");
     }
 
-     getprofissional(): Profissional{
-      return this.profissionalservice.isLogado();
+     notificacoesPage(){
+       this.navCtrl.push(NotificacoesPage);
      }
-
 }

@@ -15,7 +15,7 @@ import { Push, PushOptions, PushObject } from '@ionic-native/push';
   ]
 })
 export class MyApp {
-  rootPage:any;
+  rootPage: any = LoginPage;
 
   constructor(
     platform: Platform,

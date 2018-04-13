@@ -8,6 +8,7 @@
 <ion-content padding class="background">
   <ion-avatar class="avatar_perfil">
     <img src="assets/imgs/avatar.png">
+    <ion-icon name="camera"></ion-icon>
   </ion-avatar>
   <br>
   <div *ngFor="let profissional of profissional">
@@ -17,7 +18,6 @@
     <p text-center>Biografia</p>
     <p text-center>Endereço</p>
     <ion-icon style="vertical-align: -26%;" item-end class="icn_editar" name="create" (click)="chamaEditarPerfil()"></ion-icon>
-    <button ion-button color="secondary" (click)="abrirTesteComportamental()">Fazer Teste Comportamental</button>
   </div>
 
   

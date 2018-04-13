@@ -13,7 +13,6 @@ import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { VagasPage } from '../pages/vagas/vagas';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { FavoritasPage } from '../pages/favoritas/favoritas';
-import { CadastroProfissionalPage } from '../pages/cadastro-profissional/cadastro-profissional';
 import { HttpModule } from '@angular/http';
 import { ServicosProvider } from '../providers/servicos/servicos';
 import { ProfissionalService } from '../domain/profissional/profissional-service';
@@ -28,15 +27,16 @@ import { MenuPage } from '../pages/menu/menu';
 import { AgmCoreModule } from '@agm/core';
 import { TesteComportamentalPageModule } from '../pages/teste-comportamental/teste-comportamental.module';
 import { ProfissionalIdiomaPage} from '../pages/profissional-idioma/profissional-idioma';
+import { NotificacoesPage } from '../pages/notificacoes/notificacoes';
+import { NotificacoesPageModule } from '../pages/notificacoes/notificacoes.module';
 
 @NgModule({
   declarations: [
     MyApp,
     TabsPage,
     LoginPage,
-    CadastroProfissionalPage,
     ProfissionalPage,
-    ProfissionalIdiomaPage,
+    ProfissionalIdiomaPage
    
   ],
   imports: [
@@ -48,6 +48,7 @@ import { ProfissionalIdiomaPage} from '../pages/profissional-idioma/profissional
     MenuPageModule,
     HttpModule,
     MapsPageModule,
+    NotificacoesPageModule,
     TesteComportamentalPageModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyB8rlkYvUU6FrObUQbsttNDF94uOeuGBCI",
@@ -64,10 +65,10 @@ import { ProfissionalIdiomaPage} from '../pages/profissional-idioma/profissional
     PerfilPage,
     FavoritasPage,
     MenuPage,
-    CadastroProfissionalPage,
     ProfissionalPage,
     MapsPage,
     ProfissionalIdiomaPage,
+    NotificacoesPage
   ],
   providers: [
     StatusBar,
