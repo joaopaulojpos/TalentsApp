@@ -15,7 +15,7 @@ export class ProfissionalService {
  */
  login(ds_email: string, ds_senha: string) {
 
-  return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`);
+  return this.http.get(`http://talents.heliohost.org/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`);
   /*ALTERADO
   let API = `http://localhost/talentsweb/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`;
    return this.http.get(API)
@@ -55,7 +55,7 @@ export class ProfissionalService {
       tp_sexo:profissional.tp_sexo,
       ds_nome:profissional.ds_nome
     });
-    this.http.post('http://localhost/TalentsWeb/api/public/api/profissional/salvar',body,options)
+    this.http.post('http://talents.heliohost.org/api/public/api/profissional/salvar',body,options)
     .map(res =>{
       res.json()
     }).subscribe(data => console.log(data));

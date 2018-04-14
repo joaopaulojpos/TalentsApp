@@ -19,7 +19,7 @@ export class VagasService {
   */
 
   getVagas(cd_profissional : number) {
-    return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/vagas?cd_profissional=${cd_profissional}`)
+    return this.http.get(`http://talents.heliohost.org/api/public/api/profissional/vagas?cd_profissional=${cd_profissional}`)
   }
 
    /** 
@@ -39,7 +39,7 @@ export class VagasService {
       cd_profissional: cd_profissional
     });
     
-    this.http.post('http://localhost/talentsweb/api/public/api/vaga/curtirVaga',body,options)
+    this.http.post('http://talents.heliohost.org/api/public/api/vaga/curtirVaga',body,options)
     .map(res =>{
       res.json()
     }).subscribe(data => console.log(data));
