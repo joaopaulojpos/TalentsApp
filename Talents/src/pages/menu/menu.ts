@@ -24,7 +24,7 @@ export class MenuPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
-    config: ConfigProvider
+    public config: ConfigProvider
   ) {
   
   }
@@ -39,6 +39,7 @@ export class MenuPage {
   }
   sair(){
     this.menuCtrl.close();
+    this.config.setConfigData(false);
     localStorage.clear();
     this.navCtrl.setRoot(LoginPage);
     

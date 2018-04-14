@@ -4,6 +4,7 @@ import { ProfissionalService } from '../../domain/profissional/profissional-serv
 import { ProfissionalPage } from '../profissional/profissional';
 import { MenuPage } from '../menu/menu';
 import { Profissional } from '../../domain/profissional/profissional';
+import { ConfigProvider } from '../../providers/config/config';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,8 @@ export class LoginPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private toast: ToastController,
-              private profissionalservice: ProfissionalService
+              private profissionalservice: ProfissionalService,
+              private config: ConfigProvider
               ){
   }  
   ionViewDidLoad(){
@@ -43,6 +45,7 @@ export class LoginPage {
       console.log(this.profissional);
       if(this.profissional != null){
         this.navCtrl.setRoot(MenuPage,{profissional: this.profissional});
+        this.config.setConfigData(false, this.profissional._ds_nome, this.profissional._ds_email);
       }else{
         this.toast.create({ message: 'Erro ao Efetuar Login. Usuário ou Senha inválidos', duration: 2000 }).present(); 
       }

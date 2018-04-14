@@ -28,9 +28,9 @@ export class MyApp {
       
     platform.ready().then(() => {
       let config = configProvaider.getConfigData();
-      if(config == null){
+      if((config == null) || (config == true)) {
         this.rootPage = LoginPage;
-        configProvaider.setConfigData(false)
+        configProvaider.setConfigData(false);
       }else{
         this.rootPage = MenuPage;
       }
