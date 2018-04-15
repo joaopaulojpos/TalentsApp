@@ -29,6 +29,8 @@ import { TesteComportamentalPageModule } from '../pages/teste-comportamental/tes
 import { ProfissionalIdiomaPage} from '../pages/profissional-idioma/profissional-idioma';
 import { NotificacoesPage } from '../pages/notificacoes/notificacoes';
 import { NotificacoesPageModule } from '../pages/notificacoes/notificacoes.module';
+import { TesteComportamentalProvider } from '../providers/teste-comportamental/teste-comportamental';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { NotificacoesPageModule } from '../pages/notificacoes/notificacoes.modul
     PerfilPageModule,
     MenuPageModule,
     HttpModule,
+    HttpClientModule,
     MapsPageModule,
     NotificacoesPageModule,
     TesteComportamentalPageModule,
@@ -80,6 +83,7 @@ import { NotificacoesPageModule } from '../pages/notificacoes/notificacoes.modul
     VagasService,
     Geolocation,
     ScreenOrientation,
+    TesteComportamentalProvider
   ]
 })
 export class AppModule {}

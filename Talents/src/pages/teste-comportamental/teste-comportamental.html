@@ -15,6 +15,8 @@
 
 <ion-content padding>
 
+
+
   <ion-list *ngFor="let pergunta of lista_perguntas">
     <ion-list-header no-lines *ngIf="lista_perguntas.indexOf(pergunta) == 0">
       <b>{{pergunta.ds_pergunta}} </b>
@@ -27,23 +29,23 @@
     <ion-list no-lines radio-group>
 
       <ion-item>
-        <ion-label>{{preparaRespostaDaPergunta(pergunta.cd)[0].ds_resposta}}</ion-label>
-        <ion-radio (ionSelect)="radioChecked('1', pergunta.cd)"></ion-radio>
+        <ion-label>{{pergunta.alternativas[0].ds_resposta}}</ion-label>
+        <ion-radio (ionSelect)="radioChecked('1', pergunta.cd_pergunta)"></ion-radio>
       </ion-item>
 
       <ion-item>
-        <ion-label>{{preparaRespostaDaPergunta(pergunta.cd)[1].ds_resposta}}</ion-label>
-        <ion-radio (ionSelect)="radioChecked('2', pergunta.cd)"></ion-radio>
+        <ion-label>{{pergunta.alternativas[1].ds_resposta}}</ion-label>
+        <ion-radio (ionSelect)="radioChecked('2', pergunta.cd_pergunta)"></ion-radio>
       </ion-item>
 
       <ion-item>
-        <ion-label>{{preparaRespostaDaPergunta(pergunta.cd)[2].ds_resposta}}</ion-label>
-        <ion-radio (ionSelect)="radioChecked('3', pergunta.cd)"></ion-radio>
+        <ion-label>{{pergunta.alternativas[2].ds_resposta}}</ion-label>
+        <ion-radio (ionSelect)="radioChecked('3', pergunta.cd_pergunta)"></ion-radio>
       </ion-item>
 
       <ion-item>
-        <ion-label>{{preparaRespostaDaPergunta(pergunta.cd)[3].ds_resposta}}</ion-label>
-        <ion-radio (ionSelect)="radioChecked('4', pergunta.cd)"></ion-radio>
+        <ion-label>{{pergunta.alternativas[3].ds_resposta}}</ion-label>
+        <ion-radio (ionSelect)="radioChecked('4', pergunta.cd_pergunta)"></ion-radio>
       </ion-item>
     </ion-list>
 
@@ -51,6 +53,11 @@
 
 
   <button ion-button color="secondary" full (click)="finalizarTeste()">Finalizar Teste</button>
+
+  <div padding>
+    <button ion-button color="secondary" block (click)="metodoInutilPodeExcluir()">Ver tamanho da lista</button>
+  </div>
+
 
 
 
