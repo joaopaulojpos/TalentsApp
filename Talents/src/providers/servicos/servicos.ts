@@ -9,7 +9,7 @@ export class ServicosProvider {
   {}
 
   getNotificacoes(cd_profissional : number) {
-    return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/${cd_profissional}/notificacoes`)
+    return this.http.get(`http://talents.heliohost.org/api/public/api/profissional/${cd_profissional}/notificacoes`)
   }
 
 }
