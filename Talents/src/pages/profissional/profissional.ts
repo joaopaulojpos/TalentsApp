@@ -29,19 +29,20 @@ export class ProfissionalPage {
     private profissionalservice: ProfissionalService,
     public navParams: NavParams
   ) {
+    this.profissionalFormulario = this.createMyForm();
+    
     this.latitude = this.navParams.get('latitude');
     this.longitude = this.navParams.get('longitude');
-    this.profissional = this.navParams.get('profissionalMaps');
-    this.profissional = this.navParams.data.profissional;
-    console.log(this.profissional);
-    this.profissionalFormulario = this.createMyForm();
-  }
-  ionViewDidEnter(){
-    if(this.profissional == undefined){
-      this.profissional = new Profissional(null,null,null,null,null,null,null,"A",null,'Maikon');
-      console.log(this.profissional.ds_nome);
-    }
 
+    this.profissional = this.navParams.get('profissionalMaps') ||
+      this.profissionalFormulario.value;
+
+    this.profissionalFormulario.patchValue(this.profissional);
+
+    console.log(this.profissional);
+    
+  }
+  
   }
 
   salvarProfissional() {
