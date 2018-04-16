@@ -40,7 +40,6 @@ export class TesteComportamentalPage {
     private comportamentalProvider: TesteComportamentalProvider,
     private comportamentalService: TesteComportamentalService
   ) {
-
     this.profissional = navParams.get("profissional")
   }
 
@@ -84,7 +83,7 @@ export class TesteComportamentalPage {
   }
 
   radioChecked(escolha: string, pergunta: any) {
-    let indexDePerguntaAntiga = 99;
+    let indexDePerguntaAntigaRepetida = 999;
     let isIgual: boolean = false;
 
     let pergunta_resposta = {
@@ -99,35 +98,34 @@ export class TesteComportamentalPage {
     for (let x of this.listaEscolhas) {
       if (x.cd_pergunta == pergunta_resposta.cd_pergunta) {
         isIgual = true;
-        indexDePerguntaAntiga = this.listaEscolhas.indexOf(x);
+        indexDePerguntaAntigaRepetida = this.listaEscolhas.indexOf(x);
+
       }
     }
     if (isIgual) {
-      this.listaEscolhas.splice(indexDePerguntaAntiga);
+      this.listaEscolhas.splice(indexDePerguntaAntigaRepetida, 1);
       isIgual = false;
     }
     this.listaEscolhas.push(pergunta_resposta);
+
   }
 
   finalizarTeste() {
-    console.log(this.profissional)
+    let countEnviadas = 0;
+    if (this.listaEscolhas.length < 25) {
 
-    //if (this.listaEscolhas.length < 25) {
-    let asdf: boolean = false;
-    if (asdf) {
       this.toast.create({ message: 'Responda todas as questões.\nRespondidas: ' + this.listaEscolhas.length + "//25", duration: 2000 }).present();
     } else {
-      this.comportamentalService.enviarTesteComportamental(this.listaEscolhas[0].cd_pergunta, this.listaEscolhas[0].cd_resposta, this.profissional)
-
-
-      /*
-      alert("Teste enviado!(ainda não) Lenght: " + this.listaEscolhas.length);
-      let f = "";
       for (let x of this.listaEscolhas) {
-        f = f + "\nPergunta: " + x.cd_pergunta + " Alternativa: " + x.cd_resposta;
+        this.comportamentalService.enviarTesteComportamental(x.cd_pergunta, x.cd_resposta, this.profissional)
+        countEnviadas++;
+        console.log(countEnviadas)
       }
-      alert(f)
-      */
+
+      if (countEnviadas == 25)
+
+        this.toast.create({ message: "Teste enviado.Qtd de escolhas enviadas: " + this.listaEscolhas.length, duration: 4000 }).present();
+
     }
   }
 

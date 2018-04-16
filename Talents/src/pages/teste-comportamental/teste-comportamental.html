@@ -43,6 +43,8 @@
         <ion-label>{{pergunta.alternativas[3].ds_resposta}}</ion-label>
         <ion-radio (ionSelect)="radioChecked(pergunta.alternativas[3].cd_alternativa_perfil_comp, pergunta.cd_pergunta)"></ion-radio>
       </ion-item>
+      <div style="margin-top: 50px;">
+      </div>
     </ion-list>
   </ion-list>
   <button ion-button color="secondary" full (click)="finalizarTeste()">Finalizar Teste</button>
