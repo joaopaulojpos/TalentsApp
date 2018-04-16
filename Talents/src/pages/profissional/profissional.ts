@@ -42,9 +42,9 @@ export class ProfissionalPage {
     console.log(this.profissional);
     
   }
-  
-  }
-
+  /*
+   *Metodo chamada salvar profissional
+   */
   salvarProfissional() {
     this.profissionalservice.cadastrar(this.profissionalFormulario.value);  
     this.navCtrl.setRoot(TesteComportamentalPage);  
