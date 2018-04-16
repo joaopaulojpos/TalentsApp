@@ -5,6 +5,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { MapsPage } from '../maps/maps';
 import { ProfissionalService } from '../../domain/profissional/profissional-service';
 import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
+import { Profissional } from '../../domain/profissional/profissional';
 
 @IonicPage()
 @Component({
@@ -20,6 +21,7 @@ export class ProfissionalPage {
   private imagem;
   private latitude = [];
   private longitude = [];
+  public profissional :Profissional;
   constructor(
     public navCtrl: NavController,
     public formBuilder: FormBuilder,
@@ -29,19 +31,29 @@ export class ProfissionalPage {
   ) {
     this.latitude = this.navParams.get('latitude');
     this.longitude = this.navParams.get('longitude');
-    console.log(this.latitude);
-    console.log(this.longitude);
+    this.profissional = this.navParams.get('profissionalMaps');
+    this.profissional = this.navParams.data.profissional;
+    console.log(this.profissional);
     this.profissionalFormulario = this.createMyForm();
+  }
+  ionViewDidEnter(){
+    if(this.profissional == undefined){
+      this.profissional = new Profissional(null,null,null,null,null,null,null,"A",null,'Maikon');
+      console.log(this.profissional.ds_nome);
+    }
+
   }
 
   salvarProfissional() {
-    this.profissionalservice.cadastrar(this.profissionalFormulario.value);    
+    this.profissionalservice.cadastrar(this.profissionalFormulario.value);  
+    this.navCtrl.setRoot(TesteComportamentalPage);  
+    console.log(this.profissional);
   }
 
   private createMyForm() {
-    console.log(this.imagem);
+
     return this.formBuilder.group({
-      ds_nome: ['', Validators.required],
+      ds_nome: ['', Validators.required] ,
       ds_email: ['', Validators.required],
       ds_senha: ['', Validators.required],
       dt_nascimento: ['', Validators.required],
@@ -70,12 +82,12 @@ export class ProfissionalPage {
       console.log(err);
     });
   }
-
   /**
    * Metodo para abrir Maps .
    */
   openMaps() {
-    this.navCtrl.push(MapsPage, { profissional: this.profissionalFormulario });
+    this.navCtrl.push(MapsPage, { profissional: this.profissionalFormulario.value});
+    console.log(this.profissionalFormulario.value);
   }
 
 }

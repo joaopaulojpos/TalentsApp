@@ -28,14 +28,14 @@ export class LoginPage {
   ionViewDidLoad(){
   }                           
    /**   
-    * CHAMADA TELA DE CADASTRO NOVO PROFISSIONAL
+    * Cadastrar Profissional
     */   
     cadastrarProfissional(){
       this.navCtrl.push(ProfissionalPage);
     }
 
     /**
-    * CHAMADA DO LOGIN PROFISSIONAL
+    * Login Profissional
     */   
    login(){
      this.profissionalservice.login(this.ds_email , this.ds_senha).subscribe(data =>{
@@ -45,6 +45,7 @@ export class LoginPage {
       console.log(this.profissional);
       if(this.profissional != null){
         this.navCtrl.setRoot(MenuPage,{profissional: this.profissional});
+        console.log(this.profissional);
         this.config.setConfigData(false, this.profissional._ds_nome, this.profissional._ds_email);
       }else{
         this.toast.create({ message: 'Erro ao Efetuar Login. Usuário ou Senha inválidos', duration: 2000 }).present(); 
@@ -54,13 +55,5 @@ export class LoginPage {
       this.toast.create({ message: 'Erro ao conectar-se ao servidor', duration: 2000 }).present(); 
      } 
     )
-    /**ALTERADO
-     * this.profissionalservice.login(this.ds_email , this.ds_senha)
-        .then(profissionalservice=>{
-         this.navCtrl.setRoot(MenuPage);
-         console.log(this.profissionalservice);
-    }).catch(()=>{
-      this.toast.create({ message: 'Erro ao Efetuar Login. Usuário ou Senha inválidos', duration: 2000 }).present();
-    }); **/
    }
   }

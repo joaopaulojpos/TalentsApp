@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, PopoverController } from 'ionic-angular';
 import { VagasService } from '../../domain/vagas/vagas-service';
 import { Vagas } from '../../domain/vagas/vagas';
 import { Profissional } from '../../domain/profissional/profissional';
 import { ProfissionalService } from '../../domain/profissional/profissional-service';
 import { MenuPage } from '../menu/menu';
 import { NotificacoesPage } from '../notificacoes/notificacoes';
+import { NotificacoesAtalhoPage } from '../notificacoes-atalho/notificacoes-atalho';
+import { ServicosProvider } from '../../providers/servicos/servicos';
 
 @IonicPage()
 @Component({
@@ -38,18 +40,23 @@ export class VagasPage {
     public navParams: NavParams ,
     public vagaService: VagasService,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
-        )
+    public alertCtrl: AlertController,
+    public popoverCtrl: PopoverController
+    )
   { }
 
-  //Carrega a View TODA vez que ela é chamada.
+  /**
+   * Carrega a View TODA vez que ela é chamada.
+   */ 
   ionViewDidEnter(){
     this.profissional = this.navParams.get('profissional');
     console.log(this.profissional);
     this.carregaVaga();
   }
 
-  //Carrega uma vaga no listaVagas
+  /**
+   *Carrega uma vaga no listaVagas
+   */
   carregaVaga(){
     this.vagaService.getVagas(1).subscribe(data =>{
       this.abreCarregando();
@@ -65,8 +72,9 @@ export class VagasPage {
       }
      )
     }
-
-  //Animação de carregamento da vaga na tela;
+  /**
+   * Animação de carregamento da vaga na tela;
+   */ 
   abreCarregando() {
     this.loader = this.loadingCtrl.create({
       content: "Carregando Vaga..."
@@ -77,7 +85,9 @@ export class VagasPage {
     this.loader.dismiss();
   }
 
-  //Alert de aviso para o Usuário.
+  /**
+   * Alert de aviso para o Usuário.
+   */
   alertaCurtida(ds_titulo) {
     let alert = this.alertCtrl.create({
       title: 'Parabéns!',
@@ -91,7 +101,9 @@ export class VagasPage {
     alert.present();
   }
 
-  //Alert para Dislike
+  /**
+   * Alert para Dislike
+   */ 
   alertaNaoCurtida(cd_vaga, ds_titulo) {
     this.naoCurtir = this.alertCtrl.create({
       title: 'Você deseja mesmo Ignorar esta vaga?',
@@ -116,7 +128,9 @@ export class VagasPage {
     this.naoCurtir.present();
   }
 
-  //Alert de aviso para o Usuário.
+  /**
+   * Alert de aviso para o Usuário.
+   */
   confirmarNaoCurtida() {
     let alert = this.alertCtrl.create({
       title: 'OK',
@@ -130,7 +144,9 @@ export class VagasPage {
     alert.present();
     }
   
-   //Altera a vizualização do Detalhamento da Vaga Exibindo/Ocultando as informações.
+   /**
+    * Altera a vizualização do Detalhamento da Vaga Exibindo/Ocultando as informações. 
+    */  
     detalharvaga(){
       if (this.mostrarDetalhe) 
         this.mostrarDetalhe =false;
@@ -139,9 +155,9 @@ export class VagasPage {
     }
 
     /*
-    //Envia a requisição para a API com os parâmetros.
-    //chama o alert informando o usuário que está concorrendo a vaga.
-    */
+     * Envia a requisição para a API com os parâmetros.
+     * chama o alert informando o usuário que está concorrendo a vaga.
+     */
     vagaCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
       this.vagaService.vagaSelecionada("Like",cd_vaga,1);
@@ -150,17 +166,30 @@ export class VagasPage {
     }
 
     /*
-    //Método chamado pelo alertaNaoCurtida(...) disparado quando o 
-      botão de 'Confirmar' é selecionado.
-    //Envia a requisição para a API com os parâmetros.
-    */
+     * Método chamado pelo alertaNaoCurtida(...) disparado quando o 
+     * botão de 'Confirmar' é selecionado.
+     * Envia a requisição para a API com os parâmetros.
+     */
     vagaNaoCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
       this.vagaService.vagaSelecionada("Dislike",cd_vaga,1);
       console.log("Não Curtida");
     }
-
+     /**
+      * Chama tela de notificações 
+      */
      notificacoesPage(){
        this.navCtrl.push(NotificacoesPage);
      }
+     /**
+      * Chama notificações Atalho 
+      * @param myEvent 
+      */
+     notificacoesAtalho(myEvent) {
+      console.log(myEvent);
+      let popover = this.popoverCtrl.create(NotificacoesAtalhoPage);
+      popover.present({
+        ev: myEvent
+      });
+    }
 }

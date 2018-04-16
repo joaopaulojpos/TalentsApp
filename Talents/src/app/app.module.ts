@@ -31,6 +31,7 @@ import { NotificacoesPage } from '../pages/notificacoes/notificacoes';
 import { NotificacoesPageModule } from '../pages/notificacoes/notificacoes.module';
 import { TesteComportamentalProvider } from '../providers/teste-comportamental/teste-comportamental';
 import { HttpClientModule } from '@angular/common/http';
+import { NotificacoesAtalhoPage } from '../pages/notificacoes-atalho/notificacoes-atalho';
 
 @NgModule({
   declarations: [
@@ -38,8 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     TabsPage,
     LoginPage,
     ProfissionalPage,
-    ProfissionalIdiomaPage
-   
+    ProfissionalIdiomaPage,
+    NotificacoesAtalhoPage
   ],
   imports: [
     BrowserModule,
@@ -71,7 +72,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProfissionalPage,
     MapsPage,
     ProfissionalIdiomaPage,
-    NotificacoesPage
+    NotificacoesPage,
+    NotificacoesAtalhoPage,
   ],
   providers: [
     StatusBar,
