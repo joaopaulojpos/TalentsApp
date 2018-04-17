@@ -1,0 +1,36 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar class="user-profile">
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+              <div class="user-avatar">
+                <img src="assets/imgs/avatar.png">
+              </div>
+          </ion-col>
+          <ion-col padding-top col-8 *ngFor="let profissional of profissional">
+            <h2 ion-text class="no-margin bold text-white">
+              {{profissional.ds_nome}}
+            </h2>
+          </ion-col>
+        </ion-row>
+        <ion-row no-padding class="other-data">
+          <ion-col no-padding class="column">
+          </ion-col>
+          <ion-col no-padding class="column">
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-content color="secondary"> 
+    <ion-list class="user-list">
+        <button ion-item (click)="abrirPerfil()"><ion-icon name="md-contact"> </ion-icon> Perfil </button>
+        <button ion-item (click)="sair()" ><ion-icon name="exit"> </ion-icon> Sair </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

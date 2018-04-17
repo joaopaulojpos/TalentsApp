@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>Vagas de Emprego
+     <ion-icon class="notification" name="notifications" (click)="notificacoesAtalho($event)">
+      <!--<ion-icon class="notification" name="notifications" (click)="notificacoesPage()">-->        
+      </ion-icon>
+    </ion-title> 
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="background">
+      <ion-card *ngFor="let vaga of listaVagas">
+        <ion-card-content >
+          <ion-card-title class="ion-card-title">
+           <strong>{{ vaga.ds_titulo}}</strong>
+           <p class="ion-card-title" >Data da Publicação: {{vaga.dt_criacao | date: 'dd-MM-yyyy'}} </p>
+            </ion-card-title>
+            <ion-icon *ngIf="mostrarDetalhe" class="abrirVaga" name="md-arrow-dropup-circle" (click)="detalharvaga()" ></ion-icon>
+           <ion-icon *ngIf="!mostrarDetalhe" class="abrirVaga" name="md-arrow-dropdown-circle" (click)="detalharvaga()" ></ion-icon>
+           <br>
+           <p *ngIf="mostrarDetalhe" class="detalheVaga">
+            <strong>Detalhamento da vaga:</strong>
+            <br>
+            {{vaga.ds_observacao}}
+            <br>
+          </p>
+          <br>
+          <div>
+           <strong>Benefícios:</strong>
+           <br>
+           {{vaga.ds_beneficios}}
+        </div>
+        <div>
+          <br>
+           <strong>Empresa: </strong>
+           {{vaga.empresa.ds_nome_fantasia}}
+          <br>
+        </div>
+        <br>
+          <div>
+            <strong>Requisitos:</strong>
+            <br>
+            <strong>Técnicos:</strong>
+            <p *ngFor='let competencia_tc of vaga.competencias_tecnicas'>
+                {{competencia_tc.ds_competencia_tecnica}}
+             </p>
+             <strong>Comportamentais:</strong>
+            <p *ngFor='let competencia_comp of vaga.competencias_comp'>
+                {{competencia_comp.ds_competencia_comport}}
+             </p>
+           </div>
+           <div>
+              <strong>Idiomas: </strong>
+              <br>
+              <p *ngFor='let idioma of vaga.idiomas'>
+                  {{idioma.ds_idioma}}
+               </p>
+             </div>        
+            </ion-card-content>
+      </ion-card>
+      
+      <ion-fab *ngFor="let vaga of listaVagas" right bottom  class="btCurtir">
+          <button ion-fab color="secondary" (click)="vagaCurtida(vaga.cd_vaga, vaga.ds_titulo)" on-destroy="cardDestroyed($index)" ><ion-icon name="ios-heart"></ion-icon></button>
+    </ion-fab>
+      <ion-fab *ngFor="let vaga of listaVagas" left bottom  class="btNaoCurtir">
+          <button ion-fab color="danger" (click)="alertaNaoCurtida(vaga.cd_vaga, vaga.ds_titulo)"><ion-icon name="md-close-circle"></ion-icon></button>
+      </ion-fab>
+  
+</ion-content>
