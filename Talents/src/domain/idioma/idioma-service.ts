@@ -14,6 +14,6 @@ export class IdiomaService {
   ) {}
 
   getIdiomas() {
-    return this.http.get(`http://localhost/TalentsWeb/api/public/api/idiomas`)
+    return this.http.get(`http://talents.heliohost.org/api/public/api/idiomas`)
   }
 }

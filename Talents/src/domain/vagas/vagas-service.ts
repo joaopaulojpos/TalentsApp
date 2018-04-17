@@ -19,7 +19,7 @@ export class VagasService {
   */
 
   getVagas(cd_profissional : number) {
-    return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/vagas?cd_profissional=${cd_profissional}`)
+    return this.http.get(`http://talents.heliohost.org/api/public/api/profissional/vagas?cd_profissional=${cd_profissional}`)
   }
 
    /** 

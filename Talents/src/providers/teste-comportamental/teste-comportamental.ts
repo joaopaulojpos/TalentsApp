@@ -9,7 +9,7 @@ import { IfObservable } from 'rxjs/observable/IfObservable';
 @Injectable()
 export class TesteComportamentalProvider {
 
-  private baseApiPath = "http://localhost/talentsweb/api/public/api/";
+  private baseApiPath = "http://talents.heliohost.org/api/public/api/";
 
   constructor(
     public http: HttpClient

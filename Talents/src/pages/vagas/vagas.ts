@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, PopoverController, ToastController } from 'ionic-angular';
 import { VagasService } from '../../domain/vagas/vagas-service';
 import { Vagas } from '../../domain/vagas/vagas';
 import { Profissional } from '../../domain/profissional/profissional';
@@ -40,6 +40,7 @@ export class VagasPage {
     public navParams: NavParams ,
     public vagaService: VagasService,
     public loadingCtrl: LoadingController,
+    private toast: ToastController,
     public alertCtrl: AlertController,
     public popoverCtrl: PopoverController
     )
@@ -51,6 +52,7 @@ export class VagasPage {
   ionViewDidEnter(){
     this.profissional = this.navParams.get('profissional');
     console.log(this.profissional);
+    this.abreCarregando();
     this.carregaVaga();
   }
 
@@ -59,7 +61,6 @@ export class VagasPage {
    */
   carregaVaga(){
     this.vagaService.getVagas(1).subscribe(data =>{
-      this.abreCarregando();
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       this.listaVagas = objeto.sucess;
@@ -69,6 +70,7 @@ export class VagasPage {
     },error =>{
       console.log(error);
       this.fechaCarregando();
+      this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
       }
      )
     }

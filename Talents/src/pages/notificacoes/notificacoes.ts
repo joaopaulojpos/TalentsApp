@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { ServicosProvider } from '../../providers/servicos/servicos';
 
 @IonicPage()
@@ -19,22 +19,27 @@ export class NotificacoesPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public notificacoes: ServicosProvider,
+    private toast: ToastController,
     public loadingCtrl: LoadingController) {
   }
 
   ionViewDidEnter() {
+    this.abreCarregando();
     this.carregaNotificacoes();
   }
 
   doRefresh(refresher) {
     this.refresher = refresher;
     this.isRefreshing = true;
+
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
     this.carregaNotificacoes();
   }
 
   carregaNotificacoes(){
     this.notificacoes.getNotificacoes(1).subscribe(data =>{
-      this.abreCarregando();
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       console.log(objeto);
@@ -43,14 +48,16 @@ export class NotificacoesPage {
       if(this.isRefreshing){
         this.refresher.complete();
         this.isRefreshing = false;
-      }error =>{
+      }
+    },error =>{
         console.log(error);
         this.fechaCarregando();
-        this.refresher.complete();
         this.isRefreshing = false;
+        this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
         }
-    })
-  }
+      )
+    }
+
 
   //Animação de carregamento de notificações na tela;
   abreCarregando() {
