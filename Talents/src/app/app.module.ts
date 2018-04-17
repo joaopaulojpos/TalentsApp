@@ -32,6 +32,10 @@ import { NotificacoesPageModule } from '../pages/notificacoes/notificacoes.modul
 import { TesteComportamentalProvider } from '../providers/teste-comportamental/teste-comportamental';
 import { HttpClientModule } from '@angular/common/http';
 import { NotificacoesAtalhoPage } from '../pages/notificacoes-atalho/notificacoes-atalho';
+import { LottieAnimationViewModule } from 'ng-lottie';
+import { AnimacaoPage } from '../pages/animacao/animacao';
+import { AnimacaoPageModule } from '../pages/animacao/animacao.module';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +44,8 @@ import { NotificacoesAtalhoPage } from '../pages/notificacoes-atalho/notificacoe
     LoginPage,
     ProfissionalPage,
     ProfissionalIdiomaPage,
-    NotificacoesAtalhoPage
+    NotificacoesAtalhoPage,
+    AnimacaoPage 
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,7 @@ import { NotificacoesAtalhoPage } from '../pages/notificacoes-atalho/notificacoe
     MapsPageModule,
     NotificacoesPageModule,
     TesteComportamentalPageModule,
+    LottieAnimationViewModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyB8rlkYvUU6FrObUQbsttNDF94uOeuGBCI",
       libraries: ["places"]
@@ -74,6 +80,7 @@ import { NotificacoesAtalhoPage } from '../pages/notificacoes-atalho/notificacoe
     ProfissionalIdiomaPage,
     NotificacoesPage,
     NotificacoesAtalhoPage,
+    AnimacaoPage,
   ],
   providers: [
     StatusBar,

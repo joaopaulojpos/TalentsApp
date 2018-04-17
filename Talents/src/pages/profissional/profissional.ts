@@ -47,7 +47,7 @@ export class ProfissionalPage {
    */
   salvarProfissional() {
     this.profissionalservice.cadastrar(this.profissionalFormulario.value);  
-    this.navCtrl.setRoot(TesteComportamentalPage);  
+    this.navCtrl.setRoot(TesteComportamentalPage,{ profissional: this.profissionalFormulario.value});  
     console.log(this.profissional);
   }
 

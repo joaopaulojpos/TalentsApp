@@ -2,14 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { TesteComportamentalProvider } from '../../providers/teste-comportamental/teste-comportamental';
 import { TesteComportamentalService } from '../../domain/teste-comportamental/teste-comportamental-service';
-
-
-/**
- * Generated class for the TesteComportamentalPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AnimacaoPage } from '../animacao/animacao';
 
 @IonicPage()
 @Component({
@@ -30,7 +23,7 @@ export class TesteComportamentalPage {
   public listaEscolhas: Array<any>;
   public loader;
 
-  public profissional;
+  public profissionalTesteComportamental;
 
   constructor(
     public navCtrl: NavController,
@@ -41,7 +34,7 @@ export class TesteComportamentalPage {
     private comportamentalService: TesteComportamentalService
   ) {
 
-    this.profissional = navParams.get("profissional")
+    this.profissionalTesteComportamental = navParams.get("profissional");    
   }
 
   ionViewDidEnter() {
@@ -110,15 +103,15 @@ export class TesteComportamentalPage {
   }
 
   finalizarTeste() {
-    console.log(this.profissional)
+    console.log(this.profissionalTesteComportamental)
 
     //if (this.listaEscolhas.length < 25) {
     let asdf: boolean = false;
     if (asdf) {
       this.toast.create({ message: 'Responda todas as questões.\nRespondidas: ' + this.listaEscolhas.length + "//25", duration: 2000 }).present();
     } else {
-      this.comportamentalService.enviarTesteComportamental(this.listaEscolhas[0].cd_pergunta, this.listaEscolhas[0].cd_resposta, this.profissional)
-
+      this.comportamentalService.enviarTesteComportamental(this.listaEscolhas[0].cd_pergunta, this.listaEscolhas[0].cd_resposta, 1)
+      this.navCtrl.push(AnimacaoPage,{profissionalTesteComportamental: this.profissionalTesteComportamental});
 
       /*
       alert("Teste enviado!(ainda não) Lenght: " + this.listaEscolhas.length);
