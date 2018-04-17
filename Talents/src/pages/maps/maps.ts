@@ -1,9 +1,10 @@
 import { Component, NgZone, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,NavParams } from 'ionic-angular';
 import {FormControl} from "@angular/forms";
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import { ProfissionalPage } from '../profissional/profissional';
+import { Profissional } from '../../domain/profissional/profissional';
 
 @Component({
   selector: 'page-maps',
@@ -15,11 +16,14 @@ export class MapsPage {
   public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
+  public profissionalMaps: Profissional;
 
   @ViewChild("search")
   public searchElementRef;
 
-constructor(public navCtrl: NavController, private mapsAPILoader: MapsAPILoader,
+constructor( public navCtrl: NavController,
+             public navParams: NavParams ,
+             private mapsAPILoader: MapsAPILoader,
             private ngZone: NgZone)  {
     this.zoom = 4;
     this.latitude = 39.8282;
@@ -33,7 +37,10 @@ constructor(public navCtrl: NavController, private mapsAPILoader: MapsAPILoader,
 
 }
 
-ionViewDidLoad() {
+ionViewDidEnter() {
+    
+    this.profissionalMaps = this.navParams.get('profissional');
+    console.log(this.profissionalMaps);
     //definir informações padrões do google maps na inicialização da tela
     this.zoom = 4;
     this.latitude = 39.8282;
@@ -81,7 +88,7 @@ ionViewDidLoad() {
   }
   //metodo que retorna posição atual do maps 
   private getLocalizcao(){
-    this.navCtrl.push(ProfissionalPage,{latitude: this.latitude , longitude: this.longitude});
+    this.navCtrl.setRoot(ProfissionalPage,{latitude: this.latitude , longitude: this.longitude,profissionalMaps: this.profissionalMaps});
   }
 
 }
