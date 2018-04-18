@@ -60,7 +60,7 @@ export class VagasPage {
    *Carrega uma vaga no listaVagas
    */
   carregaVaga(){
-    this.vagaService.getVagas(1).subscribe(data =>{
+    this.vagaService.getVagas(2).subscribe(data =>{
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       this.listaVagas = objeto.sucess;
@@ -162,7 +162,7 @@ export class VagasPage {
      */
     vagaCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
-      this.vagaService.vagaSelecionada("Like",cd_vaga,1);
+      this.vagaService.vagaSelecionada("Like",cd_vaga,2);
       this.alertaCurtida(ds_titulo);
       console.log("Curtida");
     }
@@ -174,7 +174,7 @@ export class VagasPage {
      */
     vagaNaoCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
-      this.vagaService.vagaSelecionada("Dislike",cd_vaga,1);
+      this.vagaService.vagaSelecionada("Dislike",cd_vaga,2);
       console.log("Não Curtida");
     }
      /**

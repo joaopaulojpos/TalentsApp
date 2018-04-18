@@ -42,9 +42,9 @@ ionViewDidEnter() {
     this.profissionalMaps = this.navParams.get('profissional');
     console.log(this.profissionalMaps);
     //definir informações padrões do google maps na inicialização da tela
-    this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+    this.zoom = 15;
+    this.latitude = -8.1721658;
+    this.longitude = -34.9986835;
 
     //criar o formulario search
     this.searchControl = new FormControl();
@@ -82,6 +82,8 @@ ionViewDidEnter() {
           navigator.geolocation.getCurrentPosition((position) => {
               this.latitude = position.coords.latitude;
               this.longitude = position.coords.longitude;
+              console.log(this.latitude);
+              console.log(this.longitude);
               this.zoom = 12;
           });
       }

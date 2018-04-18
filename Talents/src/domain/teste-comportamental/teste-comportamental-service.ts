@@ -21,7 +21,25 @@ export class TesteComportamentalService {
             cd_profissional: profissional.cd_profissional
         });
 
-        this.http.post('http://talents.heliohost.org/api/public/api/inserir_resposta', body, options)
+        this.http.post('http://localhost/talentsweb/api/public/api/inserir_resposta', body, options)
+            .map(res => {
+                res.json()
+            }).subscribe(data => console.log(data));
+
+    }
+
+    gerarCalculoPerfilComp(profissional) {
+        let headers = new Headers({
+            'Content-Type': 'application/json'
+        });
+        let options = new RequestOptions({
+            headers: headers
+        });
+        let body = JSON.stringify({           
+            cd_profissional: profissional.cd_profissional
+        });
+
+        this.http.post('http://localhost/talentsweb/api/public/api/CalculoPerfilComp', body, options)
             .map(res => {
                 res.json()
             }).subscribe(data => console.log(data));

@@ -17,7 +17,8 @@ export class AnimacaoPage {
               private profissionalservice: ProfissionalService,
               private config: ConfigProvider,
               private toast: ToastController) {
-    this.profissionalAnimacao = navParams.get("profissionalTesteComportamental");
+    this.profissionalAnimacao = navParams.get("profissional");
+    console.log(this.profissionalAnimacao);
     LottieAnimationViewModule.forRoot();
 
     this.lottieConfig = {
@@ -29,6 +30,7 @@ export class AnimacaoPage {
   ionViewDidEnter(){
 
     this.login();
+    
 
   }
   login(){

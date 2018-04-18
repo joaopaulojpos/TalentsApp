@@ -15,7 +15,7 @@ export class ProfissionalService {
  */
  login(ds_email: string, ds_senha: string) {
 
-  return this.http.get(`http://talents.heliohost.org/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`)
+  return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`)
   /*ALTERADO
   let API = `http://localhost/talentsweb/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`;
    return this.http.get(API)
@@ -37,7 +37,7 @@ export class ProfissionalService {
    * @param profissional 
    */
   cadastrar(profissional){
-    console.log(profissional.ds_nome);
+    console.log(profissional.ds_email);
     let headers = new Headers({
 			'Content-Type': 'application/json'
 		});
@@ -45,18 +45,19 @@ export class ProfissionalService {
 			headers: headers
 		});
 		let body = JSON.stringify({
-      b_foto: profissional.b_foto,
+      b_foto: "semfoto.jpg",
       ds_senha:profissional.ds_senha,
       dt_nascimento:profissional.dt_nascimento,
       ds_email:profissional.ds_email,
-      nr_latitude:profissional.nr_latitude,
-      nr_longitude:profissional.nr_longitude,
+      nr_latitude:profissional.nr_latitude|| -8.1721658,
+      nr_longitude:profissional.nr_longitude || -34.9986835,
       tp_conta:"A",
       tp_sexo:profissional.tp_sexo,
       ds_nome:profissional.ds_nome
     });
+    console.log(body);
     this.http.post('http://localhost/talentsweb/api/public/api/profissional/salvar',body,options)
-    .map(res =>{
+    .map(res =>{   
       res.json()
     }).subscribe(data => console.log(data));
   }

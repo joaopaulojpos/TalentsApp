@@ -6,6 +6,7 @@ import { MapsPage } from '../maps/maps';
 import { ProfissionalService } from '../../domain/profissional/profissional-service';
 import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
 import { Profissional } from '../../domain/profissional/profissional';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -30,14 +31,14 @@ export class ProfissionalPage {
     public navParams: NavParams
   ) {
     this.profissionalFormulario = this.createMyForm();
-    
-    this.latitude = this.navParams.get('latitude');
-    this.longitude = this.navParams.get('longitude');
 
     this.profissional = this.navParams.get('profissionalMaps') ||
       this.profissionalFormulario.value;
 
     this.profissionalFormulario.patchValue(this.profissional);
+    
+    this.latitude = this.navParams.get('latitude');
+    this.longitude = this.navParams.get('longitude');
 
     console.log(this.profissional);
     
@@ -46,9 +47,12 @@ export class ProfissionalPage {
    *Metodo chamada salvar profissional
    */
   salvarProfissional() {
+    console.log(this.profissional);
     this.profissionalservice.cadastrar(this.profissionalFormulario.value);  
     this.navCtrl.setRoot(TesteComportamentalPage,{ profissional: this.profissionalFormulario.value});  
-    console.log(this.profissional);
+    //this.navCtrl.setRoot(LoginPage);
+    console.log(this.profissionalFormulario.value);
+  
   }
 
   private createMyForm() {
