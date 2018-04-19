@@ -41,7 +41,7 @@
             <br>
             <strong>Técnicos:</strong>
             <p *ngFor='let competencia_tc of vaga.competencias_tecnicas'>
-                {{competencia_tc.ds_competencia_tecnica}}
+                {{competencia_tc.ds_competencia_tecnica}}  <strong>  Nível: </strong>{{competencia_tc.nr_nivel}}
              </p>
              <strong>Comportamentais:</strong>
             <p *ngFor='let competencia_comp of vaga.competencias_comp'>
@@ -52,7 +52,7 @@
               <strong>Idiomas: </strong>
               <br>
               <p *ngFor='let idioma of vaga.idiomas'>
-                  {{idioma.ds_idioma}}
+                  {{idioma.ds_idioma}}<strong>  Nível: </strong>{{idioma.nr_nivel}}
                </p>
              </div>        
             </ion-card-content>
