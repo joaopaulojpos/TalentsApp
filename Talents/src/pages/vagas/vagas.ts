@@ -16,13 +16,13 @@ import { ConfigProvider } from '../../providers/config/config';
   templateUrl: 'vagas.html',
   providers:[VagasService,ProfissionalService]
 })
-export class VagasPage implements OnInit{
+export class VagasPage {
    public listaVagas =[];
    public mostrarDetalhe: boolean = false;
    public vaga:  Vagas;
    public loader;
    public naoCurtir;
-   public profissional: Profissional;
+   public cd_profissional:number;
    public profissionalLogado: Profissional;
 
    public vaga_vazia = [{
@@ -38,65 +38,46 @@ export class VagasPage implements OnInit{
    }]
 
   constructor(
+    public session: ConfigProvider,
     public navCtrl: NavController,
     public navParams: NavParams ,
     public vagaService: VagasService,
     public loadingCtrl: LoadingController,
     private toast: ToastController,
     public alertCtrl: AlertController,
-    public session: ConfigProvider,
     public popoverCtrl: PopoverController
     )
   { }
 
-
-  //assim que o component existir capture a sseão do usuário
-ngOnInit() {
-  this.session.get()
+  //Recupera a sessão do Profissional;
+async getSession() {
+  await this.session.get()
       .then(res => {
-          this.profissionalLogado = new Profissional(res);
-          console.log('usuário logado ngOnInit  >>> ',this.profissionalLogado);
+          this.profissionalLogado = (res);
+          this.cd_profissional = this.profissionalLogado[0].cd_profissional;
       });
          
       console.log(this.session.exist());
-
-      // this.session.remove();
-
-      // this.session.get()
-      // .then(res => {
-      //     this.profissionalLogado = new Profissional(res);
-      //     console.log('USUARIO LOGADO  >>> ',this.profissionalLogado);
-      // });
-
-      // console.log(this.session.exist());
 }
-
 
   /**
    * Carrega a View TODA vez que ela é chamada.
    */ 
-  ionViewDidEnter(){
-    this.session.get()
-    .then(res => {
-        this.profissionalLogado = new Profissional(res);
-        console.log('usuário logado ionViewDidEnter  >>> ',this.profissionalLogado);
-    });
-    console.log(this.session.exist());
-    console.log(this.profissionalLogado);
+  async ionViewDidEnter(){
+    await this.getSession();
     this.abreCarregando();
-    this.carregaVaga();
+    this.carregaVaga(this.cd_profissional);
   }
 
   /**
    *Carrega uma vaga no listaVagas
    */
-  carregaVaga(){
-    this.vagaService.getVagas(1).subscribe(data =>{
+  carregaVaga(cd_profissional){
+    this.vagaService.getVagas(cd_profissional).subscribe(data =>{
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       this.listaVagas = objeto.sucess;
       this.fechaCarregando();
-
         console.log(this.listaVagas);
     },error =>{
       console.log(error);
@@ -124,7 +105,7 @@ ngOnInit() {
   alertaCurtida(ds_titulo) {
     let alert = this.alertCtrl.create({
       title: 'Parabéns!',
-      subTitle: 'Você está concorrendo a vaga de: '+ds_titulo,
+      subTitle: 'Você está concorrendo a vaga de: '+ ds_titulo,
       buttons: [{
         text: 'OK',
         handler: () => {
@@ -193,7 +174,8 @@ ngOnInit() {
      */
     vagaCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
-      this.vagaService.vagaSelecionada("Like",cd_vaga,1);
+      this.vagaService.vagaSelecionada("Like",cd_vaga,this.cd_profissional);
+      console.log(this.cd_profissional);
       this.alertaCurtida(ds_titulo);
       console.log("Curtida");
     }
@@ -205,7 +187,7 @@ ngOnInit() {
      */
     vagaNaoCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
-      this.vagaService.vagaSelecionada("Dislike",cd_vaga,1);
+      this.vagaService.vagaSelecionada("Dislike",cd_vaga,this.cd_profissional);
       console.log("Não Curtida");
     }
      /**

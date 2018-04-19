@@ -40,20 +40,20 @@ export class LoginPage {
     /**
     * Login Profissional
     */   
-   login(){
+    login(){
      this.abreLogin();
-     this.profissionalservice.login(this.ds_email , this.ds_senha).subscribe(data =>{
+     this.profissionalservice.login(this.ds_email , this.ds_senha).subscribe(async data =>{
       const response = (data as any);
       const objeto =JSON.parse(response._body);
       this.profissional = objeto.sucess;
       console.log(this.profissional);
+      
       if(this.profissional != null){
-        this.criaSession(this.profissional);
-        this.navCtrl.setRoot(MenuPage,{profissional: this.profissional});
+
+       await this.criaSession(this.profissional);
+
+        this.navCtrl.setRoot(MenuPage);
         this.fechaLogin();
-        console.log(this.profissional);
-        
-        //this.config.setConfigData(false, this.profissional._ds_nome, this.profissional._ds_email);
       }else{
         this.fechaLogin();
         this.toast.create({ message: 'Erro ao Efetuar Login. Usuário ou Senha inválidos', duration: 2000 }).present(); 
@@ -79,7 +79,7 @@ export class LoginPage {
   criaSession(profissional) {
     //this.profissional = new Profissional;
     //disparando a sessão
-    this.session.create(this.profissional);
+    this.session.create(profissional);
     
   } 
 

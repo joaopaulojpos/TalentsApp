@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+﻿﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { TesteComportamentalProvider } from '../../providers/teste-comportamental/teste-comportamental';
 import { TesteComportamentalService } from '../../domain/teste-comportamental/teste-comportamental-service';
 import { AnimacaoPage } from '../animacao/animacao';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -13,6 +14,7 @@ import { AnimacaoPage } from '../animacao/animacao';
     TesteComportamentalService
   ]
 })
+
 export class TesteComportamentalPage {
 
   //Atributos
@@ -23,7 +25,7 @@ export class TesteComportamentalPage {
   public listaEscolhas: Array<any>;
   public loader;
 
-  public profissional;
+  public cd_profissional;
 
   constructor(
     public navCtrl: NavController,
@@ -33,7 +35,7 @@ export class TesteComportamentalPage {
     private comportamentalProvider: TesteComportamentalProvider,
     private comportamentalService: TesteComportamentalService
   ) {
-    this.profissional = navParams.get("profissional")
+    this.cd_profissional = navParams.get("cd_profissional").sucess
   }
 
   ionViewDidEnter() {
@@ -111,18 +113,16 @@ export class TesteComportamentalPage {
       this.toast.create({ message: 'Responda todas as questões.\nRespondidas: ' + this.listaEscolhas.length + "//25", duration: 2000 }).present();
     } else {
       for (let x of this.listaEscolhas) {
-        this.comportamentalService.enviarTesteComportamental(x.cd_pergunta, x.cd_resposta, 2)
+        this.comportamentalService.enviarTesteComportamental(x.cd_pergunta, x.cd_resposta, this.cd_profissional)
         countEnviadas++;
-        console.log(countEnviadas)
       }
 
       if (countEnviadas == qtdPerguntasExigidas)
 
-        this.toast.create({ message: "Teste enviado.Qtd de escolhas enviadas: " + this.listaEscolhas.length, duration: 2000 }).present();
-      console.log("Teste enviado.Qtd de escolhas enviadas: " + this.listaEscolhas.length);
-      this.comportamentalService.gerarCalculoPerfilComp(2);
-      this.navCtrl.push(AnimacaoPage,{profissional: this.profissional});
-      console.log("calculo perfil comportamental gerado");
+        this.toast.create({ message: "Teste enviado.Qtd de escolhas enviadas: " + this.listaEscolhas.length, duration: 2000 }).present();      
+      this.comportamentalService.gerarCalculoPerfilComp(this.cd_profissional);      
+
+      this.navCtrl.setRoot(LoginPage);
 
       //this.toast.create({ message: "Teste enviado.Qtd de escolhas enviadas: " + this.listaEscolhas.length, duration: 2000 }).present();
     }

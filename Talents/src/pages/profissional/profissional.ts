@@ -13,7 +13,8 @@ import { LoginPage } from '../login/login';
   selector: 'page-form',
   templateUrl: 'profissional.html',
   providers: [
-    Camera
+    Camera,
+    ProfissionalService
   ]
 })
 export class ProfissionalPage {
@@ -22,7 +23,7 @@ export class ProfissionalPage {
   private imagem;
   private latitude = [];
   private longitude = [];
-  public profissional :Profissional;
+  public profissional: Profissional;
   constructor(
     public navCtrl: NavController,
     public formBuilder: FormBuilder,
@@ -36,31 +37,36 @@ export class ProfissionalPage {
       this.profissionalFormulario.value;
 
     this.profissionalFormulario.patchValue(this.profissional);
-    
+
     this.latitude = this.navParams.get('latitude');
     this.longitude = this.navParams.get('longitude');
 
-    console.log(this.profissional);
-    
+
   }
+
+
+
   /*
    *Metodo chamada salvar profissional
    */
   salvarProfissional() {
-    console.log(this.profissional);
-    this.profissionalservice.cadastrar(this.profissionalFormulario.value);  
-    this.navCtrl.setRoot(TesteComportamentalPage,{ profissional: this.profissionalFormulario.value});  
-    //this.navCtrl.setRoot(LoginPage);
-    console.log(this.profissionalFormulario.value);
-  
+    this.profissionalservice.cadastrar(this.profissionalFormulario.value).subscribe(data => {
+      const response = (data as any)
+      let cd_profissional = response;
+      this.navCtrl.setRoot(TesteComportamentalPage, { cd_profissional: cd_profissional });
+
+      //this.navCtrl.setRoot(LoginPage);
+    }, error => {
+      console.log("Data Erro: " + error);
+    })
   }
 
   private createMyForm() {
 
     return this.formBuilder.group({
-      ds_nome: ['', [Validators.required, Validators.pattern("[a-zA-Z\s]+")]],
-      ds_email: ['', [Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
-      ds_senha: ['', [Validators.pattern(/^[a-z0-9_-]{6,18}$/)]],
+      ds_nome: ['', Validators.required],
+      ds_email: ['', Validators.required],
+      ds_senha: ['', Validators.required],
       dt_nascimento: ['', Validators.required],
       tp_sexo: ['', Validators.required],
       nr_latitude: this.latitude,
@@ -91,8 +97,7 @@ export class ProfissionalPage {
    * Metodo para abrir Maps .
    */
   openMaps() {
-    this.navCtrl.push(MapsPage, { profissional: this.profissionalFormulario.value});
-    console.log(this.profissionalFormulario.value);
+    this.navCtrl.push(MapsPage, { profissional: this.profissionalFormulario.value });
   }
 
 }

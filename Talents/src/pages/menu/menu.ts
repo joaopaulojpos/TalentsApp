@@ -19,24 +19,36 @@ import { ProfissionalIdiomaPage } from '../profissional-idioma/profissional-idio
 export class MenuPage {
   rootPage = VagasPage;
   do = true;
-  public profissional: Profissional;
+  public profissionalLogado: Profissional;
+  public cd_profissional:number;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
     public config: ConfigProvider,
     public session: ConfigProvider
-  ) {
-  
+  ) 
+  { }
+
+
+  async getSession() {
+    await this.session.get()
+        .then(res => {
+            this.profissionalLogado = (res);
+            this.cd_profissional = this.profissionalLogado[0].cd_profissional;
+        });
+           
+        console.log(this.session.exist());
   }
-  ionViewDidEnter(){
-    this.profissional = this.navParams.get('profissional');
-    console.log(this.profissional);
+
+ async ionViewDidEnter(){
+   await this.getSession();
   }
 
   
   abrirPerfil(){
-    this.navCtrl.push(PerfilPage,{profissional: this.profissional});
+    this.navCtrl.push(PerfilPage,{profissional: this.profissionalLogado});
   }
   sair(){
     this.menuCtrl.close();
@@ -45,7 +57,7 @@ export class MenuPage {
     
   }
   chamaEditarPerfil(){
-    this.navCtrl.push(ProfissionalPage,{profissional: this.profissional});
+    this.navCtrl.push(ProfissionalPage,{profissional: this.profissionalLogado});
   }
   chamaHome(){
     this.navCtrl.push(ProfissionalIdiomaPage);

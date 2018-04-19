@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { ServicosProvider } from '../../providers/servicos/servicos';
+import { ConfigProvider } from '../../providers/config/config';
+import { Profissional } from '../../domain/profissional/profissional';
 
 @IonicPage()
 @Component({
@@ -9,23 +11,39 @@ import { ServicosProvider } from '../../providers/servicos/servicos';
 })
 export class NotificacoesPage {
 
+  public profissionalLogado: Profissional;
+  public cd_profissional:number;
   public refresher;
   public isRefreshing: boolean = false;
   public notificacoesList = [];
-
   public loader;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public session: ConfigProvider,
     public notificacoes: ServicosProvider,
     private toast: ToastController,
     public loadingCtrl: LoadingController) {
   }
 
-  ionViewDidEnter() {
+  async getSession() {
+    await this.session.get()
+        .then(res => {
+            this.profissionalLogado = (res);
+            this.cd_profissional = this.profissionalLogado[0].cd_profissional;
+        });
+           
+        console.log(this.session.exist());
+  }
+
+
+
+ async ionViewDidEnter() {
+    await this.getSession();
     this.abreCarregando();
-    this.carregaNotificacoes();
+    this.carregaNotificacoes(this.cd_profissional);
+    console.log(this.cd_profissional);
   }
 
   doRefresh(refresher) {
@@ -35,11 +53,11 @@ export class NotificacoesPage {
     setTimeout(() => {
       refresher.complete();
     }, 2000);
-    this.carregaNotificacoes();
+    this.carregaNotificacoes(this.cd_profissional);
   }
 
-  carregaNotificacoes(){
-    this.notificacoes.getNotificacoes(1).subscribe(data =>{
+  carregaNotificacoes(cd_profissional){
+    this.notificacoes.getNotificacoes(cd_profissional).subscribe(data =>{
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       console.log(objeto);
