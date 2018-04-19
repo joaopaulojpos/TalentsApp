@@ -58,9 +58,9 @@ export class ProfissionalPage {
   private createMyForm() {
 
     return this.formBuilder.group({
-      ds_nome: ['', Validators.required] ,
-      ds_email: ['', Validators.required],
-      ds_senha: ['', Validators.required],
+      ds_nome: ['', [Validators.required, Validators.pattern("[a-zA-Z\s]+")]],
+      ds_email: ['', [Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
+      ds_senha: ['', [Validators.pattern(/^[a-z0-9_-]{6,18}$/)]],
       dt_nascimento: ['', Validators.required],
       tp_sexo: ['', Validators.required],
       nr_latitude: this.latitude,

@@ -24,11 +24,19 @@
         <ion-label stacked>Nome:</ion-label>
         <ion-input formControlName="ds_nome" type="text" placeholder="Nome"></ion-input>
       </ion-item>
+      <ion-item *ngIf="profissionalFormulario.get('ds_nome').errors && profissionalFormulario.get('ds_nome').dirty">
+          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_nome').hasError('required')">O Campo Nome é Obrigatorio</p>
+          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_nome').hasError('pattern')">O Campo Nome informado é Inválido .</p>
+        </ion-item>
       <ion-item>
         <ion-icon name="mail" item-start></ion-icon>
         <ion-label stacked>Email:</ion-label>
         <ion-input formControlName="ds_email" type="email" placeholder="Email"></ion-input>
       </ion-item>
+      <ion-item *ngIf="profissionalFormulario.get('ds_email').errors && profissionalFormulario.get('ds_email').dirty">
+          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_email').hasError('required')">O Campo Email é Obrigatorio</p>
+          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_email').hasError('pattern')">O Campo Email informado é Inválido .</p>
+        </ion-item>
       <ion-item>
         <ion-icon name="md-map" item-start (click)="openMaps()"></ion-icon>
         <ion-label stacked>Localizacação:</ion-label> 
@@ -39,32 +47,39 @@
         <ion-label stacked>Data de Nascimento:</ion-label>
         <ion-datetime formControlName="dt_nascimento" displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"></ion-datetime>
       </ion-item>
+      <ion-item *ngIf="profissionalFormulario.get('dt_nascimento').errors && profissionalFormulario.get('dt_nascimento').dirty">
+          <p color="danger" ion-text *ngIf="profissionalFormulario.get('dt_nascimento').hasError('required')">O Campo Data de Nascimento é Obrigatorio</p>
+        </ion-item>    
       <ion-item>
           <ion-icon name="lock" item-start></ion-icon>
           <ion-label stacked>Senha:</ion-label>
           <ion-input formControlName="ds_senha" type="password" placeholder="Senha"></ion-input>
         </ion-item>
+        <ion-item *ngIf="profissionalFormulario.get('ds_senha').errors && profissionalFormulario.get('ds_senha').dirty">
+          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_senha').hasError('required')">O Campo Senha é Obrigatorio</p>
+          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_senha').hasError('pattern')">O Campo Senha informado é uma senha fraca .</p>
+        </ion-item>    
         <ion-item>
           <ion-icon name="lock" item-start></ion-icon>
           <ion-label stacked>Confirmar Senha:</ion-label>
           <ion-input formControlName="ds_senha" type="password" placeholder="Senha"></ion-input>
         </ion-item>
-      <ion-row radio-group formControlName="tp_sexo">
-        <ion-col>
-          <ion-item>
-            <ion-icon name="woman" item-start></ion-icon>
-            <ion-label>Mulher</ion-label>
-            <ion-radio value="F"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-icon name="man" item-start></ion-icon>
-            <ion-label>Homem</ion-label>
-            <ion-radio value="M"></ion-radio>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+        <ion-item *ngIf="profissionalFormulario.get('ds_senha').errors && profissionalFormulario.get('ds_senha').dirty">
+          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_senha').hasError('required')">O Campo Confirmar Senha é Obrigatorio</p>
+          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_senha').hasError('pattern')">O Campo Senha informado é uma senha fraca .</p>
+        </ion-item>    
+        <ion-item>
+            <ion-icon name="md-transgender" item-start></ion-icon>
+            <ion-label stacked>Gênero:</ion-label>
+          <ion-select formControlName="tp_sexo" placeholder= "Gênero">
+              <ion-option value="I" ng-selected="true">Não Informado</ion-option>
+            <ion-option value="F">Feminino</ion-option>
+            <ion-option value="M">Masculino</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="profissionalFormulario.get('tp_sexo').errors && profissionalFormulario.get('tp_sexo').dirty">
+            <p color="danger" ion-text *ngIf="profissionalFormulario.get('tp_sexo').hasError('required')">O Campo Gênero é Obrigatorio</p>
+          </ion-item> 
     </ion-list>
     <div padding>
       <button ion-button color="secondary" block type="submit" [disabled]="!profissionalFormulario.valid">Avançar</button>

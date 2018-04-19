@@ -55,9 +55,9 @@ ngOnInit() {
   this.session.get()
       .then(res => {
           this.profissionalLogado = new Profissional(res);
-          console.log('usuário logado  >>> ',this.profissionalLogado);
+          console.log('usuário logado ngOnInit  >>> ',this.profissionalLogado);
       });
-
+         
       console.log(this.session.exist());
 
       // this.session.remove();
@@ -72,17 +72,16 @@ ngOnInit() {
 }
 
 
-
-
-
-
-
-
   /**
    * Carrega a View TODA vez que ela é chamada.
    */ 
   ionViewDidEnter(){
-    //this.profissional = this.navParams.get('profissional');
+    this.session.get()
+    .then(res => {
+        this.profissionalLogado = new Profissional(res);
+        console.log('usuário logado ionViewDidEnter  >>> ',this.profissionalLogado);
+    });
+    console.log(this.session.exist());
     console.log(this.profissionalLogado);
     this.abreCarregando();
     this.carregaVaga();
