@@ -32,7 +32,6 @@ export class MyApp {
         this.rootPage = LoginPage;
        // configProvaider.setConfigData(false);
       }else{
-        this.rootPage = MenuPage;
       }
        
       statusBar.styleDefault();

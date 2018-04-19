@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, PopoverController, ToastController } from 'ionic-angular';
 import { VagasService } from '../../domain/vagas/vagas-service';
 import { Vagas } from '../../domain/vagas/vagas';
@@ -8,6 +8,7 @@ import { MenuPage } from '../menu/menu';
 import { NotificacoesPage } from '../notificacoes/notificacoes';
 import { NotificacoesAtalhoPage } from '../notificacoes-atalho/notificacoes-atalho';
 import { ServicosProvider } from '../../providers/servicos/servicos';
+import { ConfigProvider } from '../../providers/config/config';
 
 @IonicPage()
 @Component({
@@ -15,13 +16,14 @@ import { ServicosProvider } from '../../providers/servicos/servicos';
   templateUrl: 'vagas.html',
   providers:[VagasService,ProfissionalService]
 })
-export class VagasPage {
+export class VagasPage implements OnInit{
    public listaVagas =[];
    public mostrarDetalhe: boolean = false;
    public vaga:  Vagas;
    public loader;
    public naoCurtir;
    public profissional: Profissional;
+   public profissionalLogado: Profissional;
 
    public vaga_vazia = [{
     ds_titulo: "TJ Borges",
@@ -42,16 +44,46 @@ export class VagasPage {
     public loadingCtrl: LoadingController,
     private toast: ToastController,
     public alertCtrl: AlertController,
+    public session: ConfigProvider,
     public popoverCtrl: PopoverController
     )
   { }
+
+
+  //assim que o component existir capture a sseão do usuário
+ngOnInit() {
+  this.session.get()
+      .then(res => {
+          this.profissionalLogado = new Profissional(res);
+          console.log('usuário logado  >>> ',this.profissionalLogado);
+      });
+
+      console.log(this.session.exist());
+
+      // this.session.remove();
+
+      // this.session.get()
+      // .then(res => {
+      //     this.profissionalLogado = new Profissional(res);
+      //     console.log('USUARIO LOGADO  >>> ',this.profissionalLogado);
+      // });
+
+      // console.log(this.session.exist());
+}
+
+
+
+
+
+
+
 
   /**
    * Carrega a View TODA vez que ela é chamada.
    */ 
   ionViewDidEnter(){
-    this.profissional = this.navParams.get('profissional');
-    console.log(this.profissional);
+    //this.profissional = this.navParams.get('profissional');
+    console.log(this.profissionalLogado);
     this.abreCarregando();
     this.carregaVaga();
   }
@@ -60,7 +92,7 @@ export class VagasPage {
    *Carrega uma vaga no listaVagas
    */
   carregaVaga(){
-    this.vagaService.getVagas(2).subscribe(data =>{
+    this.vagaService.getVagas(1).subscribe(data =>{
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       this.listaVagas = objeto.sucess;
@@ -162,7 +194,7 @@ export class VagasPage {
      */
     vagaCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
-      this.vagaService.vagaSelecionada("Like",cd_vaga,2);
+      this.vagaService.vagaSelecionada("Like",cd_vaga,1);
       this.alertaCurtida(ds_titulo);
       console.log("Curtida");
     }
@@ -174,7 +206,7 @@ export class VagasPage {
      */
     vagaNaoCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
-      this.vagaService.vagaSelecionada("Dislike",cd_vaga,2);
+      this.vagaService.vagaSelecionada("Dislike",cd_vaga,1);
       console.log("Não Curtida");
     }
      /**

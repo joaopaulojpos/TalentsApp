@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Storage } from "@ionic/storage";
+import { Profissional } from '../../domain/profissional/profissional';
 
 let config_key_name = "config";
 
@@ -11,8 +13,40 @@ export class ConfigProvider {
     userName: ""
 
   }
-  constructor() {
+  constructor(public storage: Storage) {
   }
+
+
+  // setando uma seção e passando o tipo de usuário
+  create(profissional: Profissional) {
+    this.storage.set('profissional', profissional);
+}
+
+get(): Promise<any> {
+    return this.storage.get('profissional');
+}
+
+// Quando deslogar deve remova do storage
+remove() {
+    this.storage.remove('profissional');
+}
+
+exist() {
+    this.get().then(res => {
+        console.log('resultado >>> ', res);
+        if(res) {
+            console.log('resultado IF');
+            return true;
+        } else {
+            console.log('resultado else');
+            return false;
+        }
+    });
+}
+
+
+
+
 
   //recupera os Dados do localtorage
   getConfigData(): any{

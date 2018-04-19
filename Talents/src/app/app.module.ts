@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { TabsPage    } from '../pages/tabs/tabs';
 import { LoginPage   } from '../pages/login/login';
@@ -50,6 +51,7 @@ import { AnimacaoPageModule } from '../pages/animacao/animacao.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     VagasPageModule,
     FavoritasPageModule,
     PerfilPageModule,

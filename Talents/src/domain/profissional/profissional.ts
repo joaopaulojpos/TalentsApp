@@ -1,17 +1,22 @@
-export class Profissional{
+export class Model {
+    constructor(objeto?) {
+        Object.assign(this, objeto);
+    }
+  }
 
-    constructor(
-        public  cd_profissional:number,
-        public  b_foto: string ,
-        public  ds_senha:string ,
-        public  dt_nascimento:Date,
-        public  ds_email:string ,
-        public  nr_latitude:number,
-        public  nr_longitude:number,
-        public  tp_conta: string ,
-        public  tp_sexo:string , 
-        public  ds_nome:string  
-    ){}
+export class Profissional extends Model{
+
+    
+        public  cd_profissional:number;
+        public  b_foto: string;
+        public  ds_senha:string;
+        public  dt_nascimento:Date;
+        public  ds_email:string;
+        public  nr_latitude:number;
+        public  nr_longitude:number;
+        public  tp_conta: string;
+        public  tp_sexo:string;
+        public  ds_nome:string;
 
         get _cd_profissional(): number {
             return this.cd_profissional;

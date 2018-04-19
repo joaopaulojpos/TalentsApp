@@ -39,7 +39,7 @@ export class NotificacoesPage {
   }
 
   carregaNotificacoes(){
-    this.notificacoes.getNotificacoes(2).subscribe(data =>{
+    this.notificacoes.getNotificacoes(1).subscribe(data =>{
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       console.log(objeto);
