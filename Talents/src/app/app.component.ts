@@ -14,7 +14,7 @@ import { Push, PushOptions, PushObject } from '@ionic-native/push';
     ConfigProvider
   ]
 })
-export class MyApp {
+export class TalentsApp {
   rootPage: any = LoginPage;
 
   constructor(
@@ -30,12 +30,10 @@ export class MyApp {
       let config = configProvaider.getConfigData();
       if((config == null) || (config == true)) {
         this.rootPage = LoginPage;
-       // configProvaider.setConfigData(false);
       }else{
       }
        
       statusBar.styleDefault();
-      splashScreen.hide();
       this.pushSetup();
     });
   }

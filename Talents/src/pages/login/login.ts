@@ -61,7 +61,7 @@ export class LoginPage {
      },error =>{
       console.log(error);
       this.fechaLogin();
-      this.toast.create({ message: 'Erro ao conectar-se ao servidor', duration: 2000 }).present(); 
+      this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
      } 
     )
    }

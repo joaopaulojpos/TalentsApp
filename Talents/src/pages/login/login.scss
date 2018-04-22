@@ -4,22 +4,20 @@ page-login {
 		align-content: center;
 		background-repeat: no-repeat;
 		background-size: cover;
-
 	}
 
 	.scroll-content {
-		display: inline-block;
+		display: block;
 		flex-direction: column;
 		justify-content: center;
 		text-align: center;
-		
 	}
 
 	ion-card.card {
-		box-shadow: none;
+		box-shadow: none !important;
 		background: rgba(0, 0, 0, 0.1);
 		border-radius: 5px;
-		margin-top: 18rem;
+		//margin-top: 18rem;
 	}
 
 	a, p,

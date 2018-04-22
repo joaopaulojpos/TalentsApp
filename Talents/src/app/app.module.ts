@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { IonicStorageModule } from '@ionic/storage';
-import { MyApp } from './app.component';
+import { TalentsApp } from './app.component';
 import { TabsPage    } from '../pages/tabs/tabs';
 import { LoginPage   } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -30,7 +30,6 @@ import { TesteComportamentalPageModule } from '../pages/teste-comportamental/tes
 import { ProfissionalIdiomaPage} from '../pages/profissional-idioma/profissional-idioma';
 import { NotificacoesPage } from '../pages/notificacoes/notificacoes';
 import { NotificacoesPageModule } from '../pages/notificacoes/notificacoes.module';
-import { TesteComportamentalProvider } from '../providers/teste-comportamental/teste-comportamental';
 import { HttpClientModule } from '@angular/common/http';
 import { NotificacoesAtalhoPage } from '../pages/notificacoes-atalho/notificacoes-atalho';
 import { LottieAnimationViewModule } from 'ng-lottie';
@@ -54,7 +53,7 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    MyApp,
+    TalentsApp,
     TabsPage,
     LoginPage,
     ProfissionalPage,
@@ -64,7 +63,7 @@ const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(TalentsApp),
     IonicStorageModule.forRoot(),
     VagasPageModule,
     FavoritasPageModule,
@@ -87,7 +86,7 @@ const firebaseConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    TalentsApp,
     TabsPage,
     LoginPage,
     VagasPage,
@@ -111,7 +110,6 @@ const firebaseConfig = {
     VagasService,
     Geolocation,
     ScreenOrientation,
-    TesteComportamentalProvider,
     Facebook,
     IdiomaService,
   ]

@@ -1,7 +1,6 @@
 ﻿﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
-import { TesteComportamentalProvider } from '../../providers/teste-comportamental/teste-comportamental';
-import { TesteComportamentalService } from '../../domain/teste-comportamental/teste-comportamental-service';
+import { TesteComportamentalService } from '../../providers/teste-comportamental/teste-comportamental-service';
 import { AnimacaoPage } from '../animacao/animacao';
 import { LoginPage } from '../login/login';
 
@@ -10,7 +9,6 @@ import { LoginPage } from '../login/login';
   selector: 'page-teste-comportamental',
   templateUrl: 'teste-comportamental.html',
   providers: [
-    TesteComportamentalProvider,
     TesteComportamentalService
   ]
 })
@@ -32,7 +30,7 @@ export class TesteComportamentalPage {
     public navParams: NavParams,
     private toast: ToastController,
     public loadingCtrl: LoadingController,
-    private comportamentalProvider: TesteComportamentalProvider,
+    private comportamentalProvider: TesteComportamentalService,
     private comportamentalService: TesteComportamentalService
   ) {
     this.cd_profissional = navParams.get("cd_profissional").sucess

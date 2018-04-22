@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:895681307146:android:764d2cb7da3280eb",
+        "mobilesdk_app_id": "1:895681307146:android:7cd78a46fcd16788",
         "android_client_info": {
-          "package_name": "io.ionic.starter"
+          "package_name": "br.com.talents"
         }
       },
       "oauth_client": [
