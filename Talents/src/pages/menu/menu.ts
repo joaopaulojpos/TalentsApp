@@ -4,7 +4,7 @@ import { VagasPage } from '../vagas/vagas';
 import { PerfilPage } from '../perfil/perfil';
 import { LoginPage } from '../login/login';
 import { ConfigProvider } from '../../providers/config/config';
-import { Profissional } from '../../domain/profissional/profissional';
+import { Profissional } from '../../providers/profissional/profissional';
 import { ProfissionalPage } from '../profissional/profissional';
 import { ProfissionalIdiomaPage } from '../profissional-idioma/profissional-idioma';
 

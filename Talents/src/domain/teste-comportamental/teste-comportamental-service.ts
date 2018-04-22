@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TesteComportamentalService {
+  private API = "http://localhost/talentsweb/api/public/api/";
   constructor(
     private http: Http
   ) { }
@@ -20,7 +21,7 @@ export class TesteComportamentalService {
       cd_alternativa_perfil_comp: cd_alternativa_perfil_comp,
       cd_profissional: cd_profissional
     });       
-    this.http.post('http://localhost/talentsweb/api/public/api/inserir_resposta', body, options)
+    this.http.post(this.API+'inserir_resposta', body, options)
       .map(res => {
         res.json()
       }).subscribe(data => console.log(data));
@@ -46,7 +47,7 @@ export class TesteComportamentalService {
       cd_profissional: cd_profissional
     });
 
-    this.http.post('http://localhost/talentsweb/api/public/api/CalculoPerfilComp', body, options)
+    this.http.post(this.API+'CalculoPerfilComp', body, options)
       .map(res => {
         res.json()
       }).subscribe(data => console.log(data));

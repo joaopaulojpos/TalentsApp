@@ -17,6 +17,7 @@ export class Profissional extends Model{
         public  tp_conta: string;
         public  tp_sexo:string;
         public  ds_nome:string;
+        public  nm_cidade:String;
 
         get _cd_profissional(): number {
             return this.cd_profissional;

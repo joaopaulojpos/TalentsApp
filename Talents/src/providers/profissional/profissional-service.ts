@@ -42,8 +42,8 @@ export class ProfissionalService {
       ds_senha: profissional.ds_senha,
       dt_nascimento: profissional.dt_nascimento,
       ds_email: profissional.ds_email,
-      nr_latitude: profissional.nr_latitude || -8.1721658,
-      nr_longitude: profissional.nr_longitude || -34.9986835,
+      nr_latitude: profissional.nr_latitude,
+      nr_longitude: profissional.nr_longitude,
       tp_conta: "A",
       tp_sexo: profissional.tp_sexo,
       ds_nome: profissional.ds_nome

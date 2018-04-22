@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController, LoadingController } from 'ionic-angular';
-import { ProfissionalService } from '../../domain/profissional/profissional-service';
+import { ProfissionalService } from '../../providers/profissional/profissional-service';
 import { ProfissionalPage } from '../profissional/profissional';
 import { MenuPage } from '../menu/menu';
-import { Profissional } from '../../domain/profissional/profissional';
+import { Profissional } from '../../providers/profissional/profissional';
 import { ConfigProvider } from '../../providers/config/config';
 
 @IonicPage()

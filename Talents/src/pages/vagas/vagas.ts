@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, PopoverController, ToastController } from 'ionic-angular';
-import { VagasService } from '../../domain/vagas/vagas-service';
-import { Vagas } from '../../domain/vagas/vagas';
-import { Profissional } from '../../domain/profissional/profissional';
-import { ProfissionalService } from '../../domain/profissional/profissional-service';
+import { VagasService } from '../../providers/vagas/vagas-service';
+import { Vagas } from '../../providers/vagas/vagas';
+import { Profissional } from '../../providers/profissional/profissional';
+import { ProfissionalService } from '../../providers/profissional/profissional-service';
 import { MenuPage } from '../menu/menu';
 import { NotificacoesPage } from '../notificacoes/notificacoes';
 import { NotificacoesAtalhoPage } from '../notificacoes-atalho/notificacoes-atalho';

@@ -4,7 +4,7 @@ import {FormControl} from "@angular/forms";
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import { ProfissionalPage } from '../profissional/profissional';
-import { Profissional } from '../../domain/profissional/profissional';
+import { Profissional } from '../../providers/profissional/profissional';
 
 @Component({
   selector: 'page-maps',
@@ -16,7 +16,7 @@ export class MapsPage {
   public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
-  public profissionalMaps: Profissional;
+  public profissional: Profissional;
 
   @ViewChild("search")
   public searchElementRef;
@@ -39,8 +39,8 @@ constructor( public navCtrl: NavController,
 
 ionViewDidEnter() {
     
-    this.profissionalMaps = this.navParams.get('profissional');
-    console.log(this.profissionalMaps);
+    this.profissional = this.navParams.get('profissional');
+    console.log(this.profissional);
     //definir informações padrões do google maps na inicialização da tela
     this.zoom = 15;
     this.latitude = -8.1721658;
@@ -72,6 +72,7 @@ ionViewDidEnter() {
                 this.latitude = place.geometry.location.lat();
                 this.longitude = place.geometry.location.lng();
                 this.zoom = 12;
+                this.profissional.nm_cidade = place.name;
            });
         });
     });
@@ -90,7 +91,12 @@ ionViewDidEnter() {
   }
   //metodo que retorna posição atual do maps 
   private getLocalizcao(){
-    this.navCtrl.setRoot(ProfissionalPage,{latitude: this.latitude , longitude: this.longitude,profissionalMaps: this.profissionalMaps});
+      console.log(this.profissional.ds_email);
+
+      this.profissional.nr_latitude =this.latitude; 
+      this.profissional.nr_longitude =this.longitude; 
+      
+    this.navCtrl.setRoot(ProfissionalPage,{latitude: this.latitude , longitude: this.longitude,profissional: this.profissional});
   }
 
 }

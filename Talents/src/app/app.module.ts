@@ -16,9 +16,9 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { FavoritasPage } from '../pages/favoritas/favoritas';
 import { HttpModule } from '@angular/http';
 import { ServicosProvider } from '../providers/servicos/servicos';
-import { ProfissionalService } from '../domain/profissional/profissional-service';
+import { ProfissionalService } from '../providers/profissional/profissional-service';
 import { ProfissionalPage } from '../pages/profissional/profissional';
-import { VagasService } from '../domain/vagas/vagas-service';
+import { VagasService } from '../providers/vagas/vagas-service';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MapsPage } from '../pages/maps/maps';
 import { MapsPageModule } from '../pages/maps/maps.module';
@@ -40,6 +40,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
 import { AngularFireModule } from 'angularfire2';
+import { IdiomaService } from '../providers/idioma/idioma-service';
 
 
 const firebaseConfig = {
@@ -111,7 +112,8 @@ const firebaseConfig = {
     Geolocation,
     ScreenOrientation,
     TesteComportamentalProvider,
-    Facebook
+    Facebook,
+    IdiomaService,
   ]
 })
 export class AppModule {}

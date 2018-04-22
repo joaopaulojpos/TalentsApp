@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angula
 import { NotificacoesPage } from '../notificacoes/notificacoes';
 import { ServicosProvider } from '../../providers/servicos/servicos';
 import { ConfigProvider } from '../../providers/config/config';
-import { Profissional } from '../../domain/profissional/profissional';
+import { Profissional } from '../../providers/profissional/profissional';
 
 @IonicPage()
 @Component({

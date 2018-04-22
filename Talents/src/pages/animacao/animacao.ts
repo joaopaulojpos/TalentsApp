@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController} from 'ionic-angular';
 import { LottieAnimationViewModule } from 'ng-lottie';
 import { MenuPage } from '../menu/menu';
-import { ProfissionalService } from '../../domain/profissional/profissional-service';
+import { ProfissionalService } from '../../providers/profissional/profissional-service';
 import { ConfigProvider } from '../../providers/config/config';
 
 @Component({

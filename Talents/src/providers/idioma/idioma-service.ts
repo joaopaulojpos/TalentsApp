@@ -4,6 +4,7 @@ import { Idioma } from './idioma';
 
 @Injectable()
 export class IdiomaService {
+  private API = "http://localhost/talentsweb/api/public/api/";
   public idiomas : Array <{}>; 
   public idioma : Idioma;
 
@@ -13,7 +14,11 @@ export class IdiomaService {
     private http: Http
   ) {}
 
+  
+  /************************************
+   **RETORNAR LISTA DE IDIOMAS DA API** 
+   ************************************/
   getIdiomas() {
-    return this.http.get(`http://localhost/talentsweb/api/public/api/idiomas`)
+    return this.http.get(this.API+`idiomas`)
   }
 }

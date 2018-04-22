@@ -3,9 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { MapsPage } from '../maps/maps';
-import { ProfissionalService } from '../../domain/profissional/profissional-service';
+import { ProfissionalService } from '../../providers/profissional/profissional-service';
 import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
-import { Profissional } from '../../domain/profissional/profissional';
+import { Profissional } from '../../providers/profissional/profissional';
 import { LoginPage } from '../login/login';
 
 @IonicPage()
@@ -18,7 +18,7 @@ import { LoginPage } from '../login/login';
   ]
 })
 export class ProfissionalPage {
-
+  
   profissionalFormulario: FormGroup;
   private imagem;
   private latitude = [];
@@ -33,29 +33,20 @@ export class ProfissionalPage {
   ) {
     this.profissionalFormulario = this.createMyForm();
 
-    this.profissional = this.navParams.get('profissionalMaps') ||
-      this.profissionalFormulario.value;
-
+    this.profissional = this.navParams.get('profissional') ||
+    this.profissionalFormulario.value;
+    console.log(this.profissional);
     this.profissionalFormulario.patchValue(this.profissional);
-
-    this.latitude = this.navParams.get('latitude');
-    this.longitude = this.navParams.get('longitude');
-
-
   }
 
-
-
-  /*
-   *Metodo chamada salvar profissional
-   */
+  /**************************************
+   **Metodo chamada salvar profissional**
+   **************************************/
   salvarProfissional() {
     this.profissionalservice.cadastrar(this.profissionalFormulario.value).subscribe(data => {
       const response = (data as any)
       let cd_profissional = response;
       this.navCtrl.setRoot(TesteComportamentalPage, { cd_profissional: cd_profissional });
-
-      //this.navCtrl.setRoot(LoginPage);
     }, error => {
       console.log("Data Erro: " + error);
     })
@@ -71,6 +62,7 @@ export class ProfissionalPage {
       tp_sexo: ['', Validators.required],
       nr_latitude: this.latitude,
       nr_longitude: this.longitude,
+      nm_cidade:[''],
       b_foto: this.imagem,
     });
   }

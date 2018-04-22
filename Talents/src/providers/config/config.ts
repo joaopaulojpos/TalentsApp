@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from "@ionic/storage";
-import { Profissional } from '../../domain/profissional/profissional';
+import { Profissional } from '../../providers/profissional/profissional';
 
 let config_key_name = "config";
 
