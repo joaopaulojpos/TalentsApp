@@ -36,7 +36,20 @@ import { NotificacoesAtalhoPage } from '../pages/notificacoes-atalho/notificacoe
 import { LottieAnimationViewModule } from 'ng-lottie';
 import { AnimacaoPage } from '../pages/animacao/animacao';
 import { AnimacaoPageModule } from '../pages/animacao/animacao.module';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { Facebook } from '@ionic-native/facebook';
+import { AngularFireModule } from 'angularfire2';
 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBwWbPer0fobodAqFCTV8iU1BL6zQvaakQ",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "talentsmaps",
+  storageBucket: "",
+  messagingSenderId: ""
+};
 
 @NgModule({
   declarations: [
@@ -46,7 +59,7 @@ import { AnimacaoPageModule } from '../pages/animacao/animacao.module';
     ProfissionalPage,
     ProfissionalIdiomaPage,
     NotificacoesAtalhoPage,
-    AnimacaoPage 
+    AnimacaoPage
   ],
   imports: [
     BrowserModule,
@@ -62,6 +75,9 @@ import { AnimacaoPageModule } from '../pages/animacao/animacao.module';
     NotificacoesPageModule,
     TesteComportamentalPageModule,
     LottieAnimationViewModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyB8rlkYvUU6FrObUQbsttNDF94uOeuGBCI",
       libraries: ["places"]
@@ -94,7 +110,8 @@ import { AnimacaoPageModule } from '../pages/animacao/animacao.module';
     VagasService,
     Geolocation,
     ScreenOrientation,
-    TesteComportamentalProvider
+    TesteComportamentalProvider,
+    Facebook
   ]
 })
 export class AppModule {}

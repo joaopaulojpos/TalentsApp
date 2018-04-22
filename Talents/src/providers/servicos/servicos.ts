@@ -7,7 +7,10 @@ export class ServicosProvider {
  
   constructor(public http: Http) 
   {}
-
+  
+  /************************************** 
+  **BUSCA NOTIFICAÇÕES POR PROFISSIONAL**
+  ***************************************/
   getNotificacoes(cd_profissional : number) {
     return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/notificacoes?cd_profissional=${cd_profissional}`)
   }

@@ -82,6 +82,16 @@ export class LoginPage {
     this.session.create(profissional);
     
   } 
-
+  
+  loginFacebook(){
+    this.profissionalservice.loginFacebook()
+    .then(() => {
+        this.navCtrl.setRoot(MenuPage);
+      })
+      .catch((error) => {
+        this.toast.create({ duration: 3000, position: 'bottom', message: 'Erro ao efetuar Login via Facebook' })
+          .present();
+      });
+   }
 
   }

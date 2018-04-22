@@ -21,9 +21,9 @@ export class TesteComportamentalProvider {
     return this.http.get(this.baseApiPath + "pergunta_perfil_comp")
   }
 
-  /** 
- * ENVIAR RESPOSTAS DO TESTE COMPORTAMENTAL cd_alternativa_perfil_comp,cd_profissional,cd_pergunta_perfil_comp
- */
+  /************************************************************************************************************** 
+  **ENVIAR RESPOSTAS DO TESTE COMPORTAMENTAL cd_alternativa_perfil_comp,cd_profissional,cd_pergunta_perfil_comp**
+  ***************************************************************************************************************/
   enviarTesteComportamental(cd_pergunta_perfil_comp, cd_alternativa_perfil_comp, profissional) {
     //tutorial:
     //https://www.youtube.com/watch?v=_05v0mrNLh0

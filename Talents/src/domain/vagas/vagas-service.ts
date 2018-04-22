@@ -4,6 +4,8 @@ import { Vagas } from './vagas';
 
 @Injectable()
 export class VagasService {
+  
+  private API = "http://localhost/talentsweb/api/public/api/";
   public vagas : Array <{}>; 
   public vaga : Vagas;
 
@@ -12,21 +14,20 @@ export class VagasService {
   constructor(
     private http: Http
   ) {}
-
   
-  /** 
-   * RETORNA VAGAS POR PROFISSIONAL DA API 
-  */
+  /****************************************** 
+  ***RETORNA VAGAS POR PROFISSIONAL DA API*** 
+  ******************************************/
 
   getVagas(cd_profissional : number) {
     console.log(cd_profissional);
-    return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/vagas?cd_profissional=${cd_profissional}`)
+    return this.http.get(this.API+`profissional/vagas?cd_profissional=${cd_profissional}`)
     
   }
 
-   /** 
-   * ENVIA REQUISICAO DA VAGA SELECIONADA PARA API 
-  */
+   /************************************************ 
+   **ENVIA REQUISICÃO DA VAGA SELECIONADA PARA API** 
+   *************************************************/
  
   vagaSelecionada(tp_acao,cd_vaga,cd_profissional){
     let headers = new Headers({
@@ -41,7 +42,7 @@ export class VagasService {
       cd_profissional: cd_profissional
     });
     
-    this.http.post('http://localhost/talentsweb/api/public/api/vaga/curtirVaga',body,options)
+    this.http.post(this.API+'vaga/curtirVaga',body,options)
     .map(res =>{
       res.json()
     }).subscribe(data => console.log(data));

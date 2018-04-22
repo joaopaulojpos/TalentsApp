@@ -11,9 +11,9 @@
                         <ion-input [(ngModel)]="ds_senha" name="senha" type="password" placeholder="Senha"></ion-input>
                     </ion-item>
                     <a>Esqueceu sua senha ?</a>
-                    <button ion-button block (click)="login()" ion-button block outline color="light">Entrar</button>
+                    <button ion-button block ion-button block outline color="light" (click)="login()" >Entrar</button>
                     <p>OU</p>
-                    <button ion-button block type="submit" ion-button block color="facebook">
+                    <button ion-button block type="submit" ion-button block color="facebook" (click)="loginFacebook()">
                         <ion-icon name="logo-facebook"></ion-icon> Entrar com o facebook
                     </button>
                 </ion-list>

@@ -1,41 +1,34 @@
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Profissional } from './profissional';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import * as firebase from 'firebase/app';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+
 @Injectable()
 export class ProfissionalService {
 
+  private API = "http://localhost/talentsweb/api/public/api/profissional/";
   public profissionalservice: Profissional;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private angularFireAuth: AngularFireAuth,
+              private facebook: Facebook) {
   }
 
-  /*
-   * LOGIN DO PROFISSIONAL COMUNICAÇÃO COM API 
-   * 
-   */
+  /*********************************************
+   **LOGIN DO PROFISSIONAL COMUNICAÇÃO COM API** 
+   ********************************************/
   login(ds_email: string, ds_senha: string) {
 
-    return this.http.get(`http://localhost/talentsweb/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`)
-    /*ALTERADO
-    let API = `http://localhost/talentsweb/api/public/api/profissional/login?login=${ds_email}&senha=${ds_senha}`;
-     return this.http.get(API)
-     .map(res => res.json().sucess)
-     .toPromise()
-     .then(dado =>{
-       let profissionalservice = new Profissional(dado.cd_profissional,dado.b_foto,
-        dado.ds_senha,dado.dt_nascimento,dado.ds_email,dado.nr_latitude,
-        dado.nr_longitude,dado.tp_conta,dado.tp_sexo,dado.ds_nome);
-        console.log(this.profissionalservice);
-        this.profissionalservice = profissionalservice;
-       })--> **/
+    return this.http.get(this.API+`login?login=${ds_email}&senha=${ds_senha}`)
   }
-  isLogado(): Profissional {
-    return this.profissionalservice;
-  }
-  /**
-   * CADASTRAR PROFISSIONAL INFOMRMAÇÕES BASICAS COMUNICIACAO API
-   * @param profissional 
-   */
+ 
+  /**************************************************************
+   *CADASTRAR PROFISSIONAL INFOMRMAÇÕES BASICAS COMUNICIACAO API*
+   * @param profissional***************************************** 
+   **************************************************************/
   cadastrar(profissional) {
     console.log(profissional.ds_email);
     let headers = new Headers({
@@ -56,14 +49,18 @@ export class ProfissionalService {
       ds_nome: profissional.ds_nome
     });
     console.log(body);
-    return this.http.post('http://localhost/talentsweb/api/public/api/profissional/salvar', body, options)
+    return this.http.post(this.API+'salvar', body, options)
       .map(res => res.json())      
-    /*
-    .map(res => {
-      res.json()
-    }).subscribe(data =>
-      console.log(data)
-    );
-    */
   }
+
+ /*****************************************
+ ****LOGIN DO PROFISSIONAL VIA FACEBOOK****
+ ******************************************/  
+loginFacebook() {
+  return this.facebook.login(['public_profile', 'email'])
+    .then((res: FacebookLoginResponse) => {
+      return this.angularFireAuth.auth.signInWithCredential(firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken));
+    });
+}
+  
 }

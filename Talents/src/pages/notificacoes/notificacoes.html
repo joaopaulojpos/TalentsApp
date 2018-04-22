@@ -1,18 +1,12 @@
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <ion-title>Notificações</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
-<ion-content padding>
-
+<ion-content padding class="background">
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
-
     <ion-card *ngFor="let notificacao of notificacoesList" (click)="abrirNotificacao()">
         <ion-card-header>
           Parabéns {{notificacao.ds_nome}}!!
