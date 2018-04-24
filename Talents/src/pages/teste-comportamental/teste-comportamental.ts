@@ -1,5 +1,5 @@
 ﻿﻿import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { TesteComportamentalService } from '../../providers/teste-comportamental/teste-comportamental-service';
 import { AnimacaoPage } from '../animacao/animacao';
 import { LoginPage } from '../login/login';
@@ -22,6 +22,9 @@ export class TesteComportamentalPage {
   public listaObjeto: Array<any>;
   public listaEscolhas: Array<any>;
   public loader;
+  public isNenhumaPerguntaRespondida = true;
+  public countEnviadas = 0;
+  public qtdPerguntasExigidas = 25;
 
   public cd_profissional;
 
@@ -29,6 +32,7 @@ export class TesteComportamentalPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private toast: ToastController,
+    public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private comportamentalProvider: TesteComportamentalService,
     private comportamentalService: TesteComportamentalService
@@ -76,6 +80,7 @@ export class TesteComportamentalPage {
   }
 
   radioChecked(escolha: string, pergunta: any) {
+    this.isNenhumaPerguntaRespondida = false;
     let indexDePerguntaAntigaRepetida = 999;
     let isIgual: boolean = false;
 
@@ -103,28 +108,95 @@ export class TesteComportamentalPage {
 
   }
 
-  finalizarTeste() {
-    let countEnviadas = 0;
-    let qtdPerguntasExigidas = 25;
-    if (this.listaEscolhas.length < qtdPerguntasExigidas) {
 
-      this.toast.create({ message: 'Responda todas as questões.\nRespondidas: ' + this.listaEscolhas.length + "//25", duration: 2000 }).present();
-    } else {
-      for (let x of this.listaEscolhas) {
-        this.comportamentalService.enviarTesteComportamental(x.cd_pergunta, x.cd_resposta, this.cd_profissional)
-        countEnviadas++;
+
+
+  contains(lista, valor): boolean {
+    if (lista != null && valor != null) {
+      for (let objetoDaLista of lista) {
+        if (objetoDaLista == valor) {
+          return true;
+        }
       }
+    }
+  }
 
-      if (countEnviadas == qtdPerguntasExigidas)
+  informarPerguntasRestantes() {
+    let listaPerguntasExigidas = new Array<any>();
+    let listaPerguntasPendentes = new Array<any>();
+    let cdPerguntaRespondida = false;
 
-        this.toast.create({ message: "Teste enviado.Qtd de escolhas enviadas: " + this.listaEscolhas.length, duration: 2000 }).present();      
-      this.comportamentalService.gerarCalculoPerfilComp(this.cd_profissional);      
-
-      this.navCtrl.setRoot(LoginPage);
-
-      //this.toast.create({ message: "Teste enviado.Qtd de escolhas enviadas: " + this.listaEscolhas.length, duration: 2000 }).present();
+    //basicamente criando uma lista q tem de 1 até o valor de qtdPerguntasExigidas
+    for (let index = 1; index <= this.qtdPerguntasExigidas; index++) {
+      listaPerguntasExigidas.push(index)
+    }
+    let listaEscolhasSohComPerguntas = new Array<any>();
+    for (let escolha of this.listaEscolhas) {
+      listaEscolhasSohComPerguntas.push(escolha.cd_pergunta)
+    }
+    for (let exigida of listaPerguntasExigidas) {
+      if (!this.contains(listaEscolhasSohComPerguntas, exigida)) {
+        listaPerguntasPendentes.push(exigida)
+      }
     }
 
+
+    let erro = 'Respondidas: ' + this.listaEscolhas.length + "/" + this.qtdPerguntasExigidas + ".";
+    let erro2 = "<table style=\"width:100%\">"
+    let colunas = 1;
+
+    for (let perguntaPendente of listaPerguntasPendentes) {
+      if (colunas == 3) {
+        colunas = 0;
+        erro2 += "<td>" + perguntaPendente + ")Pergunta.</td></tr>"
+      } else {
+        if (colunas == 2) {
+          erro2 += "<td>" + perguntaPendente + ")Pergunta.</td>"
+        } else {
+          erro2 += "<tr> <td>" + perguntaPendente + ")Pergunta.</td>"
+        }
+
+      }
+      colunas++;
+    }
+    erro2 += "</table>";
+
+    let alert = this.alertCtrl.create({
+      title: erro,
+      subTitle: "Faltam:",
+      message: erro2,
+      buttons: ['OK']
+    });
+    alert.present();
+
+
+  }
+
+  finalizarTeste() {
+    if (this.isNenhumaPerguntaRespondida) {
+      this.toast.create({
+        message: "Você não respondeu nenhuma pergunta.",
+        duration: 2000
+      }).present();
+
+    } else {
+      if (this.listaEscolhas.length < this.qtdPerguntasExigidas) {
+        this.informarPerguntasRestantes();
+      } else {
+        for (let x of this.listaEscolhas) {
+          this.comportamentalService.enviarTesteComportamental(x.cd_pergunta, x.cd_resposta, this.cd_profissional)
+          this.countEnviadas++;
+        }
+
+        if (this.countEnviadas == this.qtdPerguntasExigidas)
+
+          this.toast.create({ message: "Teste enviado!" , duration: 2000 }).present();
+        this.comportamentalService.gerarCalculoPerfilComp(this.cd_profissional);
+
+        this.navCtrl.setRoot(LoginPage);
+
+      }
+    }
 
   }
 
