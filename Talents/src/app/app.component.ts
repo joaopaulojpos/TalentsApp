@@ -30,6 +30,12 @@ export class TalentsApp {
       let config = configProvaider.getConfigData();
       if((config == null) || (config == true)) {
         this.rootPage = LoginPage;
+      //     window.FirebasePlugin.getToken(function(token) {
+      //       // save this server-side and use it to push notifications to this device
+      //       console.log("Token Firebase" + token);
+      // }, function(error) {
+      //     console.error(error);
+      // })
       }else{
       }
        

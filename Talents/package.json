@@ -25,6 +25,7 @@
     "@ionic-native/camera": "^4.5.3",
     "@ionic-native/core": "4.4.0",
     "@ionic-native/facebook": "^4.7.0",
+    "@ionic-native/firebase": "^4.7.0",
     "@ionic-native/geolocation": "^4.6.0",
     "@ionic-native/push": "^4.7.0",
     "@ionic-native/screen-orientation": "^4.6.0",

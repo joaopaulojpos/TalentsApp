@@ -1,52 +1,49 @@
 import { Injectable } from '@angular/core';
 import { Storage } from "@ionic/storage";
 import { Profissional } from '../../providers/profissional/profissional';
+import { Firebase } from '@ionic-native/firebase';
 
 let config_key_name = "config";
 
 @Injectable()
 export class ConfigProvider {
 
-  private config = {
-    showLogin: false,
-    name: "",
-    userName: ""
-
-  }
-  constructor(public storage: Storage) {
-  }
+  constructor(public storage: Storage,
+              private firebase: Firebase)
+              {}
 
 
   // setando uma seção e passando o tipo de usuário
   create(profissional: Profissional) {
     this.storage.set('profissional', profissional);
-}
+    this.firebase.onTokenRefresh().subscribe((token: string) => console.log('Um novo token foi gerado ${token}'));
+  }
 
-get(): Promise<any> {
+  get(): Promise<any> {
+   // this.firebase.getToken()
+     // .then(token => console.log('O token é ${token}'))
+      //.catch(error => console.error('Erro ao pegar token', error));
+    
     return this.storage.get('profissional');
-}
+  }
 
-// Quando deslogar deve remova do storage
-remove() {
-    this.storage.remove('profissional');
-}
+  // Quando deslogar deve remova do storage
+  remove() {
+      this.storage.remove('profissional');
+  }
 
-exist() {
-    this.get().then(res => {
-        console.log('resultado >>> ', res);
-        if(res) {
-            console.log('resultado IF');
-            return true;
-        } else {
-            console.log('resultado else');
-            return false;
-        }
-    });
-}
-
-
-
-
+  exist() {
+      this.get().then(res => {
+          console.log('resultado >>> ', res);
+          if(res) {
+              console.log('resultado IF');
+              return true;
+          } else {
+              console.log('resultado else');
+              return false;
+          }
+      });
+  }
 
   //recupera os Dados do localtorage
   getConfigData(): any{

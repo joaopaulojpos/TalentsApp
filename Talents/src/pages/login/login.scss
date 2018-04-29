@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Playball');
+
 page-login {
 	.background {
 		background-image: url('../assets/imgs/talents.jpg');
@@ -5,6 +7,19 @@ page-login {
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
+
+	.logo{
+		color: #00b7d5;
+		//color: rgba(19, 226, 154, 0.679);
+		font-weight: 900;
+		font-family: 'Playball', cursive;
+		font-size:4rem;
+		margin: 0;
+		padding: 0;
+		align-content: center;
+		
+	}
+
 
 	.scroll-content {
 		display: block;

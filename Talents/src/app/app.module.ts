@@ -40,6 +40,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
 import { AngularFireModule } from 'angularfire2';
 import { IdiomaService } from '../providers/idioma/idioma-service';
+import { Firebase } from '@ionic-native/firebase';
 
 
 const firebaseConfig = {
@@ -112,6 +113,7 @@ const firebaseConfig = {
     ScreenOrientation,
     Facebook,
     IdiomaService,
+    Firebase
   ]
 })
 export class AppModule {}
