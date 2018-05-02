@@ -16,7 +16,7 @@ export class ConfigProvider {
   // setando uma seção e passando o tipo de usuário
   create(profissional: Profissional) {
     this.storage.set('profissional', profissional);
-    this.firebase.onTokenRefresh().subscribe((token: string) => console.log('Um novo token foi gerado ${token}'));
+    //this.firebase.onTokenRefresh().subscribe((token: string) => console.log('Um novo token foi gerado ${token}'));
   }
 
   get(): Promise<any> {

@@ -27,7 +27,7 @@ import { MenuPageModule } from '../pages/menu/menu.module';
 import { MenuPage } from '../pages/menu/menu';
 import { AgmCoreModule } from '@agm/core';
 import { TesteComportamentalPageModule } from '../pages/teste-comportamental/teste-comportamental.module';
-import { ProfissionalIdiomaPage} from '../pages/profissional-idioma/profissional-idioma';
+import { IdiomaPage} from '../pages/idioma/idioma';
 import { NotificacoesPage } from '../pages/notificacoes/notificacoes';
 import { NotificacoesPageModule } from '../pages/notificacoes/notificacoes.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -41,6 +41,8 @@ import { Facebook } from '@ionic-native/facebook';
 import { AngularFireModule } from 'angularfire2';
 import { IdiomaService } from '../providers/idioma/idioma-service';
 import { Firebase } from '@ionic-native/firebase';
+import {RlTagInputModule} from 'angular2-tag-input';
+
 
 
 const firebaseConfig = {
@@ -58,7 +60,7 @@ const firebaseConfig = {
     TabsPage,
     LoginPage,
     ProfissionalPage,
-    ProfissionalIdiomaPage,
+    IdiomaPage,
     NotificacoesAtalhoPage,
     AnimacaoPage
   ],
@@ -78,6 +80,7 @@ const firebaseConfig = {
     LottieAnimationViewModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    RlTagInputModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyB8rlkYvUU6FrObUQbsttNDF94uOeuGBCI",
@@ -96,7 +99,7 @@ const firebaseConfig = {
     MenuPage,
     ProfissionalPage,
     MapsPage,
-    ProfissionalIdiomaPage,
+    IdiomaPage,
     NotificacoesPage,
     NotificacoesAtalhoPage,
     AnimacaoPage,

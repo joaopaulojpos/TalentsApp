@@ -5,6 +5,7 @@ import { ProfissionalPage } from '../profissional/profissional';
 import { MenuPage } from '../menu/menu';
 import { Profissional } from '../../providers/profissional/profissional';
 import { ConfigProvider } from '../../providers/config/config';
+import { IdiomaPage } from '../idioma/idioma';
 
 @IonicPage()
 @Component({
@@ -34,7 +35,7 @@ export class LoginPage {
     * Cadastrar Profissional
     */   
     cadastrarProfissional(){
-      this.navCtrl.push(ProfissionalPage);
+      this.navCtrl.push(IdiomaPage);
     }
 
     /**

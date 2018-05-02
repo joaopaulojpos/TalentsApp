@@ -5,6 +5,7 @@ import { Idioma } from './idioma';
 @Injectable()
 export class IdiomaService {
   private API = "http://localhost/talentsweb/api/public/api/";
+  //private API = "http://talents.heliohost.org/api/public/api/";
   public idiomas : Array <{}>; 
   public idioma : Idioma;
 

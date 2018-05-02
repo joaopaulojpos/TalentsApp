@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar color="secondary">
+      <ion-title>
+        Lista de Idiomas
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+<ion-content padding class="background">
+    <rl-tag-input
+    [(ngModel)]="adicionadosIdiomas"
+    [addOnBlur]="false"
+    [autocomplete]="true"
+    [autocompleteItems]="preparedTags"
+    placeholder="Digite o nome do idioma">
+    </rl-tag-input>
+    <ion-item>
+  <ion-label stacked>Nivel de Conhecimento</ion-label>
+<ion-select placeholder= "Selecione um Nivel">
+  <ion-option value="1">Nivel 1</ion-option>
+  <ion-option value="2">Nivel 2</ion-option>
+  <ion-option value="3">Nivel 3</ion-option>
+</ion-select>
+</ion-item>
+<button ion-button full (click)="adicionar()">Adicionar Idioma</button>
+<br><hr>
+<ion-list>
+  <ion-item *ngFor="let idioma of idiomas">
+    {{ idioma.name }}
+    <p>
+      {{ idioma.adicionadosIdiomas.join(' ') }}
+    </p>
+  </ion-item>
+</ion-list> 
+<ion-card *ngIf="idiomas.length == 0">
+    <ion-card-content>Não há idiomas incluidos.</ion-card-content>
+  </ion-card>
+</ion-content>

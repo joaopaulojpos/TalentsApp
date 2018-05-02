@@ -6,7 +6,7 @@ import { LoginPage } from '../login/login';
 import { ConfigProvider } from '../../providers/config/config';
 import { Profissional } from '../../providers/profissional/profissional';
 import { ProfissionalPage } from '../profissional/profissional';
-import { ProfissionalIdiomaPage } from '../profissional-idioma/profissional-idioma';
+import { IdiomaPage } from '../idioma/idioma';
 
 @IonicPage()
 @Component({
@@ -60,6 +60,6 @@ export class MenuPage {
     this.navCtrl.push(ProfissionalPage,{profissional: this.profissionalLogado});
   }
   chamaHome(){
-    this.navCtrl.push(ProfissionalIdiomaPage);
+    this.navCtrl.push(IdiomaPage);
   }
 }
