@@ -19,4 +19,30 @@ export class CursoService {
   getCursos() {
     return this.http.get(this.API+`cursos`);
   }
+  
+  /**************************************************
+   **CADASTRAR CURSOS PROFISSIONAL COMUNICIACAO API**
+   ** @param curso*********************************** 
+   **************************************************/
+   adicionar(curso) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({
+      headers: headers
+    });
+    let body = JSON.stringify({
+      cd_profissional: curso.cd_profissional,
+      cd_curso: curso.cd_curso,
+	    ds_instituicao:curso.ds_instituicao,
+	    dt_fim:curso.dt_fim,
+	    dt_inicio:curso.dt_inicio,
+	    tp_certificado_validado:"A",
+	    nr_certificado:curso.nr_certificado,
+	    nr_periodo: curso.nr_periodo
+    });
+    console.log(body);
+    return this.http.post(this.API+'salvar', body, options)
+      .map(res => res.json())      
+  }
 }

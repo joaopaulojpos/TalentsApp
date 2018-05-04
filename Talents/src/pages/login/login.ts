@@ -34,16 +34,16 @@ export class LoginPage {
   }  
   ionViewDidLoad(){
   }                           
-   /**   
-    * Cadastrar Profissional
-    */   
+   /**************************   
+    **Cadastrar Profissional**
+    **************************/   
     cadastrarProfissional(){
       this.navCtrl.push(ListCursosPage);
     }
 
-    /**
-    * Login Profissional
-    */   
+    /**********************
+     **Login Profissional**
+     **********************/   
     login(){
      this.abreLogin();
      this.profissionalservice.login(this.ds_email , this.ds_senha).subscribe(async data =>{

@@ -18,6 +18,25 @@ export class IdiomaService {
   getIdiomas() {
     return this.http.get(this.API+`idiomas`);
   }
-}
-
-     
+  
+ /***************************************************
+  **CADASTRAR IDIOMAS PROFISSIONAL COMUNICIACAO API**
+  ** @param idioma*********************************** 
+  ***************************************************/
+  adicionar(idioma) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({
+      headers: headers
+    });
+    let body = JSON.stringify({
+      cd_profissional: idioma.cd_profissional,
+      cd_idioma: idioma.cd_idioma,
+      nr_nivel: idioma.nr_nivel,
+    });
+    console.log(body);
+    return this.http.post(this.API+'salvar', body, options)
+      .map(res => res.json())      
+  }
+}     

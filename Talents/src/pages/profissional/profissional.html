@@ -3,7 +3,7 @@
     <ion-title>Cadastro Profissional</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content class="background">
+<ion-content padding class="background">
   <form [formGroup]="profissionalFormulario" (ngSubmit)="salvarProfissional()">
   <!-- PRECISAR AJUSTAR LAYOUT PARA FICAR NO CENTRO E MAIOR   
       <ion-item>
@@ -13,11 +13,11 @@
           <div class="tirar_foto">
                 <ion-icon name="camera" (click)="tirarFoto()"></ion-icon>
               </div>
-            </ion-item> -->
+            </ion-item> 
             <p>
                 <img class="avatar" *ngIf="imagem" [src]="imagem" alt="" width="100%" height="150px">
             </p>         
-            <p>
+            <p>-->
     <ion-list>
       <ion-item>
         <ion-icon name="person" item-start></ion-icon>
@@ -79,10 +79,8 @@
         </ion-item>
         <ion-item *ngIf="profissionalFormulario.get('tp_sexo').errors && profissionalFormulario.get('tp_sexo').dirty">
             <p color="danger" ion-text *ngIf="profissionalFormulario.get('tp_sexo').hasError('required')">O Campo Gênero é Obrigatorio</p>
-          </ion-item> 
+          </ion-item>
+          <button ion-button color="secondary" block type="submit" [disabled]="!profissionalFormulario.valid">Avançar</button>
     </ion-list>
-    <div padding>
-      <button ion-button color="secondary" block type="submit" [disabled]="!profissionalFormulario.valid">Avançar</button>
-    </div>
   </form>
 </ion-content>

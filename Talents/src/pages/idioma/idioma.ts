@@ -2,22 +2,26 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { IdiomaService } from '../../providers/idioma/idioma-service';
 import { CONSTANTS } from '@firebase/util';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 @IonicPage()
 @Component({
   selector: 'page-idioma',
   templateUrl: 'idioma.html'
 })
 export class IdiomaPage {
-  
+    
+    idiomaFormulario: FormGroup; 
     public idiomas =[];
  
     constructor(public navCtrl: NavController,
                 public alertCtrl: AlertController,
                 public idiomaService: IdiomaService,
-                private toast: ToastController) {
- 
-    }
+                private toast: ToastController,
+                public formBuilder: FormBuilder) {
+     
+    this.idiomaFormulario = this.createMyForm(); 
 
+    }
     ionViewDidEnter(){
         this.carregaIdiomas();
       }   
@@ -34,5 +38,23 @@ export class IdiomaPage {
           }
          )
         }
+
+  /********************************
+   **Metodo chamada salvar idioma**
+   ********************************/
+  adicionar() {
+    
+    console.log(this.idiomaFormulario.value);
+  }
+
+  private createMyForm() {
+
+    return this.formBuilder.group({
+      cd_idioma: ['', Validators.required],
+      nr_nivel: ['', Validators.required],
+      cd_profissional: "1",
+    });
+  }        
+
       
 }

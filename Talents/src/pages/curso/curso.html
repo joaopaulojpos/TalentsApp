@@ -6,41 +6,42 @@
   </ion-header>
 
   <ion-content padding class="background">
-   
+      <form [formGroup]="cursoFormulario" (ngSubmit)="adicionar()">
       <ion-list>
           <br>
         <ion-item>
             <ion-icon name="school" item-start></ion-icon>
             <ion-label stacked>Curso</ion-label>
-            <ion-select  placeholder= "Selecione o Curso">
-                <ion-option *ngFor="let curso of cursos">{{curso.ds_curso}}</ion-option>
+            <ion-select  placeholder= "Selecione o Curso"formControlName="cd_curso">
+                <ion-option *ngFor="let curso of cursos" [value]="curso.cd_curso">{{curso.ds_curso}}</ion-option>
         </ion-select>    
         </ion-item>
         <ion-item>
             <ion-icon name="stats" item-start></ion-icon>
             <ion-label stacked>Instituição:</ion-label>
-            <ion-input placeholder="Nome Instituição"></ion-input>
+            <ion-input placeholder="Nome Instituição"formControlName="ds_instituicao"></ion-input>
           </ion-item>
           <ion-item>
           <ion-icon name="calendar" item-start></ion-icon>
           <ion-label stacked>Data de Inicio:</ion-label>
-          <ion-datetime displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"></ion-datetime>
+          <ion-datetime displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"formControlName="dt_inicio"></ion-datetime>
         </ion-item>
         <ion-item>
         <ion-icon name="calendar" item-start></ion-icon>
         <ion-label stacked>Data Prevista de Conclusão:</ion-label>
-        <ion-datetime displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"></ion-datetime>
+        <ion-datetime displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"formControlName="dt_fim"></ion-datetime>
       </ion-item>
       <ion-item>
           <ion-icon name="ribbon" item-start></ion-icon>
           <ion-label stacked>Certificado:</ion-label>
-          <ion-input type="text" placeholder="Numero do Certificado"></ion-input>
+          <ion-input type="text" placeholder="Numero do Certificado"formControlName="nr_certificado"></ion-input>
         </ion-item>
         <ion-item>
             <ion-icon name="timer" item-start></ion-icon>
             <ion-label stacked>Periodo:</ion-label>
-            <ion-input type="text" placeholder="Numero do Periodo"></ion-input>
+            <ion-input type="text" placeholder="Numero do Periodo"formControlName="nr_periodo"></ion-input>
           </ion-item>  
-            <button ion-button full color="secondary"> <ion-icon name="add"> Incluir </ion-icon></button>
+          <button ion-button color="secondary" block type="submit" [disabled]="!cursoFormulario.valid">Incluir</button>
         </ion-list>
+      </form>
   </ion-content>

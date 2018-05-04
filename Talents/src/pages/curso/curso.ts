@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { CursoService } from '../../providers/curso/curso-service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -8,13 +9,16 @@ import { CursoService } from '../../providers/curso/curso-service';
   templateUrl: 'curso.html',
 })
 export class CursoPage {
-
+  cursoFormulario: FormGroup; 
   public cursos =[];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private toast: ToastController,
-              public cursoService: CursoService) {
+              public cursoService: CursoService,
+              public formBuilder: FormBuilder) {
+
+    this.cursoFormulario = this.createMyForm(); 
   }
   ionViewDidEnter(){
     this.carregaCursos();
@@ -32,4 +36,25 @@ export class CursoPage {
       }
      )
     }
+ /*******************************
+  **Metodo chamada salvar curso**
+  *******************************/
+  adicionar() {
+    
+    console.log(this.cursoFormulario.value);
+  }
+
+  private createMyForm() {
+
+    return this.formBuilder.group({
+      cd_profissional:"1",
+      cd_curso: ['', Validators.required],
+      ds_instituicao: ['', Validators.required],
+      dt_fim: ['', Validators.required],
+      dt_inicio: ['', Validators.required],
+      tp_certificado_validado: "A",
+	    nr_certificado:['', Validators.required],
+	    nr_periodo: ['', Validators.required]
+    });
+  }          
 }

@@ -19,4 +19,24 @@ export class CompetenciaService {
   getCompetencias() {
     return this.http.get(this.API+`competencias_tecnicas`);
   }
+   /********************************************************
+    **CADASTRAR COMPETENCIAS PROFISSIONAL COMUNICIACAO API**
+    ** @param competencia*********************************** 
+    ********************************************************/
+  adicionar(competencia) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({
+      headers: headers
+    });
+    let body = JSON.stringify({
+      cd_profissional: competencia.cd_profissional,
+      cd_competencia_tecnica: competencia.cd_competencia_tecnica,
+      nr_nivel: competencia.nr_nivel,
+    });
+    console.log(body);
+    return this.http.post(this.API+'salvar', body, options)
+      .map(res => res.json())      
+  }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { CompetenciaService } from '../../providers/competencia/competencia-service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -8,12 +9,17 @@ import { CompetenciaService } from '../../providers/competencia/competencia-serv
   templateUrl: 'competencia.html',
 })
 export class CompetenciaPage {
+  
+  competenciaFormulario: FormGroup; 
   public competencias =[];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private toast: ToastController,
-              public competenciaService: CompetenciaService) {
+              public competenciaService: CompetenciaService,
+              public formBuilder: FormBuilder) {
+                
+    this.competenciaFormulario = this.createMyForm(); 
   }
   ionViewDidEnter(){
     this.carregaCompetencias();
@@ -31,5 +37,20 @@ export class CompetenciaPage {
       }
      )
     }
+  /*************************************
+   **Metodo chamada salvar competencia**
+   *************************************/
+  adicionar() {
+    
+    console.log(this.competenciaFormulario.value);
+  }
 
+  private createMyForm() {
+
+    return this.formBuilder.group({
+      cd_competencia_tecnica: ['', Validators.required],
+      nr_nivel: ['', Validators.required],
+      cd_profissional: "1",
+    });
+  }        
 }
