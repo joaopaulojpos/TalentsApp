@@ -40,8 +40,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
 import { AngularFireModule } from 'angularfire2';
 import { IdiomaService } from '../providers/idioma/idioma-service';
+import { CompetenciaService } from '../providers/competencia/competencia-service';
 import { Firebase } from '@ionic-native/firebase';
 import {RlTagInputModule} from 'angular2-tag-input';
+import { ListIdiomasPage } from '../pages/list-idiomas/list-idiomas';
+import { ListCompetenciasPage } from '../pages/listcompetencias/listcompetencias';
+import { CompetenciaPage } from '../pages/competencia/competencia';
+import { CursoService } from '../providers/curso/curso-service';
+import { CursoPage } from '../pages/curso/curso';
+import { ListCursosPage } from '../pages/listcursos/listcursos';
 
 
 
@@ -62,7 +69,12 @@ const firebaseConfig = {
     ProfissionalPage,
     IdiomaPage,
     NotificacoesAtalhoPage,
-    AnimacaoPage
+    AnimacaoPage,
+    ListIdiomasPage,
+    ListCompetenciasPage,
+    CompetenciaPage,
+    ListCursosPage,
+    CursoPage
   ],
   imports: [
     BrowserModule,
@@ -103,6 +115,12 @@ const firebaseConfig = {
     NotificacoesPage,
     NotificacoesAtalhoPage,
     AnimacaoPage,
+    ListIdiomasPage,
+    ListCompetenciasPage,
+    CompetenciaPage,
+    ListCursosPage,
+    CursoPage
+    
   ],
   providers: [
     StatusBar,
@@ -116,7 +134,9 @@ const firebaseConfig = {
     ScreenOrientation,
     Facebook,
     IdiomaService,
-    Firebase
+    Firebase,
+    CompetenciaService,
+    CursoService
   ]
 })
 export class AppModule {}

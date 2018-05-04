@@ -1,0 +1,38 @@
+<ion-header>
+ 
+    <ion-navbar class="ion-nav-bar" color="secondary">
+      <ion-title>Cadastre Seus Cursos</ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="adicionar()"><ion-icon name="add"></ion-icon></button>
+      </ion-buttons>
+    </ion-navbar>
+   
+  </ion-header>
+   
+  <ion-content>
+   
+      <ion-list>
+   
+          <ion-item-sliding *ngFor="let curso of cursos">
+   
+              <ion-item>
+                  {{curso}}
+              </ion-item>
+   
+              <ion-item-options>
+                  <button ion-button icon-only (click)="editar(curso)" light>
+                      <ion-icon name="paper"></ion-icon>
+                  </button>
+                  <button ion-button icon-only (click)="deletar(curso)" danger>
+                      <ion-icon name="trash"></ion-icon>
+                  </button>
+              </ion-item-options>
+   
+          </ion-item-sliding>
+   
+      </ion-list>
+      <ion-card *ngIf="cursos.length == 0">
+        <ion-card-content>Não há nenhum Curso incluido em seu perfil.</ion-card-content>
+      </ion-card>    
+      <button ion-button full color="secondary"> Avançar </button>
+  </ion-content>

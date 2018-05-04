@@ -1,19 +1,19 @@
 <ion-header>
  
     <ion-navbar class="ion-nav-bar" color="secondary">
-      <ion-title>Cadastro de Idioma</ion-title>
+      <ion-title><p> Cadastro de Competências </p></ion-title>
     </ion-navbar>   
   </ion-header>
-
+   
   <ion-content padding class="background">
    
       <ion-list>
           <br>
         <ion-item>
             <ion-icon name="book" item-start></ion-icon>
-            <ion-label stacked>Idioma</ion-label>
-            <ion-select  placeholder= "Selecione o Idioma">
-                <ion-option *ngFor="let idioma of idiomas">{{idioma.ds_idioma}}</ion-option>
+            <ion-label stacked>Competência</ion-label>
+            <ion-select  placeholder= "Selecione a Competência">
+                <ion-option *ngFor="let competencia of competencias">{{competencia.ds_competencia_tecnica}}</ion-option>
                   </ion-select>    
         </ion-item>
          <ion-item>

@@ -1,0 +1,38 @@
+<ion-header>
+ 
+    <ion-navbar class="ion-nav-bar" color="secondary">
+      <ion-title><p> Suas Competências </p></ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="adicionar()"><ion-icon name="add"></ion-icon></button>
+      </ion-buttons>
+    </ion-navbar>
+   
+  </ion-header>
+   
+  <ion-content>
+   
+      <ion-list>
+   
+          <ion-item-sliding *ngFor="let competencia of competencias">
+   
+              <ion-item>
+                  {{competencia}}
+              </ion-item>
+   
+              <ion-item-options>
+                  <button ion-button icon-only (click)="editar(competencia)" light>
+                      <ion-icon name="paper"></ion-icon>
+                  </button>
+                  <button ion-button icon-only (click)="deletar(competencia)" danger>
+                      <ion-icon name="trash"></ion-icon>
+                  </button>
+              </ion-item-options>
+   
+          </ion-item-sliding>
+   
+      </ion-list>
+      <ion-card *ngIf="competencias.length == 0">
+        <ion-card-content>Não há nenhum Competências incluido em seu perfil.</ion-card-content>
+      </ion-card>
+      <button ion-button full color="secondary"> Avançar </button>    
+  </ion-content>

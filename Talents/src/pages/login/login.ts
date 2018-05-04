@@ -6,6 +6,9 @@ import { MenuPage } from '../menu/menu';
 import { Profissional } from '../../providers/profissional/profissional';
 import { ConfigProvider } from '../../providers/config/config';
 import { IdiomaPage } from '../idioma/idioma';
+import { ListIdiomasPage } from '../list-idiomas/list-idiomas';
+import { ListCompetenciasPage } from '../listcompetencias/listcompetencias';
+import { ListCursosPage } from '../listcursos/listcursos';
 
 @IonicPage()
 @Component({
@@ -35,7 +38,7 @@ export class LoginPage {
     * Cadastrar Profissional
     */   
     cadastrarProfissional(){
-      this.navCtrl.push(IdiomaPage);
+      this.navCtrl.push(ListCursosPage);
     }
 
     /**
