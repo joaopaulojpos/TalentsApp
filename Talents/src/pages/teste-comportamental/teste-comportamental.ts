@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController, LoadingController
 import { TesteComportamentalService } from '../../providers/teste-comportamental/teste-comportamental-service';
 import { AnimacaoPage } from '../animacao/animacao';
 import { LoginPage } from '../login/login';
+import { ListCargosPage } from '../list-cargos/list-cargos';
 
 @IonicPage()
 @Component({
@@ -193,7 +194,7 @@ export class TesteComportamentalPage {
           this.toast.create({ message: "Teste enviado!" , duration: 2000 }).present();
         this.comportamentalService.gerarCalculoPerfilComp(this.cd_profissional);
 
-        this.navCtrl.setRoot(LoginPage);
+        this.navCtrl.setRoot(ListCargosPage, { cd_profissional: this.cd_profissional });
 
       }
     }

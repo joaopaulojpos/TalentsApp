@@ -62,5 +62,40 @@ loginFacebook() {
       return this.angularFireAuth.auth.signInWithCredential(firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken));
     });
 }
+ /****************************************** 
+  **RETORNA CURSOS POR PROFISSIONAL DA API** 
+  ******************************************/
+
+ getCursos(cd_profissional : number) {
+  console.log(cd_profissional);
+  return this.http.get(this.API+`cursos?cd_profissional=${cd_profissional}`)
   
+  }
+   /****************************************** 
+    **RETORNA CARGOS POR PROFISSIONAL DA API** 
+    ******************************************/
+
+ getCargos(cd_profissional : number) {
+  console.log(cd_profissional);
+  return this.http.get(this.API+`cargos?cd_profissional=${cd_profissional}`)
+  
+  }
+    /******************************************* 
+     **RETORNA IDIOMAS POR PROFISSIONAL DA API** 
+     *******************************************/
+
+ getIdiomas(cd_profissional : number) {
+  console.log(cd_profissional);
+  return this.http.get(this.API+`idiomas?cd_profissional=${cd_profissional}`)
+  
+  }
+   /************************************************ 
+    **RETORNA COMPETENCIAS POR PROFISSIONAL DA API** 
+    ************************************************/
+
+ getCompetencias(cd_profissional : number) {
+  console.log(cd_profissional);
+  return this.http.get(this.API+`competencias_tecnicas?cd_profissional=${cd_profissional}`)
+  
+  }
 }

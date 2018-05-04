@@ -6,23 +6,25 @@
   </ion-header>
    
   <ion-content padding class="background">
-  <form [formGroup]="idiomaFormulario" (ngSubmit)="adicionar()"> 
+  <form [formGroup]="competenciaFormulario" (ngSubmit)="adicionar()"> 
       <ion-list>
           <br>
         <ion-item>
             <ion-icon name="book" item-start></ion-icon>
-            <ion-label stacked>Competência</ion-label>
-            <ion-select  placeholder= "Selecione a Competência"formControlName="cd_competencia_tecnica" >
+            <ion-label stacked>Competência(s) Técnica(s)</ion-label>
+            <ion-select  placeholder= "Competência"formControlName="cd_competencia_tecnica" >
                 <ion-option *ngFor="let competencia of competencias" [value]="competencia.cd_competencia_tecnica">{{competencia.ds_competencia_tecnica}}</ion-option>
                   </ion-select>    
         </ion-item>
          <ion-item>
                 <ion-icon name="options" item-start></ion-icon>
                 <ion-label stacked>Nivel</ion-label>
-              <ion-select  placeholder= "Selecione o Nivel" formControlName="nr_nivel">
+              <ion-select  placeholder= "Nível" formControlName="nr_nivel">
                 <ion-option value="1">Nível 1</ion-option>
                 <ion-option value="2">Nível 2</ion-option>
                 <ion-option value="3">Nível 3</ion-option>
+                <ion-option value="4">Nível 4</ion-option>
+                <ion-option value="5">Nível 5</ion-option>
               </ion-select>
             </ion-item>
             <button ion-button color="secondary" block type="submit" [disabled]="!competenciaFormulario.valid">Incluir</button>

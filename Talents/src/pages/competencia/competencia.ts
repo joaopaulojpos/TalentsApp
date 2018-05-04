@@ -18,7 +18,7 @@ export class CompetenciaPage {
               private toast: ToastController,
               public competenciaService: CompetenciaService,
               public formBuilder: FormBuilder) {
-                
+
     this.competenciaFormulario = this.createMyForm(); 
   }
   ionViewDidEnter(){
@@ -38,7 +38,7 @@ export class CompetenciaPage {
      )
     }
   /*************************************
-   **Metodo chamada salvar competencia**
+   **METODO CHAMADA SALVAR COMPETÊNCIA**
    *************************************/
   adicionar() {
     

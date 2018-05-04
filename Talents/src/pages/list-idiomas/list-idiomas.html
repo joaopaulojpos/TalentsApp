@@ -1,7 +1,7 @@
 <ion-header>
  
   <ion-navbar class="ion-nav-bar" color="secondary">
-    <ion-title>Cadastre Seus Idiomas</ion-title>
+    <ion-title>Seus Idiomas</ion-title>
     <ion-buttons end>
         <button ion-button icon-only (click)="adicionar()"><ion-icon name="add"></ion-icon></button>
     </ion-buttons>
@@ -16,9 +16,11 @@
         <ion-item-sliding *ngFor="let idioma of idiomas">
  
             <ion-item>
-                {{idioma}}
+                <p>
+                <ion-icon name="book" item-start> Idioma:{{idioma.ds_idioma}}</ion-icon>
+                <ion-icon name="options" item-end> Nivel: {{idioma.nr_nivel}}</ion-icon>
+                </p>
             </ion-item>
- 
             <ion-item-options>
                 <button ion-button icon-only (click)="editar(idioma)" light>
                     <ion-icon name="paper"></ion-icon>
@@ -29,7 +31,7 @@
             </ion-item-options>
  
         </ion-item-sliding>
- 
+
     </ion-list>
     <ion-card *ngIf="idiomas.length == 0">
       <ion-card-content>Não há nenhum Idiomas incluido em seu perfil.</ion-card-content>

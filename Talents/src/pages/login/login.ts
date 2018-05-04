@@ -9,6 +9,7 @@ import { IdiomaPage } from '../idioma/idioma';
 import { ListIdiomasPage } from '../list-idiomas/list-idiomas';
 import { ListCompetenciasPage } from '../listcompetencias/listcompetencias';
 import { ListCursosPage } from '../listcursos/listcursos';
+import { ListCargosPage } from '../list-cargos/list-cargos';
 
 @IonicPage()
 @Component({
@@ -38,7 +39,7 @@ export class LoginPage {
     **Cadastrar Profissional**
     **************************/   
     cadastrarProfissional(){
-      this.navCtrl.push(ListCursosPage);
+      this.navCtrl.push(ProfissionalPage);
     }
 
     /**********************

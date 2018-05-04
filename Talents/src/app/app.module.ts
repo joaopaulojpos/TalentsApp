@@ -49,6 +49,9 @@ import { CompetenciaPage } from '../pages/competencia/competencia';
 import { CursoService } from '../providers/curso/curso-service';
 import { CursoPage } from '../pages/curso/curso';
 import { ListCursosPage } from '../pages/listcursos/listcursos';
+import { CargoPage } from '../pages/cargo/cargo';
+import { CargoService } from '../providers/cargo/cargo-service';
+import { ListCargosPage } from '../pages/list-cargos/list-cargos';
 
 
 
@@ -74,7 +77,9 @@ const firebaseConfig = {
     ListCompetenciasPage,
     CompetenciaPage,
     ListCursosPage,
-    CursoPage
+    CursoPage,
+    CargoPage,
+    ListCargosPage
   ],
   imports: [
     BrowserModule,
@@ -119,7 +124,9 @@ const firebaseConfig = {
     ListCompetenciasPage,
     CompetenciaPage,
     ListCursosPage,
-    CursoPage
+    CursoPage,
+    CargoPage,
+    ListCargosPage
     
   ],
   providers: [
@@ -136,7 +143,8 @@ const firebaseConfig = {
     IdiomaService,
     Firebase,
     CompetenciaService,
-    CursoService
+    CursoService,
+    CargoService
   ]
 })
 export class AppModule {}

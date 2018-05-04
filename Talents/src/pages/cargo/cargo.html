@@ -1,0 +1,37 @@
+<ion-header>
+ 
+    <ion-navbar class="ion-nav-bar" color="secondary">
+      <ion-title>Cadastro de Cargo</ion-title>
+    </ion-navbar>   
+  </ion-header>
+
+  <ion-content padding class="background">
+      <form [formGroup]="cargoFormulario" (ngSubmit)="adicionar()">
+      <ion-list>
+          <br>
+        <ion-item>
+            <ion-icon name="school" item-start></ion-icon>
+            <ion-label stacked>Cargo</ion-label>
+            <ion-select  placeholder= "Selecione o Cargo"formControlName="cd_cargo">
+                <ion-option *ngFor="let cargo of cargos" [value]="cargo.cd_cargo">{{cargo.ds_cargo}}</ion-option>
+        </ion-select>    
+        </ion-item>
+        <ion-item>
+            <ion-icon name="stats" item-start></ion-icon>
+            <ion-label stacked>Empresa:</ion-label>
+            <ion-input placeholder="Nome da Empresa"formControlName="ds_empresa"></ion-input>
+          </ion-item>
+          <ion-item>
+          <ion-icon name="calendar" item-start></ion-icon>
+          <ion-label stacked>Data de Inicio:</ion-label>
+          <ion-datetime displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"formControlName="dt_inicio"></ion-datetime>
+        </ion-item>
+        <ion-item>
+        <ion-icon name="calendar" item-start></ion-icon>
+        <ion-label stacked>Data Final:</ion-label>
+        <ion-datetime displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"formControlName="dt_fim"></ion-datetime>
+      </ion-item>
+          <button ion-button color="secondary" block type="submit" [disabled]="!cargoFormulario.valid">Incluir</button>
+        </ion-list>
+      </form>
+  </ion-content>

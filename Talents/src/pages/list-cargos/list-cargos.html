@@ -1,7 +1,7 @@
 <ion-header>
  
     <ion-navbar class="ion-nav-bar" color="secondary">
-      <ion-title>Cadastre Seus Cursos</ion-title>
+      <ion-title>Suas Experiêncas</ion-title>
       <ion-buttons end>
           <button ion-button icon-only (click)="adicionar()"><ion-icon name="add"></ion-icon></button>
       </ion-buttons>
@@ -13,18 +13,18 @@
    
       <ion-list>
    
-          <ion-item-sliding *ngFor="let curso of cursos">
+          <ion-item-sliding *ngFor="let cargo of cargos">
    
               <ion-item>
-                 Curso: <p>{{curso.ds_curso}}</p>
+                 Cargo: <p>{{cargo.ds_cargo}}</p>
                   <br>
-                  Instituição: <p>{{curso.ds_instituicao}}</p>
+                  Empresa: <p>{{cargo.ds_empresa}}</p>
               </ion-item>
               <ion-item-options>
-                  <button ion-button icon-only (click)="editar(curso)" light>
+                  <button ion-button icon-only (click)="editar(cargo)" light>
                       <ion-icon name="paper"></ion-icon>
                   </button>
-                  <button ion-button icon-only (click)="deletar(curso)" danger>
+                  <button ion-button icon-only (click)="deletar(cargo)" danger>
                       <ion-icon name="trash"></ion-icon>
                   </button>
               </ion-item-options>
@@ -32,8 +32,8 @@
           </ion-item-sliding>
    
       </ion-list>
-      <ion-card *ngIf="cursos.length == 0">
-        <ion-card-content>Não há nenhum Curso incluido em seu perfil.</ion-card-content>
+      <ion-card *ngIf="cargos.length == 0">
+        <ion-card-content>Não há nenhum Experiênca incluida em seu perfil.</ion-card-content>
       </ion-card>    
-      <button ion-button full color="secondary"> Avançar </button>
+      <button ion-button full color="secondary"(click)="avancar()"> Avançar </button>
   </ion-content>
