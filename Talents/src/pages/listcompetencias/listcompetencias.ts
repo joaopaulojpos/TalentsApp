@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { CompetenciaPage } from '../competencia/competencia';
 import { ProfissionalService } from '../../providers/profissional/profissional-service';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -10,16 +11,21 @@ import { ProfissionalService } from '../../providers/profissional/profissional-s
 })
 export class ListCompetenciasPage {
   competencias: any = [];
+  public cd_profissional;
  
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
               private toast: ToastController,
-              private profissionalservice: ProfissionalService
+              private profissionalservice: ProfissionalService,
+              public navParams: NavParams
             ) {
+
+              this.cd_profissional = navParams.get("cd_profissional");
+              console.log(this.cd_profissional);
 
   }
   async ionViewDidEnter(){
-    this.carregaCompetencias(1);
+    this.carregaCompetencias(this.cd_profissional);
   }
 
   carregaCompetencias(cd_profissional){
@@ -36,20 +42,28 @@ export class ListCompetenciasPage {
     }
 
   adicionar(){
-    this.navCtrl.push(CompetenciaPage);
+    console.log(this.cd_profissional);
+    this.navCtrl.push(CompetenciaPage,{ cd_profissional: this.cd_profissional });
   }
 
-  editar(idioma){
+  editar(competencia){
 
   }
 
-  deletar(idioma){
+  deletar(competencia){
 
-      let index = this.competencias.indexOf(idioma);
+      let index = this.competencias.indexOf(competencia);
 
       if(index > -1){
           this.competencias.splice(index, 1);
       }
+  }
+
+  /***********************
+   **Chama próxima tela**
+   **********************/   
+  avancar(){
+    this.navCtrl.setRoot(LoginPage);
   }
   
 }

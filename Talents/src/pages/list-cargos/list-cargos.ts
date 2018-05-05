@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { CargoPage } from '../cargo/cargo';
 import { ProfissionalService } from '../../providers/profissional/profissional-service';
-import { CursoPage } from '../curso/curso';
 import { ListCursosPage } from '../listcursos/listcursos';
 
 @IonicPage()

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CargoService } from '../../providers/cargo/cargo-service';
+import { ListCargosPage } from '../list-cargos/list-cargos';
 
 @IonicPage()
 @Component({
@@ -43,8 +44,12 @@ export class CargoPage {
   **Metodo chamada salvar cargo**
   *******************************/
   adicionar() {
-    
-    console.log(this.cargoFormulario.value);
+    this.cargoFormulario.value.cd_profissional = this.cd_profissional;
+    this.cargoService.adicionar(this.cargoFormulario.value).subscribe(data => {
+      this.navCtrl.push(ListCargosPage,{ cd_profissional: this.cd_profissional });
+    }, error => {
+      console.log("Data Erro: " + error);
+    })
   }
 
   private createMyForm() {

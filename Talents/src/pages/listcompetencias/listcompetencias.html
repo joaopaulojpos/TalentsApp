@@ -16,7 +16,9 @@
           <ion-item-sliding *ngFor="let competencia of competencias">
    
               <ion-item>
-                  {{competencia}}
+                Competência:{{competencia.ds_competencia_tecnica}}
+                <br>
+                Nivel: {{competencia.nr_nivel}}
               </ion-item>
    
               <ion-item-options>
@@ -34,5 +36,5 @@
       <ion-card *ngIf="competencias.length == 0">
         <ion-card-content>Não há nenhum Competências incluido em seu perfil.</ion-card-content>
       </ion-card>
-      <button ion-button full color="secondary"> Avançar </button>    
+      <button ion-button full color="secondary"(click)="avancar()"> Finalizar Cadastro </button>    
   </ion-content>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { CompetenciaService } from '../../providers/competencia/competencia-service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ListCompetenciasPage } from '../listcompetencias/listcompetencias';
 
 @IonicPage()
 @Component({
@@ -12,6 +13,7 @@ export class CompetenciaPage {
   
   competenciaFormulario: FormGroup; 
   public competencias =[];
+  public cd_profissional;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -19,7 +21,9 @@ export class CompetenciaPage {
               public competenciaService: CompetenciaService,
               public formBuilder: FormBuilder) {
 
-    this.competenciaFormulario = this.createMyForm(); 
+    this.competenciaFormulario = this.createMyForm();
+    this.cd_profissional = navParams.get("cd_profissional");
+    console.log(this.cd_profissional);   
   }
   ionViewDidEnter(){
     this.carregaCompetencias();
@@ -41,8 +45,15 @@ export class CompetenciaPage {
    **METODO CHAMADA SALVAR COMPETÊNCIA**
    *************************************/
   adicionar() {
-    
-    console.log(this.competenciaFormulario.value);
+
+    this.competenciaFormulario.value.cd_profissional = this.cd_profissional;
+    this.competenciaService.adicionar(this.competenciaFormulario.value).subscribe(data => {
+      console.log(this.competenciaFormulario.value);
+      this.navCtrl.push(ListCompetenciasPage,{ cd_profissional: this.cd_profissional });
+    }, error => {
+      console.log("Data Erro: " + error);
+    })
+
   }
 
   private createMyForm() {

@@ -16,10 +16,9 @@
         <ion-item-sliding *ngFor="let idioma of idiomas">
  
             <ion-item>
-                <p>
-                <ion-icon name="book" item-start> Idioma:{{idioma.ds_idioma}}</ion-icon>
-                <ion-icon name="options" item-end> Nivel: {{idioma.nr_nivel}}</ion-icon>
-                </p>
+                 Idioma:{{idioma.ds_idioma}}
+                 <br>
+                 Nivel: {{idioma.nr_nivel}}
             </ion-item>
             <ion-item-options>
                 <button ion-button icon-only (click)="editar(idioma)" light>
@@ -36,5 +35,5 @@
     <ion-card *ngIf="idiomas.length == 0">
       <ion-card-content>Não há nenhum Idiomas incluido em seu perfil.</ion-card-content>
     </ion-card>
-    <button ion-button full color="secondary"> Avançar </button>    
+    <button ion-button full color="secondary"(click)="avancar()"> Avançar </button>    
 </ion-content>

@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 export class CursoService {
   private API = "http://localhost/talentsweb/api/public/api/";
   //private API = "http://talents.heliohost.org/api/public/api/";
-  
+
 
   constructor(
     private http: Http
@@ -41,8 +41,8 @@ export class CursoService {
 	    nr_certificado:curso.nr_certificado,
 	    nr_periodo: curso.nr_periodo
     });
-    console.log(body);
-    return this.http.post(this.API+'salvar', body, options)
+    
+    return this.http.post(this.API+'profissional/curso', body, options)
       .map(res => res.json())      
   }
 }

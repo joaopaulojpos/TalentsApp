@@ -36,7 +36,7 @@ export class IdiomaService {
       nr_nivel: idioma.nr_nivel,
     });
     console.log(body);
-    return this.http.post(this.API+'salvar', body, options)
+    return this.http.post(this.API+'profissional/idioma', body, options)
       .map(res => res.json())      
   }
 }     

@@ -19,6 +19,7 @@ export class CompetenciaService {
   getCompetencias() {
     return this.http.get(this.API+`competencias_tecnicas`);
   }
+  
    /********************************************************
     **CADASTRAR COMPETENCIAS PROFISSIONAL COMUNICIACAO API**
     ** @param competencia*********************************** 
@@ -36,7 +37,7 @@ export class CompetenciaService {
       nr_nivel: competencia.nr_nivel,
     });
     console.log(body);
-    return this.http.post(this.API+'salvar', body, options)
+    return this.http.post(this.API+'profissional/competencia_tecnica', body, options)
       .map(res => res.json())      
   }
 }

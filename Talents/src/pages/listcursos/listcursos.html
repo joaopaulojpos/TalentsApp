@@ -16,9 +16,9 @@
           <ion-item-sliding *ngFor="let curso of cursos">
    
               <ion-item>
+                Instituição: <p>{{curso.ds_instituicao}}</p>
+                <br>
                  Curso: <p>{{curso.ds_curso}}</p>
-                  <br>
-                  Instituição: <p>{{curso.ds_instituicao}}</p>
               </ion-item>
               <ion-item-options>
                   <button ion-button icon-only (click)="editar(curso)" light>
@@ -35,5 +35,5 @@
       <ion-card *ngIf="cursos.length == 0">
         <ion-card-content>Não há nenhum Curso incluido em seu perfil.</ion-card-content>
       </ion-card>    
-      <button ion-button full color="secondary"> Avançar </button>
+      <button ion-button full color="secondary" (click)="avancar()"> Avançar </button>
   </ion-content>

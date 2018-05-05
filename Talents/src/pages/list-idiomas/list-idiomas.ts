@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { IdiomaPage } from '../idioma/idioma';
 import { ProfissionalService } from '../../providers/profissional/profissional-service';
+import { ListCompetenciasPage } from '../listcompetencias/listcompetencias';
 
 @IonicPage()
 @Component({
@@ -11,16 +12,20 @@ import { ProfissionalService } from '../../providers/profissional/profissional-s
 export class ListIdiomasPage {
 
   idiomas: any = [];
- 
+  public cd_profissional;
+
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
               private toast: ToastController,
-              private profissionalservice: ProfissionalService) {
+              private profissionalservice: ProfissionalService,
+              public navParams: NavParams) {
 
+                this.cd_profissional = navParams.get("cd_profissional");
+                console.log(this.cd_profissional);
   }
 
   async ionViewDidEnter(){
-    this.carregaIdiomas(1);
+    this.carregaIdiomas(this.cd_profissional);
   }
 
   carregaIdiomas(cd_profissional){
@@ -38,7 +43,7 @@ export class ListIdiomasPage {
 
 
   adicionar(){
-    this.navCtrl.push(IdiomaPage);
+    this.navCtrl.push(IdiomaPage,{ cd_profissional: this.cd_profissional });
   }
 
   editar(idioma){
@@ -54,4 +59,11 @@ export class ListIdiomasPage {
       }
   }
 
+  /***********************
+   **Chama próxima tela**
+   **********************/   
+  avancar(){
+    console.log( this.cd_profissional);
+    this.navCtrl.push(ListCompetenciasPage,{ cd_profissional: this.cd_profissional });
+  }
 }

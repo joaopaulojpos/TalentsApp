@@ -191,7 +191,7 @@ export class TesteComportamentalPage {
 
         if (this.countEnviadas == this.qtdPerguntasExigidas)
 
-          this.toast.create({ message: "Teste enviado!" , duration: 2000 }).present();
+        this.toast.create({ message: "Teste enviado!" , duration: 1000 }).present();
         this.comportamentalService.gerarCalculoPerfilComp(this.cd_profissional);
 
         this.navCtrl.setRoot(ListCargosPage, { cd_profissional: this.cd_profissional });
