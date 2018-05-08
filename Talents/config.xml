@@ -92,4 +92,9 @@
     <plugin name="es6-promise-plugin" spec="^4.2.2" />
     <plugin name="cordova-plugin-background-mode" spec="^0.7.2" />
     <plugin name="cordova-plugin-fcm" spec="^2.1.2" />
+    <plugin name="cordova-plugin-facebook4" spec="^2.1.0">
+        <variable name="APP_ID" value="135861913933170" />
+        <variable name="APP_NAME" value="Talents" />
+    </plugin>
+    <allow-navigation href="http://192.168.114.121:8100" />
 </widget>

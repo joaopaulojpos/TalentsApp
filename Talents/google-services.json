@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "895681307146",
-    "firebase_url": "https://pushmatch.firebaseio.com",
-    "project_id": "pushmatch",
-    "storage_bucket": "pushmatch.appspot.com"
+    "project_number": "242092140458",
+    "firebase_url": "https://match-vaga.firebaseio.com",
+    "project_id": "match-vaga",
+    "storage_bucket": "match-vaga.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:895681307146:android:7cd78a46fcd16788",
+        "mobilesdk_app_id": "1:242092140458:android:7cd78a46fcd16788",
         "android_client_info": {
           "package_name": "br.com.talents"
         }
       },
       "oauth_client": [
         {
-          "client_id": "895681307146-80lq71pihslki14g43objfcot1dl1vhk.apps.googleusercontent.com",
+          "client_id": "242092140458-qv9lct3nelie0t2grf9rm7f12ulf1kr1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBpiwFf166WXzj-AkwhaMCZEPwVTGOHd4o"
+          "current_key": "AIzaSyDM5ylOqgjAmrQOVVWrTiqjoUcRDPc2ebA"
         }
       ],
       "services": {
