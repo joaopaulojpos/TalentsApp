@@ -1,23 +1,21 @@
 import { Http,RequestOptions,Headers} from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { ServicosProvider } from '../servicos/servicos';
 
 @Injectable()
-export class CargoService {
-  private API = "http://localhost/talentsweb/api/public/api/";
-  //private API = "http://talents.heliohost.org/api/public/api/";
-  
+export class CargoService {  
 
   constructor(
-    private http: Http
+    private http: Http,
+    private URL: ServicosProvider
   ) {}
 
-  
   /***********************************
    **RETORNAR LISTA DE CARGOS DA API** 
    ***********************************/
   getCargos() {
-    return this.http.get(this.API+`cargos`);
+    return this.http.get(this.URL.endereco + `cargos`);
   }
   
   /**************************************************
@@ -39,7 +37,7 @@ export class CargoService {
 	    dt_inicio:cargo.dt_inicio
     });
     console.log(body);
-    return this.http.post(this.API+'profissional/cargo', body, options)
+    return this.http.post(this.URL.endereco + 'profissional/cargo', body, options)
       .map(res => res.json())      
   }
 }

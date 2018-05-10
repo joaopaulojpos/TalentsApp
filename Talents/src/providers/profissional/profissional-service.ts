@@ -4,15 +4,15 @@ import { Profissional } from './profissional';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ServicosProvider } from '../servicos/servicos';
 
 
 @Injectable()
 export class ProfissionalService {
-
-  private API = "http://localhost/talentsweb/api/public/api/profissional/";
   public profissionalservice: Profissional;
 
   constructor(private http: Http,
+              private URL: ServicosProvider,
               private angularFireAuth: AngularFireAuth,
               private facebook: Facebook) {
   }
@@ -22,7 +22,7 @@ export class ProfissionalService {
    ********************************************/
   login(ds_email: string, ds_senha: string) {
 
-    return this.http.get(this.API+`login?login=${ds_email}&senha=${ds_senha}`)
+    return this.http.get(this.URL.endereco + `profissional/login?login=${ds_email}&senha=${ds_senha}`)
   }
  
   /**************************************************************
@@ -49,7 +49,7 @@ export class ProfissionalService {
       ds_nome: profissional.ds_nome
     });
     console.log(body);
-    return this.http.post(this.API+'salvar', body, options)
+    return this.http.post(this.URL.endereco + 'profissional/salvar', body, options)
       .map(res => res.json())      
   }
 
@@ -68,7 +68,7 @@ loginFacebook() {
 
  getCursos(cd_profissional : number) {
   console.log(cd_profissional);
-  return this.http.get(this.API+`cursos?cd_profissional=${cd_profissional}`)
+  return this.http.get(this.URL.endereco + `profissional/cursos?cd_profissional=${cd_profissional}`)
   
   }
    /****************************************** 
@@ -77,7 +77,7 @@ loginFacebook() {
 
  getCargos(cd_profissional : number) {
   console.log(cd_profissional);
-  return this.http.get(this.API+`cargos?cd_profissional=${cd_profissional}`)
+  return this.http.get(this.URL.endereco + `profissional/cargos?cd_profissional=${cd_profissional}`)
   
   }
     /******************************************* 
@@ -86,7 +86,7 @@ loginFacebook() {
 
  getIdiomas(cd_profissional : number) {
   console.log(cd_profissional);
-  return this.http.get(this.API+`idiomas?cd_profissional=${cd_profissional}`)
+  return this.http.get(this.URL.endereco + `profissional/idiomas?cd_profissional=${cd_profissional}`)
   
   }
    /************************************************ 
@@ -95,7 +95,7 @@ loginFacebook() {
 
  getCompetencias(cd_profissional : number) {
   console.log(cd_profissional);
-  return this.http.get(this.API+`competencias_tecnicas?cd_profissional=${cd_profissional}`)
+  return this.http.get(this.URL.endereco + `profissional/competencias_tecnicas?cd_profissional=${cd_profissional}`)
   
   }
 }

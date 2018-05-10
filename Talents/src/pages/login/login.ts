@@ -10,6 +10,7 @@ import { ListIdiomasPage } from '../list-idiomas/list-idiomas';
 import { ListCompetenciasPage } from '../listcompetencias/listcompetencias';
 import { ListCursosPage } from '../listcursos/listcursos';
 import { ListCargosPage } from '../list-cargos/list-cargos';
+import { FCM } from '@ionic-native/fcm';
 
 @IonicPage()
 @Component({
@@ -26,6 +27,7 @@ export class LoginPage {
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
+              private fcm: FCM,
               private toast: ToastController,
               public loadingCtrl: LoadingController,
               private profissionalservice: ProfissionalService,
@@ -54,8 +56,8 @@ export class LoginPage {
       console.log(this.profissional);
       
       if(this.profissional != null){
-
        await this.criaSession(this.profissional);
+       this.fcm.subscribeToTopic('talentsApp');
 
         this.navCtrl.setRoot(MenuPage);
         this.fechaLogin();

@@ -26,6 +26,7 @@ export class ListIdiomasPage {
 
   async ionViewDidEnter(){
     this.carregaIdiomas(this.cd_profissional);
+    console.log(this.cd_profissional);
   }
 
   carregaIdiomas(cd_profissional){

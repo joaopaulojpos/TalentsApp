@@ -6,19 +6,20 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/observable/of';
 import { IfObservable } from 'rxjs/observable/IfObservable';
+import { ServicosProvider } from '../servicos/servicos';
 
 @Injectable()
 export class TesteComportamentalService {
-  private API = "http://localhost/talentsweb/api/public/api/";
-  constructor(
-    private http: Http,
-    public httpC: HttpClient
+  
+  constructor(private http: Http,
+              private URL: ServicosProvider,
+              public httpC: HttpClient
   ) 
     { }
 
   getPerguntasAlternativas() {
-    console.log(this.API + "pergunta_perfil_comp");
-    return this.httpC.get(this.API + "pergunta_perfil_comp");
+    console.log(this.URL.endereco + "pergunta_perfil_comp");
+    return this.httpC.get(this.URL.endereco + "pergunta_perfil_comp");
   }
 
   enviarTesteComportamental(cd_pergunta_perfil_comp, cd_alternativa_perfil_comp, cd_profissional) {        
@@ -33,7 +34,7 @@ export class TesteComportamentalService {
       cd_alternativa_perfil_comp: cd_alternativa_perfil_comp,
       cd_profissional: cd_profissional
     });       
-    this.http.post(this.API+'inserir_resposta', body, options)
+    this.http.post(this.URL.endereco + 'inserir_resposta', body, options)
       .map(res => {
         res.json()
       }).subscribe(data => console.log(data));
@@ -59,7 +60,7 @@ export class TesteComportamentalService {
       cd_profissional: cd_profissional
     });
 
-    this.http.post(this.API+'CalculoPerfilComp', body, options)
+    this.http.post(this.URL.endereco + 'CalculoPerfilComp', body, options)
       .map(res => {
         res.json()
       }).subscribe(data => console.log(data));

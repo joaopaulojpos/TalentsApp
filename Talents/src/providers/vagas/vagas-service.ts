@@ -1,18 +1,17 @@
 import { Http,RequestOptions,Headers} from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Vagas } from './vagas';
+import { ServicosProvider } from '../servicos/servicos';
 
 @Injectable()
 export class VagasService {
   
-  private API = "http://localhost/talentsweb/api/public/api/";
   public vagas : Array <{}>; 
   public vaga : Vagas;
 
-
-
   constructor(
-    private http: Http
+    private http: Http,
+    private URL: ServicosProvider
   ) {}
   
   /****************************************** 
@@ -21,7 +20,7 @@ export class VagasService {
 
   getVagas(cd_profissional : number) {
     console.log(cd_profissional);
-    return this.http.get(this.API+`profissional/vagas?cd_profissional=${cd_profissional}`)
+    return this.http.get(this.URL.endereco + `profissional/vagas?cd_profissional=${cd_profissional}`)
     
   }
 
@@ -42,7 +41,7 @@ export class VagasService {
       cd_profissional: cd_profissional
     });
     
-    this.http.post(this.API+'vaga/curtirVaga',body,options)
+    this.http.post(this.URL.endereco + 'vaga/curtirVaga',body,options)
     .map(res =>{
       res.json()
     }).subscribe(data => console.log(data));

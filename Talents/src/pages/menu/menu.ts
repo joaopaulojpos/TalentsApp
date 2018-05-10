@@ -4,6 +4,7 @@ import { VagasPage } from '../vagas/vagas';
 import { PerfilPage } from '../perfil/perfil';
 import { LoginPage } from '../login/login';
 import { ConfigProvider } from '../../providers/config/config';
+import { FCM } from '@ionic-native/fcm';
 import { Profissional } from '../../providers/profissional/profissional';
 import { ProfissionalPage } from '../profissional/profissional';
 import { IdiomaPage } from '../idioma/idioma';
@@ -30,6 +31,7 @@ export class MenuPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
+    private fcm: FCM,
     public config: ConfigProvider,
     public session: ConfigProvider
   ) 
@@ -57,6 +59,7 @@ export class MenuPage {
   }
   sair(){
     this.menuCtrl.close();
+    this.fcm.unsubscribeFromTopic('talentsApp')
     this.session.remove();
     this.navCtrl.setRoot(LoginPage);
     

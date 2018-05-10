@@ -1,7 +1,6 @@
 import { NgModule, ErrorHandler} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { IonicStorageModule } from '@ionic/storage';
 import { TalentsApp } from './app.component';
 import { TabsPage    } from '../pages/tabs/tabs';
@@ -52,6 +51,7 @@ import { ListCursosPage } from '../pages/listcursos/listcursos';
 import { CargoPage } from '../pages/cargo/cargo';
 import { CargoService } from '../providers/cargo/cargo-service';
 import { ListCargosPage } from '../pages/list-cargos/list-cargos';
+import { FCM } from '@ionic-native/fcm'
 
 
 
@@ -132,10 +132,10 @@ const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    Push,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProfissionalService,
     ServicosProvider,
+    FCM,
     VagasService,
     Geolocation,
     ScreenOrientation,

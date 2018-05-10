@@ -1,23 +1,21 @@
 import { Http,RequestOptions,Headers} from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { ServicosProvider } from '../servicos/servicos';
 
 @Injectable()
 export class CursoService {
-  private API = "http://localhost/talentsweb/api/public/api/";
-  //private API = "http://talents.heliohost.org/api/public/api/";
-
 
   constructor(
-    private http: Http
+    private http: Http,
+    private URL: ServicosProvider
   ) {}
 
-  
   /***********************************
    **RETORNAR LISTA DE CURSOS DA API** 
    ***********************************/
   getCursos() {
-    return this.http.get(this.API+`cursos`);
+    return this.http.get(this.URL.endereco + `cursos`);
   }
   
   /**************************************************
@@ -42,7 +40,7 @@ export class CursoService {
 	    nr_periodo: curso.nr_periodo
     });
     
-    return this.http.post(this.API+'profissional/curso', body, options)
+    return this.http.post(this.URL.endereco + 'profissional/curso', body, options)
       .map(res => res.json())      
   }
 }

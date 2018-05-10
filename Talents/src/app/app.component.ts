@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { LoginPage } from '../pages/login/login';
 import { ConfigProvider } from '../providers/config/config';
 import { MenuPage } from '../pages/menu/menu';
-import { Push, PushOptions, PushObject } from '@ionic-native/push';
+import { FCM } from '@ionic-native/fcm';
 
 @Component({
   templateUrl: 'app.html',
@@ -19,44 +18,28 @@ export class TalentsApp {
 
   constructor(
     platform: Platform,
+    private fcm: FCM,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    public push: Push,
     public alertCtrl: AlertController,
-    configProvaider: ConfigProvider
+    configProvaider: ConfigProvider,
   ) {
       
     platform.ready().then(() => {
-      let config = configProvaider.getConfigData();
-      if((config == null) || (config == true)) {
-        this.rootPage = LoginPage;
-      //     window.FirebasePlugin.getToken(function(token) {
-      //       // save this server-side and use it to push notifications to this device
-      //       console.log("Token Firebase" + token);
-      // }, function(error) {
-      //     console.error(error);
-      // })
-      }else{
-      }
+
+      //this.fcm.subscribeToTopic('talents');
+  
+      this.fcm.onNotification().subscribe(data => {
+        alert('message received')
+        if(data.wasTapped) {
+        console.info("Received in background");
+        } else {
+        console.info("Received in foreground");
+        };
+      });
        
       statusBar.styleDefault();
-      this.pushSetup();
+      splashScreen.hide();
     });
-  }
-
-  pushSetup(){
-    const options: PushOptions ={};
-    const pushObject: PushObject = this.push.init(options);
-
-    pushObject.on("registration").subscribe((registration: any)=> {});
-    pushObject.on("notification").subscribe((notification: any)=> {
-      if (notification.additionalData.foreground){
-        let yuoralert=  this.alertCtrl.create({
-          title: notification.label,
-          message: notification.message
-        });
-        yuoralert.present();
-      }
-    })
   }
 }

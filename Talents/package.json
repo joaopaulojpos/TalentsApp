@@ -25,9 +25,9 @@
     "@ionic-native/camera": "^4.5.3",
     "@ionic-native/core": "4.4.0",
     "@ionic-native/facebook": "^4.7.0",
+    "@ionic-native/fcm": "^4.7.0",
     "@ionic-native/firebase": "^4.7.0",
     "@ionic-native/geolocation": "^4.6.0",
-    "@ionic-native/push": "^4.7.0",
     "@ionic-native/screen-orientation": "^4.6.0",
     "@ionic-native/splash-screen": "4.4.0",
     "@ionic-native/status-bar": "4.4.0",
@@ -76,11 +76,11 @@
       },
       "es6-promise-plugin": {},
       "cordova-plugin-background-mode": {},
-      "cordova-plugin-fcm": {},
       "cordova-plugin-facebook4": {
         "APP_ID": "135861913933170",
         "APP_NAME": "Talents"
-      }
+      },
+      "cordova-plugin-fcm": {}
     },
     "platforms": [
       "browser",

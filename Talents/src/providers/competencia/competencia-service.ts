@@ -1,23 +1,21 @@
 import { Http,RequestOptions,Headers} from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { ServicosProvider } from '../servicos/servicos';
 
 @Injectable()
-export class CompetenciaService {
-  private API = "http://localhost/talentsweb/api/public/api/";
-  //private API = "http://talents.heliohost.org/api/public/api/";
-  
+export class CompetenciaService {  
 
   constructor(
-    private http: Http
+    private http: Http,
+    private URL: ServicosProvider
   ) {}
 
-  
   /*****************************************
    **RETORNAR LISTA DE COMPETENCIAS DA API** 
    *****************************************/
   getCompetencias() {
-    return this.http.get(this.API+`competencias_tecnicas`);
+    return this.http.get(this.URL.endereco + `competencias_tecnicas`);
   }
   
    /********************************************************
@@ -37,7 +35,7 @@ export class CompetenciaService {
       nr_nivel: competencia.nr_nivel,
     });
     console.log(body);
-    return this.http.post(this.API+'profissional/competencia_tecnica', body, options)
+    return this.http.post(this.URL.endereco + 'profissional/competencia_tecnica', body, options)
       .map(res => res.json())      
   }
 }

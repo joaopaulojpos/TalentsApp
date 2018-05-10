@@ -40,7 +40,7 @@ export class AnimacaoPage {
      this.profissionalAnimacao = objeto.sucess;
      if(this.profissionalAnimacao != null){
        this.navCtrl.setRoot(MenuPage,{profissional: this.profissionalAnimacao});
-       this.config.setConfigData(false, this.profissionalAnimacao.ds_nome, this.profissionalAnimacao.ds_email);
+       //this.config.setConfigData(false, this.profissionalAnimacao.ds_nome, this.profissionalAnimacao.ds_email);
      }else{
        this.toast.create({ message: 'Erro ao Efetuar Login. Usuário ou Senha inválidos', duration: 2000 }).present(); 
      }
