@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { ServicosProvider } from '../../providers/servicos/servicos';
 import { ConfigProvider } from '../../providers/config/config';
 import { Profissional } from '../../providers/profissional/profissional';
+import { PerfilPage } from '../perfil/perfil';
 
 @IonicPage()
 @Component({
@@ -89,6 +90,7 @@ export class NotificacoesPage {
   }
 
   abrirNotificacao(){
+    this.navCtrl.push(PerfilPage);
   
   }
 

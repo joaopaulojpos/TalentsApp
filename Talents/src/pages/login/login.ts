@@ -57,7 +57,7 @@ export class LoginPage {
       
       if(this.profissional != null){
        await this.criaSession(this.profissional);
-       this.fcm.subscribeToTopic('talentsApp');
+       //this.fcm.subscribeToTopic('talentsApp');
 
         this.navCtrl.setRoot(MenuPage);
         this.fechaLogin();

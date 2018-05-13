@@ -59,7 +59,6 @@ export class MenuPage {
   }
   sair(){
     this.menuCtrl.close();
-    this.fcm.unsubscribeFromTopic('talentsApp')
     this.session.remove();
     this.navCtrl.setRoot(LoginPage);
     

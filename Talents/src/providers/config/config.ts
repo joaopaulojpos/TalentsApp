@@ -2,14 +2,19 @@ import { Injectable } from '@angular/core';
 import { Storage } from "@ionic/storage";
 import { Profissional } from '../../providers/profissional/profissional';
 import { Firebase } from '@ionic-native/firebase';
+import { TalentsApp } from '../../app/app.component';
+import { LoginPage } from '../../pages/login/login';
 
 //let config_key_name = "config";
 
 @Injectable()
 export class ConfigProvider {
 
-  constructor(public storage: Storage,
-              private firebase: Firebase)
+  constructor(
+      public storage: Storage,
+      private firebase: Firebase,
+      //private pagInicial: TalentsApp
+    )
               {}
 
 
@@ -29,6 +34,7 @@ export class ConfigProvider {
 
   // Quando deslogar deve remova do storage
   remove() {
+      //this.pagInicial.setPag(LoginPage);
       this.storage.remove('profissional');
   }
 

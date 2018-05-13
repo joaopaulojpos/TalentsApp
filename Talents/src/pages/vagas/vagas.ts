@@ -9,6 +9,7 @@ import { NotificacoesPage } from '../notificacoes/notificacoes';
 import { NotificacoesAtalhoPage } from '../notificacoes-atalho/notificacoes-atalho';
 import { ServicosProvider } from '../../providers/servicos/servicos';
 import { ConfigProvider } from '../../providers/config/config';
+import { FCM } from '@ionic-native/fcm';
 
 @IonicPage()
 @Component({
@@ -41,6 +42,7 @@ export class VagasPage {
     public session: ConfigProvider,
     public navCtrl: NavController,
     public navParams: NavParams ,
+    public fcm:FCM,
     public vagaService: VagasService,
     public loadingCtrl: LoadingController,
     private toast: ToastController,
@@ -175,9 +177,10 @@ async getSession() {
     vagaCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
       this.vagaService.vagaSelecionada("Like",cd_vaga,this.cd_profissional);
+      this.fcm.subscribeToTopic('match'+cd_vaga+this.cd_profissional);
+      this.fcm.subscribeToTopic('fechar'+cd_vaga+this.cd_profissional);
       console.log(this.cd_profissional);
       this.alertaCurtida(ds_titulo);
-      console.log("Curtida");
     }
 
     /*
@@ -188,7 +191,6 @@ async getSession() {
     vagaNaoCurtida(cd_vaga, ds_titulo){
       console.log(cd_vaga);
       this.vagaService.vagaSelecionada("Dislike",cd_vaga,this.cd_profissional);
-      console.log("Não Curtida");
     }
      /**
       * Chama tela de notificações 

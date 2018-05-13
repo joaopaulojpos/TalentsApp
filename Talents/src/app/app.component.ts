@@ -4,8 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { ConfigProvider } from '../providers/config/config';
-import { MenuPage } from '../pages/menu/menu';
 import { FCM } from '@ionic-native/fcm';
+import { MenuPage } from '../pages/menu/menu';
 
 @Component({
   templateUrl: 'app.html',
@@ -14,32 +14,30 @@ import { FCM } from '@ionic-native/fcm';
   ]
 })
 export class TalentsApp {
-  rootPage: any = LoginPage;
+  rootPage: any;
 
   constructor(
     platform: Platform,
-    private fcm: FCM,
+    public fcm: FCM,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     public alertCtrl: AlertController,
-    configProvaider: ConfigProvider,
+    public session: ConfigProvider
   ) {
-      
-    platform.ready().then(() => {
 
-      //this.fcm.subscribeToTopic('talents');
-  
-      this.fcm.onNotification().subscribe(data => {
-        alert('message received')
-        if(data.wasTapped) {
-        console.info("Received in background");
-        } else {
-        console.info("Received in foreground");
-        };
-      });
-       
+    this.verificaUsuario();
+    platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
     });
   }
+
+    async verificaUsuario(){
+      if((await this.session.exist()) || (await this.session.get())) {
+        this.rootPage = MenuPage;
+      }else{
+        this.rootPage = LoginPage;
+      }
+    }
+  
 }

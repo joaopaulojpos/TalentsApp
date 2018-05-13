@@ -54,9 +54,9 @@ export class TesteComportamentalPage {
   carregaPerguntasViaApi(): Promise<string> {
     return new Promise((resolve, reject) => {
       this.lista_perguntas = new Array<any>();
+      this.abreCarregandoPerguntas();
 
       this.comportamentalProvider.getPerguntasAlternativas().subscribe(data => {
-        this.abreCarregandoPerguntas();
         const response = (data as any);
         this.lista_perguntas = response.sucess;
         this.fechaCarregandoPerguntas();

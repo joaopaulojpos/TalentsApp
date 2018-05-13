@@ -64,6 +64,19 @@ export class ListCompetenciasPage {
    **********************/   
   avancar(){
     this.navCtrl.setRoot(LoginPage);
+    this.alertaFimCadastro();
   }
+
+  alertaFimCadastro(){
+      let alert = this.alertCtrl.create({
+        title: 'Cadastro Finalizado com Sucesso!',
+        subTitle: 'Entre e encontre as vagas de emprego disponíveis para você.',
+        buttons: [{
+          text: 'OK',
+          handler: () => {
+         } }]
+      });
+      alert.present();
+    }
   
 }
