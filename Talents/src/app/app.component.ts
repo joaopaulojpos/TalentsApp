@@ -39,5 +39,4 @@ export class TalentsApp {
         this.rootPage = LoginPage;
       }
     }
-  
 }

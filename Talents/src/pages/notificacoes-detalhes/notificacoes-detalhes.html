@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Detalhes da Seleção</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="background">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+    <ion-card *ngFor="let notificacao of notificacoesList">
+        <ion-card-header>
+          Parabéns {{notificacao.ds_nome}}!!
+        </ion-card-header>
+        <ion-card-content>
+          Você foi selecionado pela Empresa <strong>{{notificacao.ds_nome_fantasia}}</strong> para participar da próxima fase de seleção da vaga de <strong>{{notificacao.ds_titulo}}</strong>.
+        </ion-card-content>
+      </ion-card>
+
+</ion-content>

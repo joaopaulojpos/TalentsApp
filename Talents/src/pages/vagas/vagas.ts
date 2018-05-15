@@ -6,7 +6,6 @@ import { Profissional } from '../../providers/profissional/profissional';
 import { ProfissionalService } from '../../providers/profissional/profissional-service';
 import { MenuPage } from '../menu/menu';
 import { NotificacoesPage } from '../notificacoes/notificacoes';
-import { NotificacoesAtalhoPage } from '../notificacoes-atalho/notificacoes-atalho';
 import { ServicosProvider } from '../../providers/servicos/servicos';
 import { ConfigProvider } from '../../providers/config/config';
 import { FCM } from '@ionic-native/fcm';
@@ -204,7 +203,7 @@ async getSession() {
       */
      notificacoesAtalho(myEvent) {
       console.log(myEvent);
-      let popover = this.popoverCtrl.create(NotificacoesAtalhoPage);
+      let popover = this.popoverCtrl.create(NotificacoesPage);
       popover.present({
         ev: myEvent
       });

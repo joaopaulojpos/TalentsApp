@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
-import { ServicosProvider } from '../../providers/servicos/servicos';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { ConfigProvider } from '../../providers/config/config';
+import { ServicosProvider } from '../../providers/servicos/servicos';
 import { Profissional } from '../../providers/profissional/profissional';
-import { PerfilPage } from '../perfil/perfil';
-import { NotificacoesDetalhesPage } from '../notificacoes-detalhes/notificacoes-detalhes';
 
 @IonicPage()
 @Component({
-  selector: 'page-notificacoes',
-  templateUrl: 'notificacoes.html',
+  selector: 'page-notificacoes-detalhes',
+  templateUrl: 'notificacoes-detalhes.html',
 })
-export class NotificacoesPage {
-
+export class NotificacoesDetalhesPage {
+  
   public profissionalLogado: Profissional;
   public cd_profissional:number;
   public refresher;
@@ -39,13 +37,12 @@ export class NotificacoesPage {
         console.log(this.session.exist());
   }
 
-
-
- async ionViewDidEnter() {
+  async ionViewDidLoad() {
     await this.getSession();
     this.abreCarregando();
     this.carregaNotificacoes(this.cd_profissional);
     console.log(this.cd_profissional);
+    
   }
 
   doRefresh(refresher) {
@@ -82,17 +79,11 @@ export class NotificacoesPage {
   //Animação de carregamento de notificações na tela;
   abreCarregando() {
     this.loader = this.loadingCtrl.create({
-      content: "Carregando Notificações..."
+      content: "Carregando Detalhes..."
     });
     this.loader.present();
   }
   fechaCarregando(){
     this.loader.dismiss();
   }
-
-  abrirNotificacao(){
-    this.navCtrl.push(NotificacoesDetalhesPage);
-  
-  }
-
 }

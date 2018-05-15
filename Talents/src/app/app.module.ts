@@ -29,8 +29,9 @@ import { TesteComportamentalPageModule } from '../pages/teste-comportamental/tes
 import { IdiomaPage} from '../pages/idioma/idioma';
 import { NotificacoesPage } from '../pages/notificacoes/notificacoes';
 import { NotificacoesPageModule } from '../pages/notificacoes/notificacoes.module';
+import { NotificacoesDetalhesPageModule } from '../pages/notificacoes-detalhes/notificacoes-detalhes.module';
+import { NotificacoesDetalhesPage } from '../pages/notificacoes-detalhes/notificacoes-detalhes';
 import { HttpClientModule } from '@angular/common/http';
-import { NotificacoesAtalhoPage } from '../pages/notificacoes-atalho/notificacoes-atalho';
 import { LottieAnimationViewModule } from 'ng-lottie';
 import { AnimacaoPage } from '../pages/animacao/animacao';
 import { AnimacaoPageModule } from '../pages/animacao/animacao.module';
@@ -41,7 +42,7 @@ import { AngularFireModule } from 'angularfire2';
 import { IdiomaService } from '../providers/idioma/idioma-service';
 import { CompetenciaService } from '../providers/competencia/competencia-service';
 import { Firebase } from '@ionic-native/firebase';
-import {RlTagInputModule} from 'angular2-tag-input';
+import { RlTagInputModule } from 'angular2-tag-input';
 import { ListIdiomasPage } from '../pages/list-idiomas/list-idiomas';
 import { ListCompetenciasPage } from '../pages/listcompetencias/listcompetencias';
 import { CompetenciaPage } from '../pages/competencia/competencia';
@@ -71,7 +72,6 @@ const firebaseConfig = {
     LoginPage,
     ProfissionalPage,
     IdiomaPage,
-    NotificacoesAtalhoPage,
     AnimacaoPage,
     ListIdiomasPage,
     ListCompetenciasPage,
@@ -93,6 +93,7 @@ const firebaseConfig = {
     HttpClientModule,
     MapsPageModule,
     NotificacoesPageModule,
+    NotificacoesDetalhesPageModule,
     TesteComportamentalPageModule,
     LottieAnimationViewModule,
     AngularFireAuthModule,
@@ -118,7 +119,7 @@ const firebaseConfig = {
     MapsPage,
     IdiomaPage,
     NotificacoesPage,
-    NotificacoesAtalhoPage,
+    NotificacoesDetalhesPage,
     AnimacaoPage,
     ListIdiomasPage,
     ListCompetenciasPage,
