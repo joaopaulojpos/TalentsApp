@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, PopoverController, ToastController } from 'ionic-angular';
 import { VagasService } from '../../providers/vagas/vagas-service';
 import { Vagas } from '../../providers/vagas/vagas';
@@ -6,7 +6,6 @@ import { Profissional } from '../../providers/profissional/profissional';
 import { ProfissionalService } from '../../providers/profissional/profissional-service';
 import { MenuPage } from '../menu/menu';
 import { NotificacoesPage } from '../notificacoes/notificacoes';
-import { ServicosProvider } from '../../providers/servicos/servicos';
 import { ConfigProvider } from '../../providers/config/config';
 import { FCM } from '@ionic-native/fcm';
 

@@ -4,7 +4,6 @@ import { ProfissionalService } from '../../providers/profissional/profissional-s
 import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
 import { Profissional } from '../../providers/profissional/profissional';
 import { VagasPage } from '../vagas/vagas';
-import { ProfissionalPage } from '../profissional/profissional';
 import { IdiomaPage } from '../idioma/idioma';
 @IonicPage()
 @Component({

@@ -39,4 +39,14 @@ export class TalentsApp {
         this.rootPage = LoginPage;
       }
     }
+
+    onNoti(){
+      this.fcm.onNotification().subscribe(data => {
+        if(data.wasTapped){
+          console.log("Received in background");
+        } else {
+          console.log("Received in foreground");
+        };
+      });
+    }
 }

@@ -1,8 +1,6 @@
 ﻿﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { TesteComportamentalService } from '../../providers/teste-comportamental/teste-comportamental-service';
-import { AnimacaoPage } from '../animacao/animacao';
-import { LoginPage } from '../login/login';
 import { ListCargosPage } from '../list-cargos/list-cargos';
 
 @IonicPage()
@@ -125,7 +123,7 @@ export class TesteComportamentalPage {
   informarPerguntasRestantes() {
     let listaPerguntasExigidas = new Array<any>();
     let listaPerguntasPendentes = new Array<any>();
-    let cdPerguntaRespondida = false;
+    //let cdPerguntaRespondida = false;
 
     //basicamente criando uma lista q tem de 1 até o valor de qtdPerguntasExigidas
     for (let index = 1; index <= this.qtdPerguntasExigidas; index++) {

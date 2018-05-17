@@ -3,7 +3,6 @@ import { NavController, NavParams, ToastController} from 'ionic-angular';
 import { LottieAnimationViewModule } from 'ng-lottie';
 import { MenuPage } from '../menu/menu';
 import { ProfissionalService } from '../../providers/profissional/profissional-service';
-import { ConfigProvider } from '../../providers/config/config';
 
 @Component({
   selector: 'page-animacao',
@@ -15,7 +14,6 @@ export class AnimacaoPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private profissionalservice: ProfissionalService,
-              private config: ConfigProvider,
               private toast: ToastController) {
     this.profissionalAnimacao = navParams.get("profissional");
     console.log(this.profissionalAnimacao);
