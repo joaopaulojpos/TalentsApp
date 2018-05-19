@@ -5,12 +5,6 @@ import { ProfissionalPage } from '../profissional/profissional';
 import { MenuPage } from '../menu/menu';
 import { Profissional } from '../../providers/profissional/profissional';
 import { ConfigProvider } from '../../providers/config/config';
-import { IdiomaPage } from '../idioma/idioma';
-import { ListIdiomasPage } from '../list-idiomas/list-idiomas';
-import { ListCompetenciasPage } from '../listcompetencias/listcompetencias';
-import { ListCursosPage } from '../listcursos/listcursos';
-import { ListCargosPage } from '../list-cargos/list-cargos';
-import { FCM } from '@ionic-native/fcm';
 
 @IonicPage()
 @Component({
@@ -27,11 +21,9 @@ export class LoginPage {
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private fcm: FCM,
               private toast: ToastController,
               public loadingCtrl: LoadingController,
               private profissionalservice: ProfissionalService,
-              private config: ConfigProvider,
               public session: ConfigProvider
               ){
   }  

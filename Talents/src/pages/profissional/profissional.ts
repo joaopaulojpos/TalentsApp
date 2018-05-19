@@ -6,7 +6,6 @@ import { MapsPage } from '../maps/maps';
 import { ProfissionalService } from '../../providers/profissional/profissional-service';
 import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
 import { Profissional } from '../../providers/profissional/profissional';
-import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({

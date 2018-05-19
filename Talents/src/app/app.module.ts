@@ -34,7 +34,6 @@ import { NotificacoesDetalhesPage } from '../pages/notificacoes-detalhes/notific
 import { HttpClientModule } from '@angular/common/http';
 import { LottieAnimationViewModule } from 'ng-lottie';
 import { AnimacaoPage } from '../pages/animacao/animacao';
-import { AnimacaoPageModule } from '../pages/animacao/animacao.module';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';

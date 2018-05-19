@@ -29,6 +29,7 @@ export class TalentsApp {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
+      //this.notiFMC();
     });
   }
 
@@ -38,5 +39,16 @@ export class TalentsApp {
       }else{
         this.rootPage = LoginPage;
       }
+    }
+
+    notiFMC(){
+      this.fcm.onNotification().subscribe(data => {
+        alert('message received')
+        if(data.wasTapped) {
+         console.info("Received in background");
+        } else {
+         console.info("Received in foreground");
+        };
+      });
     }
 }

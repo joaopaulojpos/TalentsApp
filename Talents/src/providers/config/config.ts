@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from "@ionic/storage";
 import { Profissional } from '../../providers/profissional/profissional';
-import { Firebase } from '@ionic-native/firebase';
-import { TalentsApp } from '../../app/app.component';
-import { LoginPage } from '../../pages/login/login';
 
 //let config_key_name = "config";
 
@@ -11,8 +8,7 @@ import { LoginPage } from '../../pages/login/login';
 export class ConfigProvider {
 
   constructor(
-      public storage: Storage,
-      private firebase: Firebase,
+      public storage: Storage
       //private pagInicial: TalentsApp
     )
               {}

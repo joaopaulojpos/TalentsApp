@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { IdiomaService } from '../../providers/idioma/idioma-service';
-import { CONSTANTS } from '@firebase/util';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ListIdiomasPage } from '../list-idiomas/list-idiomas';
 @IonicPage()

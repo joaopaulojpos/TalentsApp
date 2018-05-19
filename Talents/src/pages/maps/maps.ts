@@ -1,4 +1,4 @@
-import { Component, NgZone, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { NavController,NavParams } from 'ionic-angular';
 import {FormControl} from "@angular/forms";
 import { } from 'googlemaps';
