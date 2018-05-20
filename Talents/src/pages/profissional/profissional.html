@@ -80,7 +80,9 @@
         <ion-item *ngIf="profissionalFormulario.get('tp_sexo').errors && profissionalFormulario.get('tp_sexo').dirty">
             <p color="danger" ion-text *ngIf="profissionalFormulario.get('tp_sexo').hasError('required')">O Campo Gênero é Obrigatorio</p>
           </ion-item>
-          <button ion-button color="secondary" block type="submit" [disabled]="!profissionalFormulario.valid">Avançar</button>
+          <br>
+          <button ion-button color="secondary" block type="submit" [disabled]="!profissionalFormulario.valid" *ngIf="profissional.cd_profissional == null">Avançar</button>
+          <button ion-button color="secondary" block type="submit" [disabled]="!profissionalFormulario.valid" *ngIf="profissional.cd_profissional != null">Salvar</button>
     </ion-list>
   </form>
 </ion-content>

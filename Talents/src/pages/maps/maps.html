@@ -1,6 +1,6 @@
 <ion-header>
  <ion-navbar color="secondary">
-  <ion-title>Localização no Maps</ion-title>
+  <ion-title>Localização</ion-title>
  </ion-navbar>
   </ion-header>
   <ion-content padding class="background">
@@ -10,6 +10,6 @@
     <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
       <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
     </agm-map>
-    <button ion-button full (click)="getLocalizcao()">Confirmar local</button>
+    <button ion-button full (click)="getLocalizcao()">Confirmar Localização</button>
   </ion-content>
   

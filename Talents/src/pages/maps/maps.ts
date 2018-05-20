@@ -83,16 +83,13 @@ ionViewDidEnter() {
           navigator.geolocation.getCurrentPosition((position) => {
               this.latitude = position.coords.latitude;
               this.longitude = position.coords.longitude;
-              console.log(this.latitude);
-              console.log(this.longitude);
               this.zoom = 12;
           });
       }
   }
   //metodo que retorna posição atual do maps 
   private getLocalizcao(){
-      console.log(this.profissional.ds_email);
-
+      
       this.profissional.nr_latitude =this.latitude; 
       this.profissional.nr_longitude =this.longitude; 
       

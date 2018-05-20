@@ -46,7 +46,8 @@ export class ProfissionalService {
       nr_longitude: profissional.nr_longitude,
       tp_conta: "A",
       tp_sexo: profissional.tp_sexo,
-      ds_nome: profissional.ds_nome
+      ds_nome: profissional.ds_nome,
+      cd_profissional:profissional.cd_profissional
     });
     console.log(body);
     return this.http.post(this.URL.endereco + 'profissional/salvar', body, options)

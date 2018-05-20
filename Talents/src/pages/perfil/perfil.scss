@@ -20,5 +20,13 @@ page-perfil {
     font-size:  30px;
     float: right;
   }
-  
+  .background {
+    background-image: url('../assets/imgs/talents.jpg');
+    align-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .dadosProfissional {
+		background-color: rgba(255, 255, 255, 0.2);
+} 
 }

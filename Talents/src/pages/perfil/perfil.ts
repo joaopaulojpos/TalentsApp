@@ -4,7 +4,7 @@ import { ProfissionalService } from '../../providers/profissional/profissional-s
 import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
 import { Profissional } from '../../providers/profissional/profissional';
 import { VagasPage } from '../vagas/vagas';
-import { IdiomaPage } from '../idioma/idioma';
+import { ProfissionalPage } from '../profissional/profissional';
 @IonicPage()
 @Component({
   selector: 'page-perfil',
@@ -24,7 +24,7 @@ export class PerfilPage {
   }
 
   chamaEditarPerfil(){
-    this.navCtrl.push(IdiomaPage,{profissional:this.profissional});
+    this.navCtrl.push(ProfissionalPage,{profissional:this.profissional[0]});
   }
   
   chamaHome(){
