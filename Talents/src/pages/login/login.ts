@@ -5,6 +5,7 @@ import { ProfissionalPage } from '../profissional/profissional';
 import { MenuPage } from '../menu/menu';
 import { Profissional } from '../../providers/profissional/profissional';
 import { ConfigProvider } from '../../providers/config/config';
+import { Facebook } from '@ionic-native/facebook';
 
 @IonicPage()
 @Component({
@@ -17,6 +18,8 @@ export class LoginPage {
   public ds_senha : string;
   public loader;
   public profissional :Profissional;
+  public profissionalExistente = [];
+
 
   
   constructor(public navCtrl: NavController, 
@@ -24,7 +27,8 @@ export class LoginPage {
               private toast: ToastController,
               public loadingCtrl: LoadingController,
               private profissionalservice: ProfissionalService,
-              public session: ConfigProvider
+              public session: ConfigProvider,
+              private facebook: Facebook
               ){
   }  
   ionViewDidLoad(){
@@ -82,15 +86,37 @@ export class LoginPage {
     
   } 
   
-  loginFacebook(){
-    this.profissionalservice.loginFacebook()
-    .then(() => {
-        this.navCtrl.setRoot(MenuPage);
-      })
-      .catch((error) => {
-        this.toast.create({ duration: 3000, position: 'bottom', message: 'Erro ao efetuar Login via Facebook' })
-          .present();
-      });
-   }
+  loginFacebook(){ 
+    let permissions = new Array<string>();
+    permissions = ["public_profile", "email"];
 
+    this.facebook.login(permissions).then((response) => {
+     let params = new Array<string>();
+
+     this.facebook.api("/me?fields=name,email", params)
+     .then(res => {
+
+         //estou usando o model para criar os usuarios
+         let profissional = new Profissional();
+         profissional.ds_nome = res.name;
+         profissional.ds_email = res.email;
+         profissional.ds_senha = res.email;
+
+         this.logar(profissional);
+        // alert(profissional.ds_nome);
+        // alert(res.name);
+      
+     }, (error) => {
+       alert(error);
+       console.log('ERRO LOGIN: ',error);
+     })
+   }, (error) => {
+     alert(this.profissional);
+   });
+    }
+    logar(profissional: Profissional) {
+          this.profissionalservice.cadastrar(profissional);
+          this.navCtrl.setRoot(MenuPage);
+          alert("Bem vindo");
+      }
   }

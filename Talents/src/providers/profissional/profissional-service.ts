@@ -1,9 +1,6 @@
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Profissional } from './profissional';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-import * as firebase from 'firebase/app';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { ServicosProvider } from '../servicos/servicos';
 
 
@@ -12,9 +9,7 @@ export class ProfissionalService {
   public profissionalservice: Profissional;
 
   constructor(private http: Http,
-              private URL: ServicosProvider,
-              private angularFireAuth: AngularFireAuth,
-              private facebook: Facebook) {
+              private URL: ServicosProvider) {
   }
 
   /*********************************************
@@ -40,35 +35,32 @@ export class ProfissionalService {
     let body = JSON.stringify({
       b_foto: "semfoto.jpg",
       ds_senha: profissional.ds_senha,
-      dt_nascimento: profissional.dt_nascimento,
+      dt_nascimento: profissional.dt_nascimento || "2018-01-01",
       ds_email: profissional.ds_email,
-      nr_latitude: profissional.nr_latitude,
-      nr_longitude: profissional.nr_longitude,
+      nr_latitude: profissional.nr_latitude || 39.8282,
+      nr_longitude: profissional.nr_longitude|| -98.5795,
       tp_conta: "A",
-      tp_sexo: profissional.tp_sexo,
+      tp_sexo: profissional.tp_sexo || "I",
       ds_nome: profissional.ds_nome,
       cd_profissional:profissional.cd_profissional
     });
-    console.log(body);
+    
+    //alert(body);
     return this.http.post(this.URL.endereco + 'profissional/salvar', body, options)
-      .map(res => res.json())      
+      .map(res => res.json())
   }
 
  /*****************************************
  ****LOGIN DO PROFISSIONAL VIA FACEBOOK****
  ******************************************/  
 loginFacebook() {
-  return this.facebook.login(['public_profile', 'email'])
-    .then((res: FacebookLoginResponse) => {
-      return this.angularFireAuth.auth.signInWithCredential(firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken));
-    });
+ 
 }
  /****************************************** 
   **RETORNA CURSOS POR PROFISSIONAL DA API** 
   ******************************************/
 
  getCursos(cd_profissional : number) {
-  console.log(cd_profissional);
   return this.http.get(this.URL.endereco + `profissional/cursos?cd_profissional=${cd_profissional}`)
   
   }
@@ -77,7 +69,6 @@ loginFacebook() {
     ******************************************/
 
  getCargos(cd_profissional : number) {
-  console.log(cd_profissional);
   return this.http.get(this.URL.endereco + `profissional/cargos?cd_profissional=${cd_profissional}`)
   
   }
@@ -86,7 +77,6 @@ loginFacebook() {
      *******************************************/
 
  getIdiomas(cd_profissional : number) {
-  console.log(cd_profissional);
   return this.http.get(this.URL.endereco + `profissional/idiomas?cd_profissional=${cd_profissional}`)
   
   }
@@ -95,8 +85,15 @@ loginFacebook() {
     ************************************************/
 
  getCompetencias(cd_profissional : number) {
-  console.log(cd_profissional);
   return this.http.get(this.URL.endereco + `profissional/competencias_tecnicas?cd_profissional=${cd_profissional}`)
+  
+  }
+   /************************************************** 
+    **RETORNA DADOS DO PROFISSIONAL APARTIR DO EMAIL** 
+    **************************************************/
+
+ getProfissional(ds_email : string) {
+  return this.http.get(this.URL.endereco + `profissional/profissional?ds_email=${ds_email}`)
   
   }
 }
