@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { Platform, AlertController } from 'ionic-angular';
+import { Platform, AlertController, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { ConfigProvider } from '../providers/config/config';
 import { FCM } from '@ionic-native/fcm';
 import { MenuPage } from '../pages/menu/menu';
+import { NotificacoesPage } from '../pages/notificacoes/notificacoes';
 
 @Component({
   templateUrl: 'app.html',
@@ -22,13 +23,21 @@ export class TalentsApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     public alertCtrl: AlertController,
+    public app: App,
     public session: ConfigProvider
   ) {
 
     this.verificaUsuario();
     platform.ready().then(() => {
-      statusBar.styleDefault();
-      splashScreen.hide();
+      if(platform.is('android') || platform.is('ios')){
+        statusBar.styleDefault();
+        splashScreen.hide();
+        this.notificacaoFMC();
+        
+      }else
+      if(platform.is('browser')){
+
+      }
     });
   }
 
@@ -40,12 +49,33 @@ export class TalentsApp {
       }
     }
 
-    onNoti(){
-      this.fcm.onNotification().subscribe(data => {
-        if(data.wasTapped){
-          console.log("Received in background");
+    notificacaoFMC(){
+      this.fcm.onNotification().subscribe(data => {                    
+          
+        if(data.wasTapped) {         
+
+         console.info("Received in background");    
         } else {
-          console.log("Received in foreground");
+          let alert = this.alertCtrl.create({
+            title:'Parabéns, você foi selecionado!',
+            message: 'Click e veja os detalhes da vaga',
+            buttons: [
+              {
+                text: 'Cancelar',
+                handler: () => {}
+              },
+              {
+                text: 'Ok',
+                handler: () => {
+                  var nav = this.app.getActiveNav();
+                  nav.push(NotificacoesPage);
+                }
+              }
+            ]
+          });
+          alert.present();
+         console.info("Received in foreground");
+        
         };
       });
     }
