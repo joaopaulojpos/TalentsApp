@@ -85,7 +85,9 @@ export class LoginPage {
     this.session.create(profissional);
     
   } 
-  
+   /**************************************************************************
+   **LOGIN DO PROFISSIONAL VIA FACEBOOK SÓ MEXA SE SOUBER O QUE ESTÁ FAZENDO** 
+   ***************************************************************************/
   loginFacebook(){ 
     let permissions = new Array<string>();
     permissions = ["public_profile", "email"];
@@ -95,28 +97,41 @@ export class LoginPage {
 
      this.facebook.api("/me?fields=name,email", params)
      .then(res => {
+          this.profissionalservice.getProfissional(res.email).subscribe(data =>{
+          const response = (data as any);
+          const objeto = JSON.parse(response._body);
+          this.profissionalExistente = objeto.sucess;
 
-         //estou usando o model para criar os usuarios
-         let profissional = new Profissional();
-         profissional.ds_nome = res.name;
-         profissional.ds_email = res.email;
-         profissional.ds_senha = res.email;
-
-         this.logar(profissional);
-        // alert(profissional.ds_nome);
-        // alert(res.name);
-      
-     }, (error) => {
-       alert(error);
-       console.log('ERRO LOGIN: ',error);
-     })
-   }, (error) => {
-     alert(this.profissional);
-   });
-    }
-    logar(profissional: Profissional) {
-          this.profissionalservice.cadastrar(profissional);
-          this.navCtrl.setRoot(MenuPage);
-          alert("Bem vindo");
-      }
-  }
+          if(this.profissionalExistente[0].ds_senha != '' || undefined || null){
+            this.profissionalservice.login(res.email,this.profissionalExistente[0].ds_senha).subscribe(async data =>{
+             const response = (data as any);
+             const objeto =JSON.parse(response._body);
+             this.profissional = objeto.sucess;
+             if(this.profissionalExistente != null){
+              await this.criaSession(this.profissionalExistente);
+               this.navCtrl.setRoot(MenuPage);
+             }else{
+               this.toast.create({ message: 'Erro ao Efetuar Login com Facebook', duration: 2000 }).present(); 
+             }
+            },error =>{
+             console.log(error);
+             this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
+            } 
+           )
+           }else{
+            let profissional = new Profissional();
+            profissional.ds_nome = res.name;
+            profissional.ds_email = res.email;
+            profissional.ds_senha = res.email;
+            this.profissionalservice.cadastrar(profissional);
+         }
+        }, (error) => {
+          alert(error);
+          console.log('ERRO LOGIN: ',error);
+        })
+      }, (error) => {
+        alert(error);
+      });
+      });
+    }    
+}
