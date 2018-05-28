@@ -35,27 +35,19 @@ export class ProfissionalService {
     let body = JSON.stringify({
       b_foto: "semfoto.jpg",
       ds_senha: profissional.ds_senha,
-      dt_nascimento: profissional.dt_nascimento || "2018-01-01",
+      dt_nascimento: profissional.dt_nascimento,
       ds_email: profissional.ds_email,
-      nr_latitude: profissional.nr_latitude || 39.8282,
-      nr_longitude: profissional.nr_longitude|| -98.5795,
+      nr_latitude: profissional.nr_latitude,
+      nr_longitude: profissional.nr_longitude,
       tp_conta: "A",
-      tp_sexo: profissional.tp_sexo || "I",
+      tp_sexo: profissional.tp_sexo,
       ds_nome: profissional.ds_nome,
       cd_profissional:profissional.cd_profissional
     });
-    
-    //alert(body);
     return this.http.post(this.URL.endereco + 'profissional/salvar', body, options)
       .map(res => res.json())
   }
-
- /*****************************************
- ****LOGIN DO PROFISSIONAL VIA FACEBOOK****
- ******************************************/  
-loginFacebook() {
- 
-}
+  
  /****************************************** 
   **RETORNA CURSOS POR PROFISSIONAL DA API** 
   ******************************************/

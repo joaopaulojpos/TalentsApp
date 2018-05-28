@@ -25,7 +25,7 @@
                   <button ion-button icon-only (click)="editar(competencia)" light>
                       <ion-icon name="paper"></ion-icon>
                   </button>
-                  <button ion-button icon-only (click)="deletar(competencia)" danger>
+                  <button ion-button icon-only (click)="deletar(competencia)" color="danger">
                       <ion-icon name="trash"></ion-icon>
                   </button>
               </ion-item-options>
@@ -36,5 +36,6 @@
       <ion-card *ngIf="competencias.length == 0">
         <ion-card-content>Não há nenhum Competências incluido em seu perfil.</ion-card-content>
       </ion-card>
-      <button ion-button full color="secondary"(click)="avancar()"> Finalizar Cadastro </button>    
+      <button ion-button full color="secondary"(click)="avancar()" *ngIf="tela == Menu "> Salvar </button>
+      <button ion-button full color="secondary"(click)="alteracoes()" *ngIf="tela != Menu"> Confirmar alterações </button> 
   </ion-content>

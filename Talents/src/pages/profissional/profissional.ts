@@ -54,7 +54,8 @@ export class ProfissionalPage {
     })
     }else{
       this.profissionalservice.cadastrar(this.profissionalFormulario.value).subscribe(data => {
-        this.navCtrl.setRoot(MenuPage);
+        this.navCtrl.setRoot(MenuPage, { Profissional: this.profissional});
+        console.log(this.profissional);
       }, error => {
         this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
       })
@@ -66,6 +67,7 @@ export class ProfissionalPage {
       ds_nome: ['', [Validators.required, Validators.pattern("^[^-\s][a-zA-ZÀ-ú ]*")]],
       ds_email: ['', [Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
       ds_senha: ['', [Validators.pattern(/^[a-z0-9_-]{6,18}$/)]],
+      ds_senha_confirmacao: ['',Validators.required],
       dt_nascimento: ['', Validators.required],
       tp_sexo: ['', Validators.required],
       nr_latitude: this.latitude,
@@ -73,11 +75,12 @@ export class ProfissionalPage {
       nm_cidade:[''],
       b_foto: this.imagem,
       cd_profissional: null,
-    });
+    }, {validator: this.matchingPasswords('ds_senha', 'ds_senha_confirmacao')});
   }
-  /**
-    * Metodo para tirar foto .
-    */
+
+  /**************************
+   **Metodo para tirar foto**
+   **************************/
   tirarFoto() {
     const options: CameraOptions = {
       quality: 100,
@@ -94,11 +97,27 @@ export class ProfissionalPage {
       console.log(err);
     });
   }
-  /**
-   * Metodo para abrir Maps .
-   */
+  /**************************
+   **Metodo para abrir Maps** 
+   **************************/
   openMaps() {
     this.navCtrl.push(MapsPage, { profissional: this.profissionalFormulario.value });
+  }
+
+  /**********************************
+   **Metodo para confrmar as senhas** 
+   **********************************/
+  matchingPasswords(ds_senha: string, ds_senha_confirmacao: string) {
+    return (group: FormGroup): {[key: string]: any} => {
+      let password = group.controls[ds_senha];
+      let confirmPassword = group.controls[ds_senha_confirmacao];
+
+      if (password.value !== confirmPassword.value) {
+        return {
+          mismatchedPasswords: true
+        };
+      }
+    }
   }
 
 }

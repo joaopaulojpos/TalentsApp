@@ -13,6 +13,7 @@
           <ion-card-title class="ion-card-title">
            <strong>{{ vaga.ds_titulo}}</strong>
            <p class="ion-card-title" >Data da Publicação: {{vaga.dt_criacao | date: 'dd-MM-yyyy'}} </p>
+           <p class="ion-card-title" >Distância da vaga: {{vaga.distancia_km}} km .</p>
             </ion-card-title>
             <ion-icon *ngIf="mostrarDetalhe" class="abrirVaga" name="md-arrow-dropup-circle" (click)="detalharvaga()" ></ion-icon>
            <ion-icon *ngIf="!mostrarDetalhe" class="abrirVaga" name="md-arrow-dropdown-circle" (click)="detalharvaga()" ></ion-icon>

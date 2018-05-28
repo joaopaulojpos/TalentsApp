@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController }
 import { CompetenciaPage } from '../competencia/competencia';
 import { ProfissionalService } from '../../providers/profissional/profissional-service';
 import { LoginPage } from '../login/login';
+import { MenuPage } from '../menu/menu';
 
 @IonicPage()
 @Component({
@@ -12,6 +13,7 @@ import { LoginPage } from '../login/login';
 export class ListCompetenciasPage {
   competencias: any = [];
   public cd_profissional;
+  public tela;
  
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
@@ -19,10 +21,8 @@ export class ListCompetenciasPage {
               private profissionalservice: ProfissionalService,
               public navParams: NavParams
             ) {
-
+              this.tela = navParams.get("tela");
               this.cd_profissional = navParams.get("cd_profissional");
-              console.log(this.cd_profissional);
-
   }
   async ionViewDidEnter(){
     this.carregaCompetencias(this.cd_profissional);
@@ -66,7 +66,9 @@ export class ListCompetenciasPage {
     this.navCtrl.setRoot(LoginPage);
     this.alertaFimCadastro();
   }
-
+  alteracoes(){
+    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
+  }
   alertaFimCadastro(){
       let alert = this.alertCtrl.create({
         title: 'Cadastro Finalizado com Sucesso!',

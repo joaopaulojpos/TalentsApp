@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController, AlertController }
 import { CargoPage } from '../cargo/cargo';
 import { ProfissionalService } from '../../providers/profissional/profissional-service';
 import { ListCursosPage } from '../listcursos/listcursos';
+import { MenuPage } from '../menu/menu';
 
 @IonicPage()
 @Component({
@@ -13,15 +14,15 @@ export class ListCargosPage {
 
   cargos: any = [];
   public cd_profissional;
+  public tela;
 
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
               private toast: ToastController,
               private profissionalservice: ProfissionalService,
               public navParams: NavParams) {
-
+                this.tela = navParams.get("tela");
                 this.cd_profissional = navParams.get("cd_profissional");
-                console.log(this.cd_profissional);
   }
 
   async ionViewDidEnter(){
@@ -69,6 +70,9 @@ export class ListCargosPage {
    **********************/   
   avancar(){
     this.navCtrl.push(ListCursosPage,{ cd_profissional: this.cd_profissional });
+  }
+  alteracoes(){
+    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
   }
 
 }

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController }
 import { CursoPage } from '../curso/curso';
 import { ProfissionalService } from '../../providers/profissional/profissional-service';
 import { ListIdiomasPage } from '../list-idiomas/list-idiomas';
+import { MenuPage } from '../menu/menu';
 
 @IonicPage()
 @Component({
@@ -13,13 +14,15 @@ export class ListCursosPage {
 
   cursos: any = [];
   public cd_profissional;
+  public tela;
 
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
               private toast: ToastController,
               private profissionalservice: ProfissionalService,
               public navParams: NavParams) {
-
+                
+                this.tela = navParams.get("tela");
                 this.cd_profissional = navParams.get("cd_profissional");
                 console.log(this.cd_profissional);
 
@@ -70,5 +73,8 @@ export class ListCursosPage {
   avancar(){
     
     this.navCtrl.push(ListIdiomasPage,{ cd_profissional: this.cd_profissional });
+  }
+  alteracoes(){
+    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
   }
 }

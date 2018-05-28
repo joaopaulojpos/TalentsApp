@@ -24,7 +24,7 @@
                   <button ion-button icon-only (click)="editar(cargo)" light>
                       <ion-icon name="paper"></ion-icon>
                   </button>
-                  <button ion-button icon-only (click)="deletar(cargo)" danger>
+                  <button ion-button icon-only (click)="deletar(cargo)" color="danger">
                       <ion-icon name="trash"></ion-icon>
                   </button>
               </ion-item-options>
@@ -35,5 +35,6 @@
       <ion-card *ngIf="cargos.length == 0">
         <ion-card-content>Não há nenhum Experiênca incluida em seu perfil.</ion-card-content>
       </ion-card>    
-      <button ion-button full color="secondary"(click)="avancar()"> Avançar </button>
+      <button ion-button full color="secondary"(click)="avancar()" *ngIf="tela == Menu "> Salvar </button>
+      <button ion-button full color="secondary"(click)="alteracoes()" *ngIf="tela != Menu"> Confirmar alterações </button>
   </ion-content>

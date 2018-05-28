@@ -24,7 +24,7 @@
                 <button ion-button icon-only (click)="editar(idioma)" light>
                     <ion-icon name="paper"></ion-icon>
                 </button>
-                <button ion-button icon-only (click)="deletar(idioma)" danger>
+                <button ion-button icon-only (click)="deletar(idioma)" color="danger">
                     <ion-icon name="trash"></ion-icon>
                 </button>
             </ion-item-options>
@@ -35,5 +35,6 @@
     <ion-card *ngIf="idiomas.length == 0">
       <ion-card-content>Não há nenhum Idiomas incluido em seu perfil.</ion-card-content>
     </ion-card>
-    <button ion-button full color="secondary"(click)="avancar()"> Avançar </button>    
+    <button ion-button full color="secondary"(click)="avancar()" *ngIf="tela == Menu "> Salvar </button>
+    <button ion-button full color="secondary"(click)="alteracoes()" *ngIf="tela != Menu"> Confirmar alterações </button>  
 </ion-content>

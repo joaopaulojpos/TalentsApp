@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { TalentsApp } from './app.component';
-import { TabsPage    } from '../pages/tabs/tabs';
 import { LoginPage   } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -67,7 +66,6 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     TalentsApp,
-    TabsPage,
     LoginPage,
     ProfissionalPage,
     IdiomaPage,
@@ -108,7 +106,6 @@ const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     TalentsApp,
-    TabsPage,
     LoginPage,
     VagasPage,
     PerfilPage,

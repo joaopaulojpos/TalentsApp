@@ -24,7 +24,7 @@
                   <button ion-button icon-only (click)="editar(curso)" light>
                       <ion-icon name="paper"></ion-icon>
                   </button>
-                  <button ion-button icon-only (click)="deletar(curso)" danger>
+                  <button ion-button icon-only (click)="deletar(curso)" color="danger">
                       <ion-icon name="trash"></ion-icon>
                   </button>
               </ion-item-options>
@@ -35,5 +35,6 @@
       <ion-card *ngIf="cursos.length == 0">
         <ion-card-content>Não há nenhum Curso incluido em seu perfil.</ion-card-content>
       </ion-card>    
-      <button ion-button full color="secondary" (click)="avancar()"> Avançar </button>
+      <button ion-button full color="secondary"(click)="avancar()" *ngIf="tela == Menu "> Salvar </button>
+      <button ion-button full color="secondary"(click)="alteracoes()" *ngIf="tela != Menu"> Confirmar alterações </button>
   </ion-content>

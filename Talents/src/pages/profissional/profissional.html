@@ -18,11 +18,10 @@
                 <img class="avatar" *ngIf="imagem" [src]="imagem" alt="" width="100%" height="150px">
             </p>         
             <p>-->
-    <ion-list>
       <ion-item>
         <ion-icon name="person" item-start></ion-icon>
-        <ion-label stacked>Nome:</ion-label>
-        <ion-input formControlName="ds_nome" type="text" placeholder="Nome"></ion-input>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input formControlName="ds_nome" type="text" placeholder="Digite seu Nome"></ion-input>
       </ion-item>
       <ion-item *ngIf="profissionalFormulario.get('ds_nome').errors && profissionalFormulario.get('ds_nome').dirty">
           <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_nome').hasError('required')">O Campo Nome é Obrigatorio</p>
@@ -30,8 +29,8 @@
         </ion-item>
       <ion-item>
         <ion-icon name="mail" item-start></ion-icon>
-        <ion-label stacked>Email:</ion-label>
-        <ion-input formControlName="ds_email" type="email" placeholder="Email"></ion-input>
+        <ion-label stacked>Email</ion-label>
+        <ion-input formControlName="ds_email" type="email" placeholder="Digite seu Email"></ion-input>
       </ion-item>
       <ion-item *ngIf="profissionalFormulario.get('ds_email').errors && profissionalFormulario.get('ds_email').dirty">
           <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_email').hasError('required')">O Campo Email é Obrigatorio</p>
@@ -39,12 +38,12 @@
         </ion-item>
       <ion-item>
         <ion-icon name="md-map" item-start (click)="openMaps()"></ion-icon>
-        <ion-label stacked>Localizacação:</ion-label> 
+        <ion-label stacked>Localizacação</ion-label> 
        <ion-input disabled="true" type="text" placeholder="Clique para definir sua localização" (click)="openMaps()" formControlName="nm_cidade"></ion-input>
       </ion-item>    
       <ion-item>
         <ion-icon name="calendar" item-start></ion-icon>
-        <ion-label stacked>Data de Nascimento:</ion-label>
+        <ion-label stacked>Data de Nascimento</ion-label>
         <ion-datetime formControlName="dt_nascimento" displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"></ion-datetime>
       </ion-item>
       <ion-item *ngIf="profissionalFormulario.get('dt_nascimento').errors && profissionalFormulario.get('dt_nascimento').dirty">
@@ -52,8 +51,8 @@
         </ion-item>    
       <ion-item>
           <ion-icon name="lock" item-start></ion-icon>
-          <ion-label stacked>Senha:</ion-label>
-          <ion-input formControlName="ds_senha" type="password" placeholder="Senha"></ion-input>
+          <ion-label stacked>Senha</ion-label>
+          <ion-input formControlName="ds_senha" type="password" placeholder="Digite uma Senha"></ion-input>
         </ion-item>
         <ion-item *ngIf="profissionalFormulario.get('ds_senha').errors && profissionalFormulario.get('ds_senha').dirty">
           <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_senha').hasError('required')">O Campo Senha é Obrigatorio</p>
@@ -61,17 +60,16 @@
         </ion-item>    
         <ion-item>
           <ion-icon name="lock" item-start></ion-icon>
-          <ion-label stacked>Confirmar Senha:</ion-label>
-          <ion-input formControlName="ds_senha" type="password" placeholder="Senha"></ion-input>
+          <ion-label stacked>Confirmar Senha</ion-label>
+          <ion-input formControlName="ds_senha_confirmacao" type="password" placeholder="Confirme sua Senha"></ion-input>
         </ion-item>
-        <ion-item *ngIf="profissionalFormulario.get('ds_senha').errors && profissionalFormulario.get('ds_senha').dirty">
-          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_senha').hasError('required')">O Campo Confirmar Senha é Obrigatorio</p>
-          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_senha').hasError('pattern')">O Campo Senha informado é uma senha fraca .</p>
-        </ion-item>    
+        <ion-item class='form-text error' *ngIf="profissionalFormulario.controls.ds_senha_confirmacao.touched && profissionalFormulario.hasError('mismatchedPasswords') && profissionalFormulario.controls.ds_senha.valid">
+          <p color="danger" ion-text>As senhas não coincidem.</p>
+        </ion-item>
         <ion-item>
             <ion-icon name="md-transgender" item-start></ion-icon>
-            <ion-label stacked>Gênero:</ion-label>
-          <ion-select formControlName="tp_sexo" placeholder= "Gênero">
+            <ion-label stacked>Gênero</ion-label>
+          <ion-select formControlName="tp_sexo" placeholder= "Selecione um Gênero">
               <ion-option value="I" ng-selected="true">Não Informado</ion-option>
             <ion-option value="F">Feminino</ion-option>
             <ion-option value="M">Masculino</ion-option>
@@ -83,6 +81,5 @@
           <br>
           <button ion-button color="secondary" block type="submit" [disabled]="!profissionalFormulario.valid" *ngIf="profissional.cd_profissional == null">Avançar</button>
           <button ion-button color="secondary" block type="submit" [disabled]="!profissionalFormulario.valid" *ngIf="profissional.cd_profissional != null">Salvar</button>
-    </ion-list>
   </form>
 </ion-content>

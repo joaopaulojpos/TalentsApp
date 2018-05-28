@@ -6,7 +6,6 @@ import { LoginPage } from '../login/login';
 import { ConfigProvider } from '../../providers/config/config';
 import { Profissional } from '../../providers/profissional/profissional';
 import { ProfissionalPage } from '../profissional/profissional';
-import { IdiomaPage } from '../idioma/idioma';
 import { ListCargosPage } from '../list-cargos/list-cargos';
 import { ListCursosPage } from '../listcursos/listcursos';
 import { ListCompetenciasPage } from '../listcompetencias/listcompetencias';
@@ -48,7 +47,6 @@ export class MenuPage {
 
  async ionViewDidEnter(){
    await this.getSession();
-   console.log(this.cd_profissional);
   }
 
   
@@ -66,22 +64,19 @@ export class MenuPage {
   }
   chamaExperiencia(){
     
-    this.navCtrl.push(ListCargosPage,{cd_profissional: this.cd_profissional});
+    this.navCtrl.push(ListCargosPage,{cd_profissional: this.cd_profissional,tela: "Menu"});
     console.log(this.cd_profissional);
   }
   chamaCurso(){
-    this.navCtrl.push(ListCursosPage,{cd_profissional: this.cd_profissional});
+    this.navCtrl.push(ListCursosPage,{cd_profissional: this.cd_profissional,tela: "Menu"});
     console.log(this.cd_profissional);
   }
   chamaCompetencia(){
-    this.navCtrl.push(ListCompetenciasPage,{cd_profissional: this.cd_profissional});
+    this.navCtrl.push(ListCompetenciasPage,{cd_profissional: this.cd_profissional,tela: "Menu"});
     console.log(this.cd_profissional);
   }
   chamaIdioma(){
-    this.navCtrl.push(ListIdiomasPage,{cd_profissional: this.cd_profissional});
+    this.navCtrl.push(ListIdiomasPage,{cd_profissional: this.cd_profissional,tela: "Menu"});
     console.log(this.cd_profissional);
-  }
-  chamaHome(){
-    this.navCtrl.push(IdiomaPage);
   }
 }
