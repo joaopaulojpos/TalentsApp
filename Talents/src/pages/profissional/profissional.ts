@@ -65,8 +65,8 @@ export class ProfissionalPage {
 
     return this.formBuilder.group({
       ds_nome: ['', [Validators.required, Validators.pattern("^[^-\s][a-zA-ZÀ-ú ]*")]],
-      ds_email: ['', [Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
-      ds_senha: ['', [Validators.pattern(/^[a-z0-9_-]{6,18}$/)]],
+      ds_email: ['', [Validators.required,Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
+      ds_senha: ['', [Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
       ds_senha_confirmacao: ['',Validators.required],
       dt_nascimento: ['', Validators.required],
       tp_sexo: ['', Validators.required],

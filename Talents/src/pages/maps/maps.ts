@@ -1,5 +1,5 @@
 import { Component, NgZone, ViewChild } from '@angular/core';
-import { NavController,NavParams } from 'ionic-angular';
+import { NavController,NavParams, ToastController } from 'ionic-angular';
 import {FormControl} from "@angular/forms";
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
@@ -24,6 +24,7 @@ export class MapsPage {
 constructor( public navCtrl: NavController,
              public navParams: NavParams ,
              private mapsAPILoader: MapsAPILoader,
+             private toast: ToastController,
             private ngZone: NgZone)  {
     this.zoom = 4;
     this.latitude = 39.8282;
@@ -92,7 +93,7 @@ ionViewDidEnter() {
       
       this.profissional.nr_latitude =this.latitude; 
       this.profissional.nr_longitude =this.longitude; 
-      
+      this.toast.create({ message: 'Localização confirmada com sucesso.', duration: 2000 }).present();   
     this.navCtrl.setRoot(ProfissionalPage,{latitude: this.latitude , longitude: this.longitude,profissional: this.profissional});
   }
 
