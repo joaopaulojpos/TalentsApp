@@ -123,7 +123,8 @@ export class LoginPage {
             profissional.ds_nome = res.name;
             profissional.ds_email = res.email;
             profissional.ds_senha = res.email;
-            this.profissionalservice.cadastrar(profissional);
+            //this.profissionalservice.cadastrar(profissional);
+            this.navCtrl.push(ProfissionalPage,{ profissional: this.profissional});
          }
         }, (error) => {
           alert(error);

@@ -51,6 +51,7 @@ import { CargoPage } from '../pages/cargo/cargo';
 import { CargoService } from '../providers/cargo/cargo-service';
 import { ListCargosPage } from '../pages/list-cargos/list-cargos';
 import { FCM } from '@ionic-native/fcm'
+import { Camera } from '@ionic-native/camera';
 
 
 
@@ -141,7 +142,8 @@ const firebaseConfig = {
     Firebase,
     CompetenciaService,
     CursoService,
-    CargoService
+    CargoService,
+    Camera
   ]
 })
 export class AppModule {}

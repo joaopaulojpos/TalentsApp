@@ -4,13 +4,15 @@
     <ion-title>Perfil</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding class="background">
+<ion-content padding>
     <ion-avatar class="avatar_perfil">
-    <div><img src="assets/imgs/avatar.png">
-    <ion-icon class="camera" name="camera"></ion-icon> </div>
+    <div>
+      <img src="{{ foto }}" (click)="alterarFoto()"/>
+    <!-- <ion-icon class="camera" name="camera" (click)="alterarFoto()" ></ion-icon> -->
+  </div>
   </ion-avatar>
   <br>
-  <div *ngFor="let profissional of profissional">
+  <div *ngFor="let profissional of profissionalLogado">
     <h2 text-center>
       <strong>{{profissional.ds_nome}}</strong>
     </h2>
