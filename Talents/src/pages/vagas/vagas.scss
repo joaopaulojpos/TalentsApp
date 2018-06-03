@@ -7,6 +7,15 @@ page-vagas {
 		background-size: cover;
     }
 
+
+    .toolbar-title-md {
+        padding: 0 12px;
+        font-size: 2rem;
+        margin-top: 12px;
+        font-weight: 500;
+        color: #424242;
+    }
+
     .notification{
      font-size: 40px;
      width: 40px;
@@ -15,7 +24,7 @@ page-vagas {
     }
     
     .ion-card-title {
-        background-color: darkslategray !important;
+        background-color: rgb(72, 121, 121) !important;
         color: honeydew;
         text-align: center;
     }
