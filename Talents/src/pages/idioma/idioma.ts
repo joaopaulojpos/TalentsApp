@@ -13,6 +13,7 @@ export class IdiomaPage {
     idiomaFormulario: FormGroup; 
     public idiomas =[];
   public cd_profissional;
+  public tela;
  
     constructor(public navCtrl: NavController,
                 public alertCtrl: AlertController,
@@ -23,7 +24,7 @@ export class IdiomaPage {
      
     this.idiomaFormulario = this.createMyForm();
     this.cd_profissional = navParams.get("cd_profissional");
-    console.log(this.cd_profissional);  
+    this.tela = navParams.get("tela"); 
 
     }
     ionViewDidEnter(){
@@ -49,7 +50,7 @@ export class IdiomaPage {
     this.idiomaFormulario.value.cd_profissional = this.cd_profissional;
     this.idiomaService.adicionar(this.idiomaFormulario.value).subscribe(data => {
       console.log(this.idiomaFormulario.value);
-      this.navCtrl.push(ListIdiomasPage,{ cd_profissional: this.cd_profissional });
+      this.navCtrl.setRoot(ListIdiomasPage,{ cd_profissional: this.cd_profissional,tela: "Menu"});
     }, error => {
       console.log("Data Erro: " + error);
     })

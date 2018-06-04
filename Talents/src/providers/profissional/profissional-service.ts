@@ -25,7 +25,6 @@ export class ProfissionalService {
    * @param profissional***************************************** 
    **************************************************************/
   cadastrar(profissional) {
-    console.log(profissional.ds_email);
     let headers = new Headers({
       'Content-Type': 'application/json'
     });

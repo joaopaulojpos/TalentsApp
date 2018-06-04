@@ -67,7 +67,7 @@ export class ListCompetenciasPage {
     this.alertaFimCadastro();
   }
   alteracoes(){
-    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional });
   }
   alertaFimCadastro(){
       let alert = this.alertCtrl.create({

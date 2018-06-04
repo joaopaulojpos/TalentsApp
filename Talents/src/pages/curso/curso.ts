@@ -13,6 +13,7 @@ export class CursoPage {
   cursoFormulario: FormGroup; 
   public cursos =[];
   public cd_profissional;
+  public tela;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -22,7 +23,7 @@ export class CursoPage {
 
     this.cursoFormulario = this.createMyForm();
     this.cd_profissional = navParams.get("cd_profissional");
-    console.log(this.cd_profissional); 
+    this.tela = navParams.get("tela");
   }
   ionViewDidEnter(){
     this.carregaCursos();
@@ -47,7 +48,7 @@ export class CursoPage {
 
     this.cursoFormulario.value.cd_profissional = this.cd_profissional;
     this.cursoService.adicionar(this.cursoFormulario.value).subscribe(data => {
-      this.navCtrl.push(ListCursosPage,{ cd_profissional: this.cd_profissional });
+      this.navCtrl.setRoot(ListCursosPage,{ cd_profissional: this.cd_profissional,tela: "Menu"});
     }, error => {
       console.log("Data Erro: " + error);
     })

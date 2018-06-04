@@ -56,13 +56,13 @@
         </ion-item>
         <ion-item *ngIf="profissionalFormulario.get('ds_senha').errors && profissionalFormulario.get('ds_senha').dirty">
           <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_senha').hasError('required')">O Campo Senha é Obrigatorio.</p>
-          <p color="danger" ion-text *ngIf="profissionalFormulario.get('ds_senha').hasError('pattern')">O Campo Senha não atende os requistos e necessário.</p>
+          <p text-wrap color="danger" ion-text *ngIf="profissionalFormulario.get('ds_senha').hasError('pattern')">O Campo Senha não atende os requistos e necessário.</p>
           <p color="danger" ion-text>-Ter no mínimo de 8 caracteres.</p>
           <p color="danger" ion-text>-Ter no mínimo 2 letras maiúsculas: ABCDEFG.</p>
           <p color="danger" ion-text>-Ter no mínimo 1 letra minúscula: abcdefgh.</p>
           <p color="danger" ion-text>-Ter no mínimo 1 número: 123456.</p>
           <p color="danger" ion-text>-Ter no mínimo 2 símbolos: @#$%.</p>
-          <p color="danger" ion-text>ex: Talents1, T234567a.</p> 
+          <p color="danger" ion-text>ex: Talents1@, T234567a#.</p> 
         </ion-item>    
         <ion-item>
           <ion-icon name="lock" item-start></ion-icon>

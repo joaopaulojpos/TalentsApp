@@ -70,6 +70,6 @@ export class ListIdiomasPage {
     this.navCtrl.push(ListCompetenciasPage,{ cd_profissional: this.cd_profissional });
   }
   alteracoes(){
-    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional });
   }
 }

@@ -75,6 +75,6 @@ export class ListCursosPage {
     this.navCtrl.push(ListIdiomasPage,{ cd_profissional: this.cd_profissional });
   }
   alteracoes(){
-    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional });
   }
 }

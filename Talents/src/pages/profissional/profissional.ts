@@ -7,6 +7,7 @@ import { ProfissionalService } from '../../providers/profissional/profissional-s
 import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
 import { Profissional } from '../../providers/profissional/profissional';
 import { MenuPage } from '../menu/menu';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -48,7 +49,12 @@ export class ProfissionalPage {
     this.profissionalservice.cadastrar(this.profissionalFormulario.value).subscribe(data => {
       const response = (data as any)
       let cd_profissional = response;
+      if(response.erro[0] == "Já existe uma Profissional cadastrada com esses dados !"){
+        this.toast.create({ message: 'Já existe uma Profissional cadastrado com o email informado, estamos lhe redirecionando para a tela de Login.', duration: 3000 }).present(); 
+        this.navCtrl.setRoot(LoginPage);
+      } else{
       this.navCtrl.setRoot(TesteComportamentalPage, { cd_profissional: cd_profissional });
+    }
     }, error => {
       this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
     })

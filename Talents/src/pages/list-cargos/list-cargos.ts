@@ -72,7 +72,7 @@ export class ListCargosPage {
     this.navCtrl.push(ListCursosPage,{ cd_profissional: this.cd_profissional });
   }
   alteracoes(){
-    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional });
   }
 
 }

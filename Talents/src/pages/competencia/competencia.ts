@@ -14,6 +14,7 @@ export class CompetenciaPage {
   competenciaFormulario: FormGroup; 
   public competencias =[];
   public cd_profissional;
+  public tela;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -23,7 +24,7 @@ export class CompetenciaPage {
 
     this.competenciaFormulario = this.createMyForm();
     this.cd_profissional = navParams.get("cd_profissional");
-    console.log(this.cd_profissional);   
+    this.tela = navParams.get("tela");
   }
   ionViewDidEnter(){
     this.carregaCompetencias();
@@ -49,7 +50,7 @@ export class CompetenciaPage {
     this.competenciaFormulario.value.cd_profissional = this.cd_profissional;
     this.competenciaService.adicionar(this.competenciaFormulario.value).subscribe(data => {
       console.log(this.competenciaFormulario.value);
-      this.navCtrl.push(ListCompetenciasPage,{ cd_profissional: this.cd_profissional });
+      this.navCtrl.setRoot(ListCompetenciasPage,{ cd_profissional: this.cd_profissional,tela: "Menu" });
     }, error => {
       console.log("Data Erro: " + error);
     })

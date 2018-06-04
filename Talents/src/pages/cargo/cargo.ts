@@ -13,6 +13,7 @@ export class CargoPage {
   cargoFormulario: FormGroup; 
   public cargos =[];
   public cd_profissional;
+  public tela;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -22,7 +23,7 @@ export class CargoPage {
 
     this.cargoFormulario = this.createMyForm(); 
     this.cd_profissional = navParams.get("cd_profissional");
-    console.log(this.cd_profissional);
+    this.tela = navParams.get("tela");
   }
   ionViewDidEnter(){
     this.carregaCargos();
@@ -46,7 +47,7 @@ export class CargoPage {
   adicionar() {
     this.cargoFormulario.value.cd_profissional = this.cd_profissional;
     this.cargoService.adicionar(this.cargoFormulario.value).subscribe(data => {
-      this.navCtrl.push(ListCargosPage,{ cd_profissional: this.cd_profissional });
+      this.navCtrl.setRoot(ListCargosPage,{ cd_profissional: this.cd_profissional,tela: "Menu"});
     }, error => {
       console.log("Data Erro: " + error);
     })
