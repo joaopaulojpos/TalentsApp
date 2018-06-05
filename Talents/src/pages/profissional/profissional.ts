@@ -78,7 +78,7 @@ export class ProfissionalPage {
       tp_sexo: ['', Validators.required],
       nr_latitude: this.latitude,
       nr_longitude: this.longitude,
-      nm_cidade:[''],
+      nm_cidade:['',Validators.required],
       b_foto: this.imagem,
       cd_profissional: null,
     }, {validator: this.matchingPasswords('ds_senha', 'ds_senha_confirmacao')});
@@ -107,7 +107,7 @@ export class ProfissionalPage {
    **Metodo para abrir Maps** 
    **************************/
   openMaps() {
-    this.navCtrl.push(MapsPage, { profissional: this.profissionalFormulario.value });
+    this.navCtrl.setRoot(MapsPage, { profissional: this.profissionalFormulario.value });
   }
 
   /**********************************

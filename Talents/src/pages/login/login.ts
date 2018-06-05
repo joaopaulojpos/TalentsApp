@@ -6,6 +6,7 @@ import { MenuPage } from '../menu/menu';
 import { Profissional } from '../../providers/profissional/profissional';
 import { ConfigProvider } from '../../providers/config/config';
 import { Facebook } from '@ionic-native/facebook';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @IonicPage()
 @Component({
@@ -28,10 +29,13 @@ export class LoginPage {
               public loadingCtrl: LoadingController,
               private profissionalservice: ProfissionalService,
               public session: ConfigProvider,
-              private facebook: Facebook
+              private facebook: Facebook,
+              private screenOrientation: ScreenOrientation
               ){
   }  
   ionViewDidLoad(){
+    
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }                           
    /**************************   
     **Cadastrar Profissional**
@@ -111,6 +115,7 @@ export class LoginPage {
               await this.criaSession(this.profissionalExistente);
                this.navCtrl.setRoot(MenuPage);
              }else{
+              this.navCtrl.push(ProfissionalPage,{ profissional: this.profissional});
                this.toast.create({ message: 'Erro ao Efetuar Login com Facebook', duration: 2000 }).present(); 
              }
             },error =>{

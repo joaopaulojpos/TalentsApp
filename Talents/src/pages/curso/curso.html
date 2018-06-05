@@ -34,12 +34,12 @@
       <ion-item>
           <ion-icon name="ribbon" item-start></ion-icon>
           <ion-label stacked>Certificado</ion-label>
-          <ion-input type="text" placeholder="Numero do Certificado"formControlName="nr_certificado"></ion-input>
+          <ion-input type="text" placeholder="Numero do Certificado"formControlName="nr_certificado" type="number"></ion-input>
         </ion-item>
         <ion-item>
             <ion-icon name="timer" item-start></ion-icon>
             <ion-label stacked>Período</ion-label>
-            <ion-input type="text" placeholder="Numero do Periodo"formControlName="nr_periodo"></ion-input>
+            <ion-input type="text" placeholder="Numero do Periodo"formControlName="nr_periodo" type="number"></ion-input>
           </ion-item>  
           <button ion-button color="secondary" block type="submit" [disabled]="!cursoFormulario.valid">Incluir</button>
         </ion-list>

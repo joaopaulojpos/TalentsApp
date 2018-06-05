@@ -14,6 +14,7 @@ import { Profissional } from '../../providers/profissional/profissional';
 export class MapsPage {
   public latitude: number;
   public longitude: number;
+  public nm_cidade: string = "Sua localização atual.";
   public searchControl: FormControl;
   public zoom: number;
   public profissional: Profissional;
@@ -73,7 +74,7 @@ ionViewDidEnter() {
                 this.latitude = place.geometry.location.lat();
                 this.longitude = place.geometry.location.lng();
                 this.zoom = 12;
-                this.profissional.nm_cidade = place.name;
+                this.nm_cidade = place.name;
            });
         });
     });
@@ -92,7 +93,8 @@ ionViewDidEnter() {
   private getLocalizcao(){
       
       this.profissional.nr_latitude =this.latitude; 
-      this.profissional.nr_longitude =this.longitude; 
+      this.profissional.nr_longitude =this.longitude;
+      this.profissional.nm_cidade = this.nm_cidade;
       this.toast.create({ message: 'Localização confirmada com sucesso.', duration: 2000 }).present();   
     this.navCtrl.setRoot(ProfissionalPage,{latitude: this.latitude , longitude: this.longitude,profissional: this.profissional});
   }
