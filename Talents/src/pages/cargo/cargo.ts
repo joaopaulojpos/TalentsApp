@@ -24,6 +24,11 @@ export class CargoPage {
     this.cargoFormulario = this.createMyForm(); 
     this.cd_profissional = navParams.get("cd_profissional");
     this.tela = navParams.get("tela");
+    alert(this.tela);
+     if(this.tela  != "Menu"){
+       this.tela = "Menu";
+     }
+
   }
   ionViewDidEnter(){
     this.carregaCargos();
@@ -47,7 +52,8 @@ export class CargoPage {
   adicionar() {
     this.cargoFormulario.value.cd_profissional = this.cd_profissional;
     this.cargoService.adicionar(this.cargoFormulario.value).subscribe(data => {
-      this.navCtrl.setRoot(ListCargosPage,{ cd_profissional: this.cd_profissional,tela: "Menu"});
+      alert(this.tela);
+      this.navCtrl.setRoot(ListCargosPage,{ cd_profissional: this.cd_profissional,tela: this.tela});
     }, error => {
       console.log("Data Erro: " + error);
     })

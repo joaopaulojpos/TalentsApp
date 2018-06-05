@@ -128,6 +128,7 @@ export class LoginPage {
             profissional.ds_nome = res.name;
             profissional.ds_email = res.email;
             profissional.ds_senha = res.email;
+            this.navCtrl.push(ProfissionalPage,{ profissional: this.profissional});
          }
         }, (error) => {
           alert(error);
@@ -137,6 +138,5 @@ export class LoginPage {
         alert(error);
       });
       });
-      this.navCtrl.push(ProfissionalPage,{ profissional: this.profissional});
     }    
 }
