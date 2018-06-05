@@ -105,7 +105,7 @@ export class LoginPage {
           const response = (data as any);
           const objeto = JSON.parse(response._body);
           this.profissionalExistente = objeto.sucess;
-
+       
           if(this.profissionalExistente[0].ds_senha != '' || undefined || null){
             this.profissionalservice.login(res.email,this.profissionalExistente[0].ds_senha).subscribe(async data =>{
              const response = (data as any);
@@ -128,8 +128,6 @@ export class LoginPage {
             profissional.ds_nome = res.name;
             profissional.ds_email = res.email;
             profissional.ds_senha = res.email;
-            //this.profissionalservice.cadastrar(profissional);
-            this.navCtrl.push(ProfissionalPage,{ profissional: this.profissional});
          }
         }, (error) => {
           alert(error);
@@ -139,5 +137,6 @@ export class LoginPage {
         alert(error);
       });
       });
+      this.navCtrl.push(ProfissionalPage,{ profissional: this.profissional});
     }    
 }

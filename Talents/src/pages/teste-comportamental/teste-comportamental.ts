@@ -36,7 +36,8 @@ export class TesteComportamentalPage {
     private comportamentalProvider: TesteComportamentalService,
     private comportamentalService: TesteComportamentalService
   ) {
-    this.cd_profissional = navParams.get("cd_profissional").sucess
+    this.cd_profissional = navParams.get("cd_profissional")
+    console.log(this.cd_profissional);
   }
 
   ionViewDidEnter() {
@@ -45,7 +46,7 @@ export class TesteComportamentalPage {
 
   //Métodos
   metodoPrincipal() {
-    this.carregaPerguntasViaApi()
+    this.carregaPerguntasViaApi();
   }
 
   //Carrega as perguntas via API

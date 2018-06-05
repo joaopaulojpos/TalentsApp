@@ -49,7 +49,7 @@ export class ProfissionalPage {
     this.profissionalservice.cadastrar(this.profissionalFormulario.value).subscribe(data => {
       const response = (data as any)
       let cd_profissional = response;
-      if(response.erro[0] == "Já existe uma Profissional cadastrada com esses dados !"){
+      if(cd_profissional== "Já existe uma Profissional cadastrada com esses dados !"){
         this.toast.create({ message: 'Já existe uma Profissional cadastrado com o email informado, estamos lhe redirecionando para a tela de Login.', duration: 3000 }).present(); 
         this.navCtrl.setRoot(LoginPage);
       } else{
