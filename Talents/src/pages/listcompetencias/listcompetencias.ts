@@ -43,7 +43,7 @@ export class ListCompetenciasPage {
 
   adicionar(){
     console.log(this.cd_profissional);
-    this.navCtrl.push(CompetenciaPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.push(CompetenciaPage,{ cd_profissional: this.cd_profissional,tela: this.tela});
   }
 
   editar(competencia){
@@ -62,12 +62,13 @@ export class ListCompetenciasPage {
   /***********************
    **Chama próxima tela**
    **********************/   
-  avancar(){
+  salvar(){
+   if(this.tela = "Menu"){
+    this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional});
+   }else{
     this.navCtrl.setRoot(LoginPage);
     this.alertaFimCadastro();
-  }
-  alteracoes(){
-    this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional });
+    }
   }
   alertaFimCadastro(){
       let alert = this.alertCtrl.create({

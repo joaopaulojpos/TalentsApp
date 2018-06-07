@@ -50,7 +50,7 @@ export class IdiomaPage {
     this.idiomaFormulario.value.cd_profissional = this.cd_profissional;
     this.idiomaService.adicionar(this.idiomaFormulario.value).subscribe(data => {
       console.log(this.idiomaFormulario.value);
-      this.navCtrl.setRoot(ListIdiomasPage,{ cd_profissional: this.cd_profissional,tela: "Menu"});
+      this.navCtrl.setRoot(ListIdiomasPage,{ cd_profissional: this.cd_profissional,tela: this.tela});
     }, error => {
       console.log("Data Erro: " + error);
     })
@@ -61,7 +61,7 @@ export class IdiomaPage {
     return this.formBuilder.group({
       cd_idioma: ['', Validators.required],
       nr_nivel: ['', Validators.required],
-      cd_profissional:"1",
+      cd_profissional:this.cd_profissional,
     });
   }        
 

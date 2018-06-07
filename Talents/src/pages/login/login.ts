@@ -35,7 +35,7 @@ export class LoginPage {
   }  
   ionViewDidLoad(){
     
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   }                           
    /**************************   
     **Cadastrar Profissional**

@@ -69,10 +69,9 @@ export class ListCargosPage {
    **********************/   
   salvar(){
     if (this.tela == "Menu"){
-    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional });
   }else{
     this.navCtrl.setRoot(ListCursosPage,{ cd_profissional: this.cd_profissional });
-  }
-
+   }
   }
 }

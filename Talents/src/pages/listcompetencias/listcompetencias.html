@@ -15,13 +15,12 @@
    
           <ion-item-sliding *ngFor="let competencia of competencias">
    
-              <ion-item>
-                Competência:{{competencia.ds_competencia_tecnica}}
+              <ion-item text-wrap style="background-color:#d3d3d3">
+                <b>Competência:</b>{{competencia.ds_competencia_tecnica}}
                 <br>
-                Nivel: {{competencia.nr_nivel}}
+                <b>Nivel:</b> {{competencia.nr_nivel}}
               </ion-item>
-   
-              <ion-item-options>
+              <ion-item-options text-wrap style="background-color:#d3d3d3">
                   <button ion-button icon-only (click)="editar(competencia)" light>
                       <ion-icon name="paper"></ion-icon>
                   </button>
@@ -34,8 +33,7 @@
    
       </ion-list>
       <ion-card *ngIf="competencias.length == 0">
-        <ion-card-content>Não há nenhum Competências incluido em seu perfil.</ion-card-content>
+        <ion-card-content text-wrap style="background-color:#d3d3d3">Não há nenhum Competências incluido em seu perfil.</ion-card-content>
       </ion-card>
-      <button ion-button full color="secondary"(click)="avancar()"> Salvar </button>
-      <!--<button ion-button full color="secondary"(click)="alteracoes()" *ngIf="tela != Menu"> Confirmar alterações </button>--> 
+      <button ion-button full color="secondary"(click)="salvar()"> Salvar </button>
   </ion-content>

@@ -50,13 +50,15 @@ export class ListCursosPage {
     this.navCtrl.push(CursoPage,{ cd_profissional: this.cd_profissional,tela:this.tela});
   }
 
-  editar(idioma){
+  editar(curso){
+
+    console.log(curso);
 
   }
 
-  deletar(idioma){
+  deletar(curso){
 
-      let index = this.cursos.indexOf(idioma);
+      let index = this.cursos.indexOf(curso);
 
       if(index > -1){
           this.cursos.splice(index, 1);
@@ -68,9 +70,9 @@ export class ListCursosPage {
    **********************/   
   salvar(){
     if (this.tela == "Menu"){
-    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional });
     }else{
-      this.navCtrl.push(ListIdiomasPage,{ cd_profissional: this.cd_profissional,tela: this.tela });
+      this.navCtrl.setRoot(ListIdiomasPage,{ cd_profissional: this.cd_profissional,tela: this.tela });
     }
   }
 }

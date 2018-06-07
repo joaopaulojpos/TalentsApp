@@ -15,12 +15,12 @@
  
         <ion-item-sliding *ngFor="let idioma of idiomas">
  
-            <ion-item>
-                 Idioma:{{idioma.ds_idioma}}
+            <ion-item text-wrap style="background-color:#d3d3d3">
+                 <b>Idioma:</b> {{idioma.ds_idioma}}
                  <br>
-                 Nivel: {{idioma.nr_nivel}}
+                 <b>Nivel:</b> {{idioma.nr_nivel}}
             </ion-item>
-            <ion-item-options>
+            <ion-item-options style="background-color:#d3d3d3">
                 <button ion-button icon-only (click)="editar(idioma)" light>
                     <ion-icon name="paper"></ion-icon>
                 </button>
@@ -28,13 +28,11 @@
                     <ion-icon name="trash"></ion-icon>
                 </button>
             </ion-item-options>
- 
         </ion-item-sliding>
 
     </ion-list>
     <ion-card *ngIf="idiomas.length == 0">
-      <ion-card-content>Não há nenhum Idiomas incluido em seu perfil.</ion-card-content>
+      <ion-card-content style="background-color:#d3d3d3">Não há nenhum Idiomas incluido em seu perfil.</ion-card-content>
     </ion-card>
-    <button ion-button full color="secondary"(click)="avancar()"> Salvar </button>
-    <!--<button ion-button full color="secondary"(click)="alteracoes()" *ngIf="tela != Menu"> Confirmar alterações </button>-->  
+    <button ion-button full color="secondary"(click)="salvar()"> Salvar </button>
 </ion-content>

@@ -37,9 +37,7 @@ export class CargoPage {
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       this.cargos = objeto.sucess;
-        console.log(this.cargos);
     },error =>{
-      console.log(error);
       this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
       }
      )
