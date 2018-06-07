@@ -56,8 +56,6 @@ async getSession() {
           this.profissionalLogado = (res);
           this.cd_profissional = this.profissionalLogado[0].cd_profissional;
       });
-         
-      console.log(this.session.exist());
 }
 
   /**
@@ -78,7 +76,6 @@ async getSession() {
       const objeto = JSON.parse(response._body);
       this.listaVagas = objeto.sucess;
       this.fechaCarregando();
-        console.log(this.listaVagas);
     },error =>{
       console.log(error);
       this.fechaCarregando();
@@ -173,11 +170,9 @@ async getSession() {
      * chama o alert informando o usuário que está concorrendo a vaga.
      */
     vagaCurtida(cd_vaga, ds_titulo){
-      console.log(cd_vaga);
       this.vagaService.vagaSelecionada("Like",cd_vaga,this.cd_profissional);
       this.fcm.subscribeToTopic('match'+cd_vaga+this.cd_profissional);
       this.fcm.subscribeToTopic('fechar'+cd_vaga+this.cd_profissional);
-      console.log(this.cd_profissional);
       this.alertaCurtida(ds_titulo);
     }
 
@@ -187,7 +182,6 @@ async getSession() {
      * Envia a requisição para a API com os parâmetros.
      */
     vagaNaoCurtida(cd_vaga, ds_titulo){
-      console.log(cd_vaga);
       this.vagaService.vagaSelecionada("Dislike",cd_vaga,this.cd_profissional);
     }
      /**
@@ -201,7 +195,6 @@ async getSession() {
       * @param myEvent 
       */
      notificacoesAtalho(myEvent) {
-      console.log(myEvent);
       let popover = this.popoverCtrl.create(NotificacoesPage);
       popover.present({
         ev: myEvent

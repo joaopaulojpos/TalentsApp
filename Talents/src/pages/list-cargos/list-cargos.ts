@@ -25,7 +25,7 @@ export class ListCargosPage {
                 this.cd_profissional = navParams.get("cd_profissional");
   }
 
-  async ionViewDidEnter(){
+  async ionViewDidLoad(){
     this.carregaCargos(this.cd_profissional);
   }
 
@@ -37,7 +37,6 @@ export class ListCargosPage {
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       this.cargos = objeto.sucess;
-        console.log(this.cargos);
     },error =>{
       console.log(error);
       this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
@@ -49,7 +48,7 @@ export class ListCargosPage {
    **Chama tela de cadastrar cargo**
    *********************************/    
   adicionar(){
-    this.navCtrl.push(CargoPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.push(CargoPage,{ cd_profissional: this.cd_profissional, tela: this.tela });
   }
 
   editar(cargo){
@@ -68,11 +67,12 @@ export class ListCargosPage {
   /***********************
    **Chama próxima tela**
    **********************/   
-  avancar(){
-    this.navCtrl.push(ListCursosPage,{ cd_profissional: this.cd_profissional });
-  }
-  alteracoes(){
-    this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional });
+  salvar(){
+    if (this.tela == "Menu"){
+    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
+  }else{
+    this.navCtrl.setRoot(ListCursosPage,{ cd_profissional: this.cd_profissional });
   }
 
+  }
 }

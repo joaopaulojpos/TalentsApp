@@ -19,7 +19,6 @@ export class VagasService {
   ******************************************/
 
   getVagas(cd_profissional : number) {
-    console.log(cd_profissional);
     return this.http.get(this.URL.endereco + `profissional/vagas?cd_profissional=${cd_profissional}`)
     
   }

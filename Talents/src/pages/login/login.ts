@@ -53,7 +53,6 @@ export class LoginPage {
       const response = (data as any);
       const objeto =JSON.parse(response._body);
       this.profissional = objeto.sucess;
-      console.log(this.profissional);
       
       if(this.profissional != null){
        await this.criaSession(this.profissional);

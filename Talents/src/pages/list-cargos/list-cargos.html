@@ -1,7 +1,7 @@
 <ion-header>
  
     <ion-navbar class="ion-nav-bar" color="secondary">
-      <ion-title>Suas Experiêncas</ion-title>
+      <ion-title>Experiências</ion-title>
       <ion-buttons end>
           <button ion-button icon-only (click)="adicionar()"><ion-icon name="add"></ion-icon></button>
       </ion-buttons>
@@ -9,19 +9,19 @@
    
   </ion-header>
    
-  <ion-content>
+  <ion-content padding class="background">
    
       <ion-list>
-   
+
           <ion-item-sliding *ngFor="let cargo of cargos">
    
-              <ion-item>
-                 Cargo: <p>{{cargo.ds_cargo}}</p>
-                  <br>
-                  Empresa: <p>{{cargo.ds_empresa}}</p>
+              <ion-item text-wrap style="background-color:#d3d3d3">
+                  <b>Cargo:</b>   {{cargo.ds_cargo}}
+                  <br/>
+                  <b>Empresa:</b> {{cargo.ds_empresa}}
               </ion-item>
-              <ion-item-options>
-                  <button ion-button icon-only (click)="editar(cargo)" light>
+              <ion-item-options style="background-color:#d3d3d3">
+                  <button ion-button icon-only (click)="editar(cargo)">
                       <ion-icon name="paper"></ion-icon>
                   </button>
                   <button ion-button icon-only (click)="deletar(cargo)" color="danger">
@@ -33,8 +33,7 @@
    
       </ion-list>
       <ion-card *ngIf="cargos == 0">
-        <ion-card-content>Não há nenhum Experiênca incluida em seu perfil.</ion-card-content>
+        <ion-card-content style="background-color:#d3d3d3">Não há nenhum Experiênca incluida em seu perfil.</ion-card-content>
       </ion-card>    
-      <button ion-button full color="secondary"(click)="avancar()"> Salvar </button>
-     <!-- <button ion-button full color="secondary"(click)="alteracoes()" *ngIf="tela != Menu"> Confirmar alterações </button>-->
+      <button ion-button full color="secondary"(click)="salvar()"> Salvar </button>
   </ion-content>

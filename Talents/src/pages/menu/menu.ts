@@ -24,6 +24,7 @@ export class MenuPage {
   do = true;
   public profissionalLogado: Profissional;
   public cd_profissional:number;
+  public tela = "Menu";
 
   constructor(
     public navCtrl: NavController,
@@ -41,8 +42,6 @@ export class MenuPage {
             this.profissionalLogado = (res);
             this.cd_profissional = this.profissionalLogado[0].cd_profissional;
         });
-           
-        console.log(this.session.exist());
   }
 
  async ionViewDidEnter(){
@@ -64,19 +63,15 @@ export class MenuPage {
   }
   chamaExperiencia(){
     
-    this.navCtrl.push(ListCargosPage,{cd_profissional: this.cd_profissional,tela: "Menu"});
-    console.log(this.cd_profissional);
+    this.navCtrl.push(ListCargosPage,{cd_profissional: this.cd_profissional,tela: this.tela});
   }
   chamaCurso(){
-    this.navCtrl.push(ListCursosPage,{cd_profissional: this.cd_profissional,tela: "Menu"});
-    console.log(this.cd_profissional);
+    this.navCtrl.push(ListCursosPage,{cd_profissional: this.cd_profissional,tela: this.tela});
   }
   chamaCompetencia(){
-    this.navCtrl.push(ListCompetenciasPage,{cd_profissional: this.cd_profissional,tela: "Menu"});
-    console.log(this.cd_profissional);
+    this.navCtrl.push(ListCompetenciasPage,{cd_profissional: this.cd_profissional,tela: this.tela});
   }
   chamaIdioma(){
-    this.navCtrl.push(ListIdiomasPage,{cd_profissional: this.cd_profissional,tela: "Menu"});
-    console.log(this.cd_profissional);
+    this.navCtrl.push(ListIdiomasPage,{cd_profissional: this.cd_profissional,tela: this.tela});
   }
 }

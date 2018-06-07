@@ -24,12 +24,9 @@ export class ListCursosPage {
                 
                 this.tela = navParams.get("tela");
                 this.cd_profissional = navParams.get("cd_profissional");
-                console.log(this.cd_profissional);
-
   }
 
-  async ionViewDidEnter(){
-    console.log(this.cd_profissional);
+  async ionViewDidLoad(){
     this.carregaCursos(this.cd_profissional);
   }
 
@@ -41,7 +38,6 @@ export class ListCursosPage {
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       this.cursos = objeto.sucess;
-        console.log(this.cursos);
     },error =>{
       console.log(error);
       this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
@@ -51,7 +47,7 @@ export class ListCursosPage {
 
   adicionar(){
 
-    this.navCtrl.push(CursoPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.push(CursoPage,{ cd_profissional: this.cd_profissional,tela:this.tela});
   }
 
   editar(idioma){
@@ -70,11 +66,11 @@ export class ListCursosPage {
   /***********************
    **Chama próxima tela**
    **********************/   
-  avancar(){
-    
-    this.navCtrl.push(ListIdiomasPage,{ cd_profissional: this.cd_profissional });
-  }
-  alteracoes(){
-    this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional });
+  salvar(){
+    if (this.tela == "Menu"){
+    this.navCtrl.push(MenuPage,{ cd_profissional: this.cd_profissional });
+    }else{
+      this.navCtrl.push(ListIdiomasPage,{ cd_profissional: this.cd_profissional,tela: this.tela });
+    }
   }
 }

@@ -7,34 +7,34 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="background">
   <ion-list *ngFor="let pergunta of lista_perguntas">
-    <ion-list-header no-lines *ngIf="lista_perguntas.indexOf(pergunta) == 0">
+    <ion-list-header style="background-color:#d3d3d3" no-lines *ngIf="lista_perguntas.indexOf(pergunta) == 0">
       <b text-wrap>{{pergunta.ds_pergunta}} </b>
     </ion-list-header>
 
-    <ion-list-header *ngIf="lista_perguntas.indexOf(pergunta) > 0">
+    <ion-list-header style="background-color:#d3d3d3" *ngIf="lista_perguntas.indexOf(pergunta) > 0">
       <b text-wrap>{{pergunta.ds_pergunta}}</b>
     </ion-list-header>
 
     <ion-list no-lines radio-group>
 
-      <ion-item>
+      <ion-item style="background-color:#d3d3d3">
         <ion-label text-wrap>{{pergunta.alternativas[0].ds_resposta}}</ion-label>
         <ion-radio (ionSelect)="radioChecked(pergunta.alternativas[0].cd_alternativa_perfil_comp, pergunta.cd_pergunta)"></ion-radio>
       </ion-item>
 
-      <ion-item>
+      <ion-item style="background-color:#d3d3d3">
         <ion-label text-wrap>{{pergunta.alternativas[1].ds_resposta}}</ion-label>
         <ion-radio (ionSelect)="radioChecked(pergunta.alternativas[1].cd_alternativa_perfil_comp, pergunta.cd_pergunta)"></ion-radio>
       </ion-item>
 
-      <ion-item>
+      <ion-item style="background-color:#d3d3d3">
         <ion-label text-wrap>{{pergunta.alternativas[2].ds_resposta}}</ion-label>
         <ion-radio (ionSelect)="radioChecked(pergunta.alternativas[2].cd_alternativa_perfil_comp, pergunta.cd_pergunta)"></ion-radio>
       </ion-item>
 
-      <ion-item>
+      <ion-item style="background-color:#d3d3d3">
         <ion-label text-wrap>{{pergunta.alternativas[3].ds_resposta}}</ion-label>
         <ion-radio (ionSelect)="radioChecked(pergunta.alternativas[3].cd_alternativa_perfil_comp, pergunta.cd_pergunta)"></ion-radio>
       </ion-item>

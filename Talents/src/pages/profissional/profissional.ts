@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { MapsPage } from '../maps/maps';
@@ -11,7 +11,7 @@ import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
-  selector: 'page-form',
+  selector: 'page-profissional',
   templateUrl: 'profissional.html',
   providers: [
     Camera,
@@ -21,7 +21,7 @@ import { LoginPage } from '../login/login';
 export class ProfissionalPage {
   
   profissionalFormulario: FormGroup;
-  private imagem;
+  foto: string = 'assets/imgs/avatar.png';
   private latitude = [];
   private longitude = [];
   public profissional: Profissional;
@@ -31,7 +31,8 @@ export class ProfissionalPage {
     private camera: Camera,
     private profissionalservice: ProfissionalService,
     public navParams: NavParams,
-    private toast: ToastController
+    private toast: ToastController,
+    public alertCtrl: AlertController
   ) {
     this.profissionalFormulario = this.createMyForm();
 
@@ -79,7 +80,7 @@ export class ProfissionalPage {
       nr_latitude: this.latitude,
       nr_longitude: this.longitude,
       nm_cidade:['',Validators.required],
-      b_foto: this.imagem,
+      b_foto: this.foto,
       cd_profissional: null,
     }, {validator: this.matchingPasswords('ds_senha', 'ds_senha_confirmacao')});
   }
@@ -87,21 +88,55 @@ export class ProfissionalPage {
   /**************************
    **Metodo para tirar foto**
    **************************/
-  tirarFoto() {
+  alterarFoto(){
+    let alert = this.alertCtrl.create({
+      title:'Altere a foto do perfil',
+      message: '',
+      buttons: [
+        {
+          text: 'Galeria',
+          handler: () => {
+            this.chamaCamera("gallery");
+          }
+        },
+        {
+          text: 'Câmera',
+          handler: () => {
+            this.chamaCamera("picture");
+          }
+        }
+      ]
+    });
+    alert.present();
+
+  }
+
+  chamaCamera(type){
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType:this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: type == "picture" ?
+      this.camera.PictureSourceType.CAMERA : this.camera.PictureSourceType.SAVEDPHOTOALBUM,
+      allowEdit: true
     }
+    this.camera.getPicture(options)
+      .then((ImageData) =>{
+        
+        this.foto = '';
+        let base64image = 'data:image/jpeg;base64,' + ImageData;
+        this.foto = base64image;
+        console.log(this.foto);
+        this.profissionalFormulario.value.b_foto =base64image;
+        console.log(this.profissionalFormulario.value.b_foto );
 
-    this.camera.getPicture(options).then((imageData) => {
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-      this.imagem = base64Image;
-
-    }, (err) => {
-      console.log(err);
-    });
+      },(error) =>{
+        console.log(error);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
   /**************************
    **Metodo para abrir Maps** 
