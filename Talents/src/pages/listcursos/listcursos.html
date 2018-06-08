@@ -32,7 +32,7 @@
           </ion-item-sliding>
    
       </ion-list>
-      <ion-card *ngIf="cursos.length == 0">
+      <ion-card *ngIf="cursos == 0">
         <ion-card-content style="background-color:#d3d3d3">Não há nenhum Curso incluido em seu perfil.</ion-card-content>
       </ion-card>    
       <button ion-button full color="secondary"(click)="salvar()"> Salvar </button>

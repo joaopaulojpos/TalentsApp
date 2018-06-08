@@ -24,7 +24,7 @@ export class ListCompetenciasPage {
               this.tela = navParams.get("tela");
               this.cd_profissional = navParams.get("cd_profissional");
   }
-  async ionViewDidEnter(){
+  async ionViewDidLoad(){
     this.carregaCompetencias(this.cd_profissional);
   }
 

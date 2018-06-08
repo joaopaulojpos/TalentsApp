@@ -26,6 +26,7 @@ export class ListIdiomasPage {
   }
 
   async ionViewDidLoad(){
+    console.log(this.tela);
     this.carregaIdiomas(this.cd_profissional);
   }
 
@@ -65,7 +66,7 @@ export class ListIdiomasPage {
     if(this.tela = "Menu"){
       this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional }); 
     }else{
-    this.navCtrl.setRoot(ListCompetenciasPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.setRoot(ListCompetenciasPage,{ cd_profissional: this.cd_profissional,tela:this.tela});
    }
   }
 }

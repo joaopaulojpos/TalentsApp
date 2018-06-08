@@ -21,8 +21,9 @@ export class ListCargosPage {
               private toast: ToastController,
               private profissionalservice: ProfissionalService,
               public navParams: NavParams) {
-                this.tela = navParams.get("tela");
-                this.cd_profissional = navParams.get("cd_profissional");
+                
+              this.tela = navParams.get("tela");
+              this.cd_profissional = navParams.get("cd_profissional");
   }
 
   async ionViewDidLoad(){
@@ -71,7 +72,7 @@ export class ListCargosPage {
     if (this.tela == "Menu"){
     this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional });
   }else{
-    this.navCtrl.setRoot(ListCursosPage,{ cd_profissional: this.cd_profissional });
+    this.navCtrl.setRoot(ListCursosPage,{ cd_profissional: this.cd_profissional,tela: this.tela });
    }
   }
 }

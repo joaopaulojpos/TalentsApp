@@ -64,7 +64,6 @@ export class ProfissionalPage {
     }else{
       this.profissionalservice.cadastrar(this.profissionalFormulario.value).subscribe(data => {
         this.navCtrl.setRoot(MenuPage, { Profissional: this.profissional});
-        console.log(this.profissional);
       }, error => {
         this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
       })
