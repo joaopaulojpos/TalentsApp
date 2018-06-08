@@ -6,8 +6,8 @@
 </ion-header>
 <ion-content padding>
     <ion-avatar class="avatar_perfil">
-    <div>
-      <img src="{{ foto }}" (click)="alterarFoto()"/>
+    <div *ngFor="let profissional of profissionalLogado">
+      <img src="{{profissional.b_foto}}" (click)="alterarFoto()"/>
     <!-- <ion-icon class="camera" name="camera" (click)="alterarFoto()" ></ion-icon> -->
   </div>
   </ion-avatar>

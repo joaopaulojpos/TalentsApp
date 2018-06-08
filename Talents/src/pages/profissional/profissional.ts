@@ -46,15 +46,17 @@ export class ProfissionalPage {
    **Metodo chamada salvar profissional**
    **************************************/
   salvarProfissional() {
-    if(this.profissionalFormulario.value.cd_profissional ==null){
+    if(this.profissionalFormulario.value.cd_profissional == null){
+      console.log(this.profissionalFormulario.value);
     this.profissionalservice.cadastrar(this.profissionalFormulario.value).subscribe(data => {
       const response = (data as any)
       let cd_profissional = response;
-      if(cd_profissional== "Já existe uma Profissional cadastrada com esses dados !"){
+      console.log(cd_profissional.erro);
+      if(cd_profissional.erro == "Já existe uma Profissional cadastrada com esses dados !"){
         this.toast.create({ message: 'Já existe uma Profissional cadastrado com o email informado, estamos lhe redirecionando para a tela de Login.', duration: 3000 }).present(); 
         this.navCtrl.setRoot(LoginPage);
       } else{
-      this.navCtrl.setRoot(TesteComportamentalPage, { cd_profissional: cd_profissional });
+      this.navCtrl.setRoot(TesteComportamentalPage, { cd_profissional: cd_profissional.sucess });
     }
     }, error => {
       this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
@@ -90,7 +92,7 @@ export class ProfissionalPage {
    **************************/
   alterarFoto(){
     let alert = this.alertCtrl.create({
-      title:'Altere a foto do perfil',
+      title:'Selecionar a foto do perfil',
       message: '',
       buttons: [
         {
@@ -128,7 +130,7 @@ export class ProfissionalPage {
         let base64image = 'data:image/jpeg;base64,' + ImageData;
         this.foto = base64image;
         console.log(this.foto);
-        this.profissionalFormulario.value.b_foto =base64image;
+        this.profissionalFormulario.value.b_foto =this.foto;
         console.log(this.profissionalFormulario.value.b_foto );
 
       },(error) =>{

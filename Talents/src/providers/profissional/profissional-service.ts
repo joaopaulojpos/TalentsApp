@@ -25,6 +25,7 @@ export class ProfissionalService {
    * @param profissional***************************************** 
    **************************************************************/
   cadastrar(profissional) {
+    console.log(profissional);
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -32,7 +33,7 @@ export class ProfissionalService {
       headers: headers
     });
     let body = JSON.stringify({
-      b_foto: "semfoto.jpg",
+      b_foto: profissional.b_foto,
       ds_senha: profissional.ds_senha,
       dt_nascimento: profissional.dt_nascimento,
       ds_email: profissional.ds_email,

@@ -21,7 +21,8 @@ export class TesteComportamentalService {
     return this.httpC.get(this.URL.endereco + "pergunta_perfil_comp");
   }
 
-  enviarTesteComportamental(cd_pergunta_perfil_comp, cd_alternativa_perfil_comp, cd_profissional) {        
+  enviarTesteComportamental(cd_pergunta_perfil_comp, cd_alternativa_perfil_comp, cd_profissional) { 
+    console.log(cd_profissional);       
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -49,6 +50,7 @@ export class TesteComportamentalService {
   }
 
   gerarCalculoPerfilComp(cd_profissional) {
+    console.log(cd_profissional);
     let headers = new Headers({
       'Content-Type': 'application/json'
     });

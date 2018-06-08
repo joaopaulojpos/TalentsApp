@@ -49,7 +49,6 @@ export class IdiomaPage {
   adicionar() {
     this.idiomaFormulario.value.cd_profissional = this.cd_profissional;
     this.idiomaService.adicionar(this.idiomaFormulario.value).subscribe(data => {
-      console.log(this.idiomaFormulario.value);
       this.navCtrl.setRoot(ListIdiomasPage,{ cd_profissional: this.cd_profissional,tela: this.tela});
     }, error => {
       console.log("Data Erro: " + error);

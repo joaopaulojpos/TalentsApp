@@ -24,11 +24,8 @@ export class CargoPage {
     this.cargoFormulario = this.createMyForm(); 
     this.cd_profissional = navParams.get("cd_profissional");
     this.tela = navParams.get("tela");
-
-    console.log(this.tela);
-
   }
-  ionViewDidEnter(){
+  async ionViewDidLoad(){
     this.carregaCargos();
   }   
 

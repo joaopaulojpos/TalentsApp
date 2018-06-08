@@ -193,8 +193,8 @@ export class TesteComportamentalPage {
         this.toast.create({ message: "Teste enviado!" , duration: 1000 }).present();
         this.comportamentalService.gerarCalculoPerfilComp(this.cd_profissional);
 
-        this.navCtrl.setRoot(ListCargosPage, { cd_profissional: this.cd_profissional.sucess});
-        console.log(this.cd_profissional.sucess);
+        this.navCtrl.setRoot(ListCargosPage, { cd_profissional: this.cd_profissional});
+        console.log(this.cd_profissional);
 
       }
     }

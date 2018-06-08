@@ -34,7 +34,6 @@ export class CursoPage {
       const response = (data as any);
       const objeto = JSON.parse(response._body);
       this.cursos = objeto.sucess;
-        console.log(this.cursos);
     },error =>{
       console.log(error);
       this.toast.create({ message: 'Não foi possível estabelecer conexão.', duration: 2000 }).present(); 
@@ -48,7 +47,7 @@ export class CursoPage {
 
     this.cursoFormulario.value.cd_profissional = this.cd_profissional;
     this.cursoService.adicionar(this.cursoFormulario.value).subscribe(data => {
-      this.navCtrl.setRoot(ListCursosPage,{ cd_profissional: this.cd_profissional,tela: "Menu"});
+      this.navCtrl.setRoot(ListCursosPage,{ cd_profissional: this.cd_profissional,tela:this.tela});
     }, error => {
       console.log("Data Erro: " + error);
     })
@@ -57,7 +56,7 @@ export class CursoPage {
   private createMyForm() {
 
     return this.formBuilder.group({
-      cd_profissional:"1",
+      cd_profissional:this.cd_profissional,
       cd_curso: ['', Validators.required],
       ds_instituicao: ['', Validators.required],
       dt_fim: ['', Validators.required],

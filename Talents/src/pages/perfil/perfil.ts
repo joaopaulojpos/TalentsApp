@@ -29,7 +29,8 @@ export class PerfilPage {
        async getSession() {
         await this.session.get()
          .then(res => {
-          this.profissionalLogado = (res);          
+          this.profissionalLogado = (res);  
+          console.log(this.profissionalLogado);        
           });                     
           console.log(this.session.exist());
         }

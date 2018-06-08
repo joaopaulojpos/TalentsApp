@@ -4,9 +4,9 @@
 
       <ion-grid>
         <ion-row>
-          <ion-col col-4>
+          <ion-col col-4 *ngFor="let profissional of profissionalLogado">
               <div class="user-avatar">
-                <img src="assets/imgs/avatar.png">
+                <img src="{{profissional.b_foto}}">
               </div>
           </ion-col>
           <ion-col padding-top col-8 *ngFor="let profissional of profissionalLogado">
