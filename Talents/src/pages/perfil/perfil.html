@@ -4,7 +4,7 @@
     <ion-title>Perfil</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content>
     <ion-avatar class="avatar_perfil">
     <div *ngFor="let profissional of profissionalLogado">
       <img src="{{profissional.b_foto}}" (click)="alterarFoto()"/>

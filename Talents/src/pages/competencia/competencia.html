@@ -9,14 +9,14 @@
   <form [formGroup]="competenciaFormulario" (ngSubmit)="adicionar()"> 
       <ion-list>
           <br>
-        <ion-item>
+        <ion-item style="background-color:rgba(255, 255, 255, 0.8)">
             <ion-icon name="book" item-start></ion-icon>
             <ion-label stacked>Competência(s) Técnica(s)</ion-label>
             <ion-select  placeholder= "Competência"formControlName="cd_competencia_tecnica" >
                 <ion-option *ngFor="let competencia of competencias" [value]="competencia.cd_competencia_tecnica">{{competencia.ds_competencia_tecnica}}</ion-option>
                   </ion-select>    
         </ion-item>
-         <ion-item>
+         <ion-item style="background-color:rgba(255, 255, 255, 0.8)">
                 <ion-icon name="options" item-start></ion-icon>
                 <ion-label stacked>Nivel</ion-label>
               <ion-select  placeholder= "Nível" formControlName="nr_nivel">
