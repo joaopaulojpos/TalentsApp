@@ -13,9 +13,10 @@ export class NotificacoesDetalhesPage {
   
   public profissionalLogado: Profissional;
   public cd_profissional:number;
+  public cd_vaga:number;
   public refresher;
   public isRefreshing: boolean = false;
-  public notificacoesList = [];
+  public notificacaoDetalhe = [];
   public loader;
 
   constructor(
@@ -24,7 +25,8 @@ export class NotificacoesDetalhesPage {
     public session: ConfigProvider,
     public notificacoes: ServicosProvider,
     private toast: ToastController,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController) 
+    {      
   }
 
   async getSession() {
@@ -37,12 +39,11 @@ export class NotificacoesDetalhesPage {
         console.log(this.session.exist());
   }
 
-  async ionViewDidLoad() {
+  async ionViewDidEnter() {
     await this.getSession();
+    this.cd_vaga = this.navParams.get("cd_vaga");
     this.abreCarregando();
-    this.carregaNotificacoes(this.cd_profissional);
-    console.log(this.cd_profissional);
-    
+    this.carregaNotificacoesDetalhes();
   }
 
   doRefresh(refresher) {
@@ -52,15 +53,14 @@ export class NotificacoesDetalhesPage {
     setTimeout(() => {
       refresher.complete();
     }, 2000);
-    this.carregaNotificacoes(this.cd_profissional);
+    this.carregaNotificacoesDetalhes();
   }
 
-  carregaNotificacoes(cd_profissional){
-    this.notificacoes.getNotificacoes(cd_profissional).subscribe(data =>{
-      const response = (data as any);
-      const objeto = JSON.parse(response._body);
-      console.log(objeto);
-      this.notificacoesList = objeto.sucess;
+  carregaNotificacoesDetalhes(){
+    this.notificacoes.getNotificacoesDetalhes(this.cd_vaga,this.cd_profissional).subscribe(data =>{
+      const response = (data as any)
+      const objeto = JSON.parse(response._body)
+      this.notificacaoDetalhe = objeto.sucess;  
       this.fechaCarregando();
       if(this.isRefreshing){
         this.refresher.complete();

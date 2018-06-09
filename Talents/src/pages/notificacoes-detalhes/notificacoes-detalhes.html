@@ -7,12 +7,15 @@
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
-    <ion-card *ngFor="let notificacao of notificacoesList">
+      
+    <ion-card *ngFor="let detalhe of notificacaoDetalhe">
+
+        <p class="titulo"><strong>{{detalhe.ds_titulo}}</strong></p>
         <ion-card-header>
-          Parabéns {{notificacao.ds_nome}}!!
+          <p classe="descricao" text-wrap>Os detalhes da próxima fase de seleção estão logo abaixo:</p>
         </ion-card-header>
         <ion-card-content>
-          Você foi selecionado pela Empresa <strong>{{notificacao.ds_nome_fantasia}}</strong> para participar da próxima fase de seleção da vaga de <strong>{{notificacao.ds_titulo}}</strong>.
+          {{detalhe.ds_segunda_etapa}}
         </ion-card-content>
       </ion-card>
 

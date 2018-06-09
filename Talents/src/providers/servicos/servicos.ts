@@ -19,4 +19,8 @@ export class ServicosProvider {
     return this.http.get(this.endereco + `profissional/notificacoes?cd_profissional=${cd_profissional}`)
   }
 
+  getNotificacoesDetalhes(cd_vaga: number, cd_profissional: number) {
+    return this.http.get(this.endereco + `profissional/notificacoesdetalhes?cd_vaga=${cd_vaga}&cd_profissional=${cd_profissional}`)
+  }
+
 }

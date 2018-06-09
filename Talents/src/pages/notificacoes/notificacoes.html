@@ -7,8 +7,8 @@
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
-    <ion-card *ngFor="let notificacao of notificacoesList" (click)="abrirNotificacao()">
-        <ion-card-header>
+    <ion-card *ngFor="let notificacao of notificacoesList" (click)="abrirNotificacaoDetalhes(notificacao)">
+        <ion-card-header >
           Parabéns {{notificacao.ds_nome}}!!
         </ion-card-header>
         <ion-card-content>

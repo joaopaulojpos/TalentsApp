@@ -97,4 +97,5 @@
         <variable name="APP_NAME" value="Talents" />
     </plugin>
     <plugin name="cordova-plugin-fcm" spec="^2.1.2" />
+    <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
 </widget>

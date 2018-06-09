@@ -89,8 +89,9 @@ export class NotificacoesPage {
     this.loader.dismiss();
   }
 
-  abrirNotificacao(){
-    this.navCtrl.push(NotificacoesDetalhesPage);
+  abrirNotificacaoDetalhes(notificacao){
+    console.log("cdvaga Not: ",notificacao);
+    this.navCtrl.push(NotificacoesDetalhesPage, {cd_vaga: notificacao.cd_vaga});
   
   }
 
