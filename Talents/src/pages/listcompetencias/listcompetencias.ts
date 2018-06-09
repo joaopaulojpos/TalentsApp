@@ -63,7 +63,7 @@ export class ListCompetenciasPage {
    **Chama próxima tela**
    **********************/   
   salvar(){
-   if(this.tela = "Menu"){
+   if(this.tela == "Menu"){
     this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional});
    }else{
     this.navCtrl.setRoot(LoginPage);

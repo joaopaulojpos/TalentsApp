@@ -50,7 +50,7 @@ export class CompetenciaPage {
     this.competenciaFormulario.value.cd_profissional = this.cd_profissional;
     this.competenciaService.adicionar(this.competenciaFormulario.value).subscribe(data => {
       console.log(this.competenciaFormulario.value);
-      this.navCtrl.setRoot(ListCompetenciasPage,{ cd_profissional: this.cd_profissional,tela: "Menu" });
+      this.navCtrl.setRoot(ListCompetenciasPage,{ cd_profissional: this.cd_profissional,tela:this.tela});
     }, error => {
       console.log("Data Erro: " + error);
     })

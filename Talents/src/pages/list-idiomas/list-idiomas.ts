@@ -26,7 +26,7 @@ export class ListIdiomasPage {
   }
 
   async ionViewDidLoad(){
-    console.log(this.tela);
+    console.log(this.cd_profissional);
     this.carregaIdiomas(this.cd_profissional);
   }
 
@@ -63,7 +63,7 @@ export class ListIdiomasPage {
    **Chama próxima tela**
    **********************/   
   salvar(){
-    if(this.tela = "Menu"){
+    if(this.tela == "Menu"){
       this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional }); 
     }else{
     this.navCtrl.setRoot(ListCompetenciasPage,{ cd_profissional: this.cd_profissional,tela:this.tela});

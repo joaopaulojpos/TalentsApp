@@ -74,4 +74,6 @@ export class MenuPage {
   chamaIdioma(){
     this.navCtrl.push(ListIdiomasPage,{cd_profissional: this.cd_profissional,tela: this.tela});
   }
+  chamaTesteComportamental(){
+  }
 }
