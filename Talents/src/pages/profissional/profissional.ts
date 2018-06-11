@@ -128,9 +128,7 @@ export class ProfissionalPage {
         this.foto = '';
         let base64image = 'data:image/jpeg;base64,' + ImageData;
         this.foto = base64image;
-        console.log(this.foto);
         this.profissionalFormulario.value.b_foto =this.foto;
-        console.log(this.profissionalFormulario.value.b_foto );
 
       },(error) =>{
         console.log(error);
