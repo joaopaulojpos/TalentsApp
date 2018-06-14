@@ -10,6 +10,7 @@ import { ListCargosPage } from '../list-cargos/list-cargos';
 import { ListCursosPage } from '../listcursos/listcursos';
 import { ListCompetenciasPage } from '../listcompetencias/listcompetencias';
 import { ListIdiomasPage } from '../list-idiomas/list-idiomas';
+import { TesteComportamentalPage } from '../teste-comportamental/teste-comportamental';
 
 @IonicPage()
 @Component({
@@ -75,5 +76,6 @@ export class MenuPage {
     this.navCtrl.push(ListIdiomasPage,{cd_profissional: this.cd_profissional,tela: this.tela});
   }
   chamaTesteComportamental(){
+    this.navCtrl.push(TesteComportamentalPage,{cd_profissional: this.cd_profissional,tela: this.tela});
   }
 }

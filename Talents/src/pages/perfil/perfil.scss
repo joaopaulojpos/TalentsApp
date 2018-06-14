@@ -23,5 +23,55 @@ page-perfil {
   
   .dadosProfissional {
 		background-color: rgba(255, 255, 255, 0.2);
+  }
+  .background {
+    background-image: url('../assets/imgs/talents.jpg');
+    align-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .titulo {
+    background-color: rgb(72, 121, 121) !important;
+    font-size: 2.3rem;
+    color: honeydew;
+    text-align: center;
+  } 
+}page-perfil {
+
+  .avatar_perfil img {
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    width: 110px;
+    height: 110px;
+  }
+
+  .camera{
+    font-size: 6rem;
+    margin-right: 15rem;
+    margin-left: 17rem;
+  }
+
+
+  .icn_editar {
+    font-size:  30px;
+    float: right;
+  }
+  
+  .dadosProfissional {
+		background-color: rgba(255, 255, 255, 0.2);
+  }
+  .background {
+    background-image: url('../assets/imgs/talents.jpg');
+    align-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .titulo {
+    background-color: rgb(72, 121, 121) !important;
+    font-size: 2.3rem;
+    color: honeydew;
+    text-align: center;
   } 
 }

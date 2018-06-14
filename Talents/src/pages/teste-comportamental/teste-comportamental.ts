@@ -2,6 +2,7 @@
 import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { TesteComportamentalService } from '../../providers/teste-comportamental/teste-comportamental-service';
 import { ListCargosPage } from '../list-cargos/list-cargos';
+import { MenuPage } from '../menu/menu';
 
 @IonicPage()
 @Component({
@@ -26,6 +27,7 @@ export class TesteComportamentalPage {
   public qtdPerguntasExigidas = 25;
 
   public cd_profissional;
+  public tela;
 
   constructor(
     public navCtrl: NavController,
@@ -36,6 +38,7 @@ export class TesteComportamentalPage {
     private comportamentalProvider: TesteComportamentalService,
     private comportamentalService: TesteComportamentalService
   ) {
+    this.tela = navParams.get("tela")
     this.cd_profissional = navParams.get("cd_profissional")
     console.log(this.cd_profissional);
   }
@@ -193,9 +196,11 @@ export class TesteComportamentalPage {
         this.toast.create({ message: "Teste enviado!" , duration: 1000 }).present();
         this.comportamentalService.gerarCalculoPerfilComp(this.cd_profissional);
 
+        if(this.tela == "Menu"){
+          this.navCtrl.setRoot(MenuPage,{ cd_profissional: this.cd_profissional }); 
+        }else{
         this.navCtrl.setRoot(ListCargosPage, { cd_profissional: this.cd_profissional});
-        console.log(this.cd_profissional);
-
+        }
       }
     }
 

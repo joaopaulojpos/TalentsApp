@@ -59,12 +59,19 @@
              </div>        
             </ion-card-content>
       </ion-card>
-      
+      <ion-card *ngIf="listaVagas == 0">
+          <p class="titulo"><strong>Informativo Talents</strong></p>
+          <ion-card-content>
+           <b>Não há vagas disponível no momento que atende o seu perfil.</b>
+           <br>
+           Dica Talents: forneça o maximo de informarções em seu perfil , com isso faz com que apareça mais oportunidades. 
+          </ion-card-content>
+        </ion-card>
       <ion-fab *ngFor="let vaga of listaVagas" right bottom  class="btCurtir">
           <button ion-fab color="secondary" (click)="vagaCurtida(vaga.cd_vaga, vaga.ds_titulo)" on-destroy="cardDestroyed($index)" ><ion-icon name="ios-heart"></ion-icon></button>
     </ion-fab>
       <ion-fab *ngFor="let vaga of listaVagas" left bottom  class="btNaoCurtir">
           <button ion-fab color="danger" (click)="alertaNaoCurtida(vaga.cd_vaga, vaga.ds_titulo)"><ion-icon name="md-close-circle"></ion-icon></button>
       </ion-fab>
-  
+
 </ion-content>

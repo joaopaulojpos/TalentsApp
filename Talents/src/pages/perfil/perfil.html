@@ -4,10 +4,11 @@
     <ion-title>Perfil</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content padding class="background">
+  <br>
     <ion-avatar class="avatar_perfil">
     <div *ngFor="let profissional of profissionalLogado">
-      <img src="{{profissional.b_foto}}" (click)="alterarFoto()"/>
+      <img src="{{profissional.b_foto}}"/>
     <!-- <ion-icon class="camera" name="camera" (click)="alterarFoto()" ></ion-icon> -->
   </div>
   </ion-avatar>
@@ -15,9 +16,52 @@
   <div *ngFor="let profissional of profissionalLogado">
     <h2 text-center>
       <strong>{{profissional.ds_nome}}</strong>
+      <ion-icon style="vertical-align: -25%;" item-end class="icn_editar" name="create" (click)="chamaEditarPerfil()"></ion-icon>
     </h2>
-    <p text-center>Biografia</p>
-    <p text-center>Endereço</p>
-    <ion-icon style="vertical-align: -26%;" item-end class="icn_editar" name="create" (click)="chamaEditarPerfil()"></ion-icon>
   </div>
+  <br>
+  <h2 text-center class="titulo">Experiências Profissionais</h2>
+  <ion-item-sliding *ngFor="let cargo of cargos">
+      <ion-item text-wrap style="background-color:rgba(255, 255, 255, 0.5)">
+          <b>Cargo:</b>   {{cargo.ds_cargo}}
+          <br/>
+          <b>Empresa:</b> {{cargo.ds_empresa}}
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding *ngIf="cargos == 0">
+        <ion-item text-wrap style="background-color:rgba(255, 255, 255, 0.5)">Não há nenhum Experiênca incluída em seu perfil.</ion-item>
+      </ion-item-sliding>  
+    <h2 text-center class="titulo">Cursos</h2>
+    <ion-item-sliding *ngFor="let curso of cursos">
+        <ion-item text-wrap style="background-color:rgba(255, 255, 255, 0.5)">
+            <b>Instituição:</b>{{curso.ds_instituicao}}
+            <br>
+             <b>Curso:</b>{{curso.ds_curso}}
+        </ion-item>
+      </ion-item-sliding>
+      <ion-item-sliding *ngIf="cursos == 0">
+          <ion-item text-wrap style="background-color:rgba(255, 255, 255, 0.5)">Não há nenhum Curso incluído em seu perfil.</ion-item>
+        </ion-item-sliding>  
+      <h2 text-center class="titulo">Competências Técnicas</h2>
+      <ion-item-sliding *ngFor="let competencia of competencias"> 
+          <ion-item text-wrap style="background-color:rgba(255, 255, 255, 0.5)">
+              <b>Competência:</b>{{competencia.ds_competencia_tecnica}}
+              <br>
+              <b>Nivel:</b> {{competencia.nr_nivel}}
+          </ion-item>
+        </ion-item-sliding>
+        <ion-item-sliding *ngIf="competencias == 0">
+            <ion-item text-wrap style="background-color:rgba(255, 255, 255, 0.5)">Não há nenhum Competência incluída em seu perfil.</ion-item>
+          </ion-item-sliding>  
+    <h2 text-center class="titulo">Idiomas</h2>
+  <ion-item-sliding *ngFor="let idioma of idiomas"> 
+      <ion-item text-wrap style="background-color:rgba(255, 255, 255, 0.5)">
+      <b>Idioma:</b> {{idioma.ds_idioma}} 
+      <br/>
+      <b>Nivel:</b> {{idioma.nr_nivel}}
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding *ngIf="idiomas == 0">
+        <ion-item text-wrap style="background-color:rgba(255, 255, 255, 0.5)">Não há nenhum Idioma incluído em seu perfil.</ion-item>
+      </ion-item-sliding>  
 </ion-content>

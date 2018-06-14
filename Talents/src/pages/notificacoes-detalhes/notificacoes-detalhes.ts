@@ -27,6 +27,7 @@ export class NotificacoesDetalhesPage {
     private toast: ToastController,
     public loadingCtrl: LoadingController) 
     {      
+    this.cd_vaga = this.navParams.get("cd_vaga");
   }
 
   async getSession() {
